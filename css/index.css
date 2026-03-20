@@ -5,6 +5,8 @@
     --accent: hsl(30, 58%, 54%);
     --accent_secondary: hsl(169, 100%, 23%);
 
+    --accent_shade: hsl(30, 49%, 34%);
+
     --text: hsl(0, 0%, 95%);
     --text-dark: hsl(0, 0%, 5%);
     --text_secondary: hsl(0, 0%, 90%);
@@ -293,7 +295,7 @@ main p.main-text {
 .main-btn {
 
 
-    background-color: var(--accent_secondary);
+    background-color: var(--accent_shade);
     color: var(--text);
 
     gap: .5em;
