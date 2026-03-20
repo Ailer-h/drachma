@@ -3,8 +3,10 @@
 :root {
 
     --accent: hsl(30, 58%, 54%);
+    --accent_secondary: hsl(169, 100%, 23%);
 
     --text: hsl(0, 0%, 95%);
+    --text-dark: hsl(0, 0%, 5%);
     --text_secondary: hsl(0, 0%, 90%);
 
 }
@@ -24,11 +26,16 @@ nav{
     justify-content: space-between;
     align-items: center;
     height: 5em;
-    width: calc(100% - 8em);
-    padding: 0 4em;
+    width: calc(100% - 4em);
+    padding: 0 2em;
 
     background-color: var(--accent);
     color: var(--text);
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+    position: fixed;
+    top: 0;
 
 }
 
@@ -92,7 +99,7 @@ nav h1 {
 .banner {
     
     width: 100%;
-    height: 30em;
+    height: 47em;
     
     background-image: url("../images/pathernon.webp");
     
@@ -101,6 +108,8 @@ nav h1 {
     background-position: center center;
     
     position: relative;
+
+    z-index: -1;
     
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
@@ -121,6 +130,8 @@ nav h1 {
     backdrop-filter: brightness(50%);
 
     color: var(--text);
+
+    z-index: 0;
 
 }
 
@@ -162,7 +173,212 @@ hr {
     width: calc(100% - 6em);
     margin-left: 3em;
 
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+}
+
+main {
+    
+    width: calc(100% - 4em);
+    margin-left: 2em;
+
+}
+
+main section {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    gap: 1em;
+
+}
+
+main h1 {
+    font-size: 2em;
+    line-height: 1.5em;
+}
+
+main h2 {
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+main p.main-text {
+
+    font-size: 1.25em;
+    width: calc(100% - 10em);
+
+    text-align: center;
+
+}
+
+.icons {
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: start;
+
+
+}
+
+.icons .icon-frame {
+
+    width: 15em;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    gap: 2em;
+
+}
+
+.icons .icon-frame p {
+    font-size: 1.5em;
+}
+
+.icons .icon {
+
+    width: 10em;
+    height: 10em;
+
+    background-color: var(--accent_secondary);
+
+    border-radius: 1em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.icons .icon svg {
+
+    fill: var(--text);
+
+    height: 5em;
+    width: 5em;
+
+}
+
+.buttons{
+
+    display: flex;
+
+    gap: 2em;
+
+}
+
+.buttons button {
+
+    border: none;
+
+    padding: .2em .5em;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: 200ms;
+
+}
+
+.main-btn {
+
+
+    background-color: var(--accent_secondary);
+    color: var(--text);
+
+    gap: .5em;
+
+    font-size: 1.5em;
+
+    font-weight: bold;
+
+    border-radius: .5em;
+
+}
+
+.main-btn:hover {
+
+    filter: brightness(110%);
+
+    transition: 200ms;
+
+}
+
+.main-btn svg {
+
+    fill: var(--text);
+
+    height: 2em;
+    width: 2em;
+
+    transition: 200ms;
+
+}
+
+.secondary-btn {
+    
+    background-color: white;
+
+    filter: brightness(95%);
+    
+    font-size: 1.4em;
+    
+    gap: .5em;
+    
+    color: var(--text-dark);
+
+    border-radius: .5em;
+    
+}
+
+.secondary-btn:hover {
+
+    filter: brightness(90%);
+
+    transition: 200ms;
+
+}
+
+.secondary-btn svg {
+
+    fill: var(--text-dark);
+
+    height: 1em;
+    width: 1em;
+
+    transition: 200ms;
+
+}
+
+footer {
+
+    height: 5em;
+
+    background-color: var(--accent);
+
+    color: var(--text);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: .5em;
+
+}
+
+footer a {
+    
+    color: var(--text);
 
 }
