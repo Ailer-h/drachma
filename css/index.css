@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+
+    --accent: hsl(30, 58%, 54%);
+
+    --text: hsl(0, 0%, 95%);
+    --text_secondary: hsl(0, 0%, 90%);
+
+}
+
+* {
+
+    padding: 0;
+    margin: 0;
+
+    font-family: "Iosevka Charon", Arial, Helvetica, sans-serif;
+
+}
+
+nav{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5em;
+    width: calc(100% - 8em);
+    padding: 0 4em;
+
+    background-color: var(--accent);
+    color: var(--text);
+
+}
+
+nav div {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0 2em;
+    gap: 1em;
+
+    transition: 200ms;
+}
+
+nav div p{
+
+    border-radius: .5em;
+
+    padding: .5em;
+    cursor: pointer;
+
+    transition: 200ms;
+
+}
+
+nav div p:hover{
+
+    color: var(--accent);
+    background-color: var(--text);
+
+}
+
+nav div button {
+
+    border: none;
+
+    padding: .5em;
+
+    background-color: var(--text);
+    color: var(--accent);
+    font-weight: bold;
+    border-radius: .5em;
+    cursor: pointer;
+    
+    transition: 200ms;
+
+}
+
+nav div button:hover {
+
+    transform: scale(1.1);
+    background-color: var(--text_secondary);
+
+    transition: 200ms;
+
+}
+
+nav h1 {
+    font-weight: bold;
+}
+
+.banner {
+    
+    width: 100%;
+    height: 30em;
+    
+    background-image: url("../images/pathernon.webp");
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    
+    position: relative;
+    
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+}
+
+.banner .credits{
+
+    font-size: .5em;
+    border-radius: 0 .5em 0 0;
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    padding: .5em;
+
+    backdrop-filter: brightness(50%);
+
+    color: var(--text);
+
+}
+
+.banner .banner-text{
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--text);
+
+    backdrop-filter: blur(2px);
+
+}
+
+.banner .banner-text h1 {
+
+    font-size: 5em;
+    
+}
+
+.banner .banner-text p {
+
+    font-size: 2em;
+    
+}
+
+hr {
+
+    border: none;
+    height: 2px;
+
+    background-color: var(--text_secondary);
+
+    width: calc(100% - 6em);
+    margin-left: 3em;
+
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+
+}
