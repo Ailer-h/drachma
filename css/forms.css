@@ -17,6 +17,9 @@
     --text-dark: hsl(0, 0%, 5%);
     --text_secondary: hsl(0, 0%, 90%);
 
+    --wrong: #D62828;
+    --right: #198200;
+
 }
 
 * {
@@ -144,8 +147,8 @@ main section form hr {
     justify-content: start;
     align-items: center;
 
-    margin-top: 2em;
-
+    margin-top: 1em;
+    
 }
 
 main section form input {
@@ -164,6 +167,7 @@ main section form input {
 
 main section form input:focus {
 
+    outline: 1px solid var(--bronze-main);
     border: 1px solid var(--bronze-main);
 
 }
@@ -243,4 +247,46 @@ p {
 
     margin-top: .3em;
 
+}
+
+.input-warning {
+
+    width: calc(100% - 10em);
+    margin-top: .5em;
+
+    visibility: hidden;
+
+}
+
+.wrong {
+
+    color: var(--wrong);
+
+}
+
+.wrong input {
+    border: 1px solid var(--wrong);
+}
+
+.wrong:focus-within label {
+    color: var(--wrong);
+}
+
+.wrong input:focus {
+    outline: 1px solid var(--wrong);
+    border: 1px solid var(--wrong);
+}
+
+.right {
+
+    color: var(--teal-dark);
+
+}
+
+.right input {
+    border: 1px solid var(--teal-dark);
+}
+
+.right:focus-within label {
+    color: var(--teal-dark);
 }
