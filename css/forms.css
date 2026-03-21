@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+
+    --bronze-main: #c77339; /* 500 */
+    --bronze-shade: #af5830;
+    --bronze-dark: #92412b;
+    --bronze-light: #ce8a46;
+    --bronze-disabled: #e6c9a1; /* 200 */
+
+    --teal-main: #0abf96;
+    --teal-shade: #009b7b;
+    --teal-dark: #007560;
+    --teal-light: #2fd8ac;
+
+    --text: hsl(0, 0%, 95%);
+    --text-dark: hsl(0, 0%, 5%);
+    --text_secondary: hsl(0, 0%, 90%);
+
+}
+
+* {
+
+    padding: 0;
+    margin: 0;
+    
+    font-family: "Iosevka Charon", Arial, Helvetica, sans-serif;
+
+}
+
+main {
+
+    height: 100vh;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 35% 65%;
+
+    overflow: hidden;
+
+}
+
+main section {
+    height: 100%;
+}
+
+main section.banner {
+
+    background-image: url("../images/philopappos_hill.avif");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+}
+
+main section.banner .title {
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    backdrop-filter: blur(2px);
+
+    font-size: 1.5em;
+    color: var(--text);
+
+}
+
+main section.banner .title h1 {
+    font-size: 1.5em;
+}
+
+main section.banner .title h2 {
+    font-size: .8em;
+}
+
+main section form {
+
+    height: calc(100% - 2.2em);
+    width: calc(100% - .2em);
+
+    margin-top: 2em;
+
+    padding: .2em;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: start;
+    align-items: center;
+}
+
+main section form .icon {
+
+    background-color: var(--bronze-light);
+
+    width: 5em;
+    height: 5em;
+
+    border-radius: 100%;
+
+}
+
+main section form .header {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: start;
+    align-items: center;
+
+    gap: 1.5em;
+}
+
+main section form hr {
+
+        border: none;
+    height: 2px;
+
+    background-color: var(--text_secondary);
+
+    width: calc(100% - 6em);
+
+    margin-top: .6em;
+    margin-bottom: .6em;
+
+}
+
+.field {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    margin-top: 2em;
+
+}
+
+main section form input {
+
+    width: calc(100% - 10em);
+    height: 2.5em;
+    line-height: 2em;
+
+    padding-left: .5em;
+
+    border-radius: .2em;
+
+    border: 1px solid black;
+
+}
+
+main section form input:focus {
+
+    border: 1px solid var(--bronze-main);
+
+}
+
+main section form .field:focus-within label {
+    color: var(--bronze-shade);
+}
+
+main section form label {
+
+    width: calc(100% - 10em);
+    margin-bottom: .25em;
+
+}
+
+main section form button{
+
+    border: none;
+    background-color: var(--bronze-main);
+    color: var(--text);
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    font-size: 1.5em;
+
+    padding: .2em .5em;
+
+    width: 10em;
+
+    border-radius: .5em;
+
+    cursor: pointer;
+
+    transition: 200ms;
+
+}
+
+main section form button:hover {
+
+    background-color: var(--bronze-shade);
+
+    transition: 200ms;
+
+}
+
+main section form button:disabled {
+
+    background-color: var(--bronze-disabled);
+    cursor: default;
+
+    transition: 200ms;
+
+}
+
+p {
+
+    font-size: .8em;
+
+}
+
+.link {
+
+    color: var(--teal-shade);
+    cursor: pointer;
+
+}
+
+.link:hover {
+    color: var(--teal-dark);
+}
+
+#forgot_password {
+
+    width: calc(100% - 10em);
+    text-align: right;
+
+    margin-top: .3em;
+
+}

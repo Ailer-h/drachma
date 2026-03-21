@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/forms.css">
+    <title>Log-in</title>
+</head>
+<body>
+    <main>
+
+        <section>
+            <form action="">
+
+                <div class="header">
+                    <div class="icon"></div>
+                    <h1>Log In</h1>
+                    <hr>
+                </div>
+
+                <div class="field">
+                    <label for="username">Username or email</label>
+                    <input type="text" name="username" id="username">
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                    <p id="forgot_password">
+                        <span onclick="alert('Work in Progress')" class="link">Forgot Password</span>
+                    </p>
+                </div>
+
+                <button type="submit" disabled>Log In</button>
+
+                <hr>
+                
+                <p>Don't have an account? <span onclick="location.href = 'signin.html'" class="link">Create account</span>.</p>
+
+            </form>
+        </section>
+        
+        <section class="banner">
+            <div class="title">
+                <h1>
+                    Welcome back to Drachma!
+                </h1>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

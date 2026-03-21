@@ -2,10 +2,15 @@
 
 :root {
 
-    --accent: hsl(30, 58%, 54%);
-    --accent_secondary: hsl(169, 100%, 23%);
+    --bronze-main: #c77339;
+    --bronze-shade: #af5830;
+    --bronze-dark: #92412b;
+    --bronze-light: #ce8a46;
 
-    --accent_shade: hsl(30, 49%, 34%);
+    --teal-main: #0abf96;
+    --teal-shade: #009b7b;
+    --teal-dark: #007560;
+    --teal-light: #2fd8ac;
 
     --text: hsl(0, 0%, 95%);
     --text-dark: hsl(0, 0%, 5%);
@@ -31,7 +36,7 @@ nav{
     width: calc(100% - 4em);
     padding: 0 2em;
 
-    background-color: var(--accent);
+    background-color: var(--bronze-main);
     color: var(--text);
 
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -64,7 +69,7 @@ nav div p{
 
 nav div p:hover{
 
-    color: var(--accent);
+    color: var(--bronze-main);
     background-color: var(--text);
 
 }
@@ -76,7 +81,7 @@ nav div button {
     padding: .5em;
 
     background-color: var(--text);
-    color: var(--accent);
+    color: var(--bronze-main);
     font-weight: bold;
     border-radius: .5em;
     cursor: pointer;
@@ -114,26 +119,6 @@ nav h1 {
     z-index: -1;
     
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-
-}
-
-.banner .credits{
-
-    font-size: .5em;
-    border-radius: 0 .5em 0 0;
-
-    position: absolute;
-
-    bottom: 0;
-    left: 0;
-
-    padding: .5em;
-
-    backdrop-filter: brightness(50%);
-
-    color: var(--text);
-
-    z-index: 0;
 
 }
 
@@ -250,7 +235,7 @@ main p.main-text {
     width: 10em;
     height: 10em;
 
-    background-color: var(--accent_secondary);
+    background-color: var(--teal-dark);
 
     border-radius: 1em;
 
@@ -295,7 +280,7 @@ main p.main-text {
 .main-btn {
 
 
-    background-color: var(--accent_shade);
+    background-color: var(--bronze-shade);
     color: var(--text);
 
     gap: .5em;
@@ -310,7 +295,7 @@ main p.main-text {
 
 .main-btn:hover {
 
-    filter: brightness(110%);
+    background-color: var(--bronze-dark);
 
     transition: 200ms;
 
@@ -366,7 +351,7 @@ footer {
 
     height: 5em;
 
-    background-color: var(--accent);
+    background-color: var(--bronze-main);
 
     color: var(--text);
 
