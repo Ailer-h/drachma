@@ -15,6 +15,7 @@
 
     --text: hsl(0, 0%, 95%);
     --text-dark: hsl(0, 0%, 5%);
+    --text-dark-secondary: hsl(0, 0%, 30%);
     --text_secondary: hsl(0, 0%, 90%);
 
     --wrong: #D62828;
@@ -126,7 +127,7 @@ main section form .header {
 
 main section form hr {
 
-        border: none;
+    border: none;
     height: 2px;
 
     background-color: var(--text_secondary);
@@ -148,7 +149,25 @@ main section form hr {
     align-items: center;
 
     margin-top: 1em;
-    
+
+    position: relative;
+
+}
+
+.field svg {
+
+    position: absolute;
+
+    right: 5em;
+    top: 50%;
+    transform: translateY(-50%);
+
+    height: 1.5em;
+    width: 1.5em;
+
+    fill: var(--text-dark-secondary);
+
+    cursor: pointer;
 }
 
 main section form input {
@@ -174,6 +193,10 @@ main section form input:focus {
 
 main section form .field:focus-within label {
     color: var(--bronze-shade);
+}
+
+main section form .field:focus-within svg {
+    fill: var(--bronze-shade);
 }
 
 main section form label {
