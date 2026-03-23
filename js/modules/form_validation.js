@@ -28,6 +28,7 @@ function check_password(password) {
 export function validate_field(field, validation_schema) {
 
     let field_value = field.value
+    let field_name = field.name
 
     if (validation_schema.isEmail) {
         if (!is_valid_email(field_value)){
@@ -61,7 +62,7 @@ export function validate_field(field, validation_schema) {
         if (!has_minimum_chars(field_value, validation_schema.min_length)) {
             return {
                 result: false,
-                msg: "Invalid length"
+                msg: field_name + " must have at least " + validation_schema.min_length + " characters."
             }
         }
 
