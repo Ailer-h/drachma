@@ -75,20 +75,32 @@ document.addEventListener("DOMContentLoaded", () => {
         inputs[key].field.addEventListener("input", validate_form)
         inputs[key].field.addEventListener("focusout", (e) => {
 
-            let result = validate_field(inputs[key].field, inputs[key].validation_schema)
-            
             let field = $("#" + e.target.id).parent()
-
-            if (!result.result){
-                field.find(".input-warning").css({"visibility": "visible"})
-                field.find(".input-warning").html(result.msg)
-
-                field.removeClass("right").addClass("wrong")
             
-            }else {
-                field.find(".input-warning").css({"visibility": "hidden"})
+            if (inputs[key].field.value){
 
-                field.removeClass("wrong").addClass("right")
+                let result = validate_field(inputs[key].field, inputs[key].validation_schema)
+                
+                
+                if (!result.result){
+                    field.find(".input-warning").css({"visibility": "visible"})
+                    field.find(".input-warning").html(result.msg)
+                    
+                    field.removeClass("right").addClass("wrong")
+                    
+                }else {
+                    field.find(".input-warning").css({"visibility": "hidden"})
+                    field.find(".input-warning").html("")
+                    
+                    field.removeClass("wrong").addClass("right")
+                }
+            }else {
+
+                    field.removeClass("right")
+                    field.removeClass("wrong")
+                    field.find(".input-warning").html("")
+                    field.find(".input-warning").css({"visibility": "hidden"})
+
             }
         })
     })
