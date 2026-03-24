@@ -13,7 +13,7 @@
     "url": "git+https://github.com/Ailer-h/drachma.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Henrique Ailer",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Ailer-h/drachma#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.100.0",
     "vite": "^8.0.2"
   }
 }

@@ -1,8 +1,6 @@
 import { validate_field } from "./modules/form_validation.js"
 import { show_password } from "./modules/show_password_input.js"
 
-const submit_btn = document.getElementById("submit");
-
 const inputs = {
     username: {
         field: document.getElementById("username"),
@@ -72,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                 }else {
                     field.find(".input-warning").css({"visibility": "hidden"})
+                    field.find(".input-warning").html(".")
                     
                     field.removeClass("wrong").addClass("right")
                 }
@@ -80,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     field.removeClass("right")
                     field.removeClass("wrong")
+                    field.find(".input-warning").html(".")
                     field.find(".input-warning").css({"visibility": "hidden"})
 
             }
@@ -89,4 +89,5 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".vicon").forEach(vicon => {
         vicon.addEventListener("click", show_password)
     })
+
 })

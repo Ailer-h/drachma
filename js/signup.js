@@ -1,5 +1,6 @@
 import { validate_field } from "./modules/form_validation.js"
 import { show_password } from "./modules/show_password_input.js"
+import { supabase } from "./modules/supabase_connect.js";
 
 const submit_btn = document.getElementById("submit");
 
@@ -43,19 +44,19 @@ function validate_form() {
     let fields_validated = 0
     let total_fields = 0
 
-    Object.keys(inputs).forEach(key => {
-
+    Object.values(inputs).forEach(item => {
+        
         total_fields++;
 
-        let result = validate_field(inputs[key].field, inputs[key].validation_schema)
-
+        let result = validate_field(item.field, item.validation_schema)
+        
         if (result.result) {
             fields_validated++;
         
         }
 
-    });
-    
+    })
+
     let passwords_match = inputs.password.field.value == inputs.confirm_password.field.value
 
     if (total_fields == fields_validated && fields_validated > 0 && passwords_match) {
@@ -71,15 +72,15 @@ function validate_form() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    Object.keys(inputs).forEach(key => {
-        inputs[key].field.addEventListener("input", validate_form)
-        inputs[key].field.addEventListener("focusout", (e) => {
+    Object.values(inputs).forEach(item => {
+        item.field.addEventListener("input", validate_form)
+        item.field.addEventListener("focusout", (e) => {
 
             let field = $("#" + e.target.id).parent()
             
-            if (inputs[key].field.value){
+            if (item.field.value){
 
-                let result = validate_field(inputs[key].field, inputs[key].validation_schema)
+                let result = validate_field(item.field, item.validation_schema)
                 
                 
                 if (!result.result){
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                 }else {
                     field.find(".input-warning").css({"visibility": "hidden"})
-                    field.find(".input-warning").html("")
+                    field.find(".input-warning").html(".")
                     
                     field.removeClass("wrong").addClass("right")
                 }
@@ -98,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     field.removeClass("right")
                     field.removeClass("wrong")
-                    field.find(".input-warning").html("")
+                    field.find(".input-warning").html(".")
                     field.find(".input-warning").css({"visibility": "hidden"})
 
             }
@@ -107,5 +108,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".vicon").forEach(vicon => {
         vicon.addEventListener("click", show_password)
+    })
+
+    submit_btn.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        const { data, error } = await supabase.auth.signUp({
+            email: inputs.email.field.value,
+            password: inputs.password.field.value,
+            options: {
+                data: {
+                    display_name: inputs.username.field.value,
+                }
+            }
+        })
+
+        if (error) {
+
+            if (error.message == "User already registered"){
+                alert(error.message);
+            }
+        } else {
+
+            Object.values(inputs).forEach(item => {
+                item.field.value = "";
+            });
+
+            $(".right").each(() => {
+                $(this).removeClass(".right")
+            })
+          
+            window.location.href = "/dashboard.html";
+            
+        }
+
     })
 })

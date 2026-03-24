@@ -40,7 +40,6 @@ export function validate_field(field, validation_schema) {
         }
 
     }else if (validation_schema.isPassword){
-        console.log("Password")
         let password_state = check_password(field_value)
         let result = {
             result: false,
