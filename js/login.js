@@ -2,6 +2,8 @@ import { validate_field } from "./modules/form_validation.js"
 import { show_password } from "./modules/show_password_input.js"
 import { supabase, check_session } from "./modules/supabase_connect.js";
 
+const submit_btn = document.getElementById("submit");
+
 const inputs = {
     email: {
         field: document.getElementById("email"),
