@@ -34,3 +34,24 @@ body {
     background-color: var(--bg);
 
 }
+
+main {
+    width: calc(100% - 6em);
+    min-height: calc(100vh - 5em);
+    margin-top: 5em;
+
+    display: grid;
+    gap: 1rem;
+
+    grid-auto-columns:  1fr;
+    grid-template-areas: 
+        "overview overview overview overview-legend"
+        "expenses expenses investments investments";
+
+    padding: 3em;
+}
+
+main .grid-box {
+    background-color: var(--text_secondary);
+    min-height: 150px;
+}
