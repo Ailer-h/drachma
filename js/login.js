@@ -1,20 +1,21 @@
 import { validate_field } from "./modules/form_validation.js"
 import { show_password } from "./modules/show_password_input.js"
+import { supabase, check_session } from "./modules/supabase_connect.js";
 
 const inputs = {
-    username: {
-        field: document.getElementById("username"),
+    email: {
+        field: document.getElementById("email"),
         validation_schema: {
-            isEmail: false,
+            isEmail: true,
             isPassword: false,
-            min_length: 5
+            min_length: null
         }
     },
     password: {
         field: document.getElementById("password"),
         validation_schema: {
             isEmail: false,
-            isPassword: true,
+            isPassword: false,
             min_length: 10
         }
     }
@@ -51,6 +52,9 @@ function validate_form() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    check_session("dashboard.html", true)
+
     Object.keys(inputs).forEach(key => {
         inputs[key].field.addEventListener("input", validate_form)
         inputs[key].field.addEventListener("focusout", (e) => {
@@ -88,6 +92,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".vicon").forEach(vicon => {
         vicon.addEventListener("click", show_password)
+    })
+
+    submit_btn.addEventListener("click", async (e) => {
+
+        e.preventDefault();
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: inputs.email.field.value,
+          password: inputs.password.field.value
+        });
+
+        if (error) {
+
+            if (error.message == "User already registered"){
+                alert(error.message);
+            }
+        } else {
+
+            Object.values(inputs).forEach(item => {
+                item.field.value = "";
+            });
+
+            $(".right").each(() => {
+                $(this).removeClass(".right")
+            })
+          
+            window.location.href = "dashboard.html";
+            
+        }
+
     })
 
 })

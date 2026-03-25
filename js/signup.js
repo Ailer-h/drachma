@@ -1,6 +1,6 @@
 import { validate_field } from "./modules/form_validation.js"
 import { show_password } from "./modules/show_password_input.js"
-import { supabase } from "./modules/supabase_connect.js";
+import { supabase, check_session } from "./modules/supabase_connect.js";
 
 const submit_btn = document.getElementById("submit");
 
@@ -72,6 +72,9 @@ function validate_form() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    check_session("dashboard.html", true)
+
     Object.values(inputs).forEach(item => {
         item.field.addEventListener("input", validate_form)
         item.field.addEventListener("focusout", (e) => {
@@ -124,10 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
         })
 
         if (error) {
+            alert(error.message);
 
-            if (error.message == "User already registered"){
-                alert(error.message);
-            }
         } else {
 
             Object.values(inputs).forEach(item => {
@@ -138,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 $(this).removeClass(".right")
             })
           
-            window.location.href = "/dashboard.html";
+            window.location.href = "dashboard.html";
             
         }
 
