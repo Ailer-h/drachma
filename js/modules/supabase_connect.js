@@ -12,11 +12,11 @@ export const supabase = createClient(
   }
 );
 
-export async function check_session(redirect, logged_in) {
+export async function check_session(redirect, isLoggedIn) {
   
   const { data } = await supabase.auth.getSession();
 
-    if (Boolean(data.session) == logged_in) {
+    if (Boolean(data.session) == isLoggedIn) {
       window.location.href = redirect;
     }
 
