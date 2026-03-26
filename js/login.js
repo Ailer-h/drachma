@@ -1,6 +1,6 @@
-import { validate_field } from "./modules/form_validation.js"
-import { show_password } from "./modules/show_password_input.js"
-import { supabase, check_session } from "./modules/supabase_connect.js";
+import { validate_field } from "./modules/formValidation"
+import { show_password } from "./modules/showPasswordInput";
+import { supabase, check_session } from "./modules/supabase";
 
 const submit_btn = document.getElementById("submit");
 

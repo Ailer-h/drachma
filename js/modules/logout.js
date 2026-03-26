@@ -1,4 +1,4 @@
-import { supabase, check_session } from "./supabase_connect.js";
+import { supabase, check_session } from "./supabase";
 
 export async function logout() {
 

@@ -1,4 +1,4 @@
-import { withoutTransition } from "./transition_blocker"
+import { withoutTransition } from "./transitionBlocker"
 
 export function change_theme(e) {
 

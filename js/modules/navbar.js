@@ -1,5 +1,5 @@
-import { logout } from "./logout.js";
-import { change_theme } from "./theme_controller.js";
+import { logout } from "./logout";
+import { change_theme } from "./themeController";
 
 const menu_functionalities = {
     profile: function(){alert("wip")},

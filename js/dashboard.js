@@ -1,5 +1,5 @@
 import { start_navbar_controller } from "./modules/navbar";
-import { check_session } from "./modules/supabase_connect";
+import { check_session } from "./modules/supabase";
 
 document.addEventListener("DOMContentLoaded", () => {
 
