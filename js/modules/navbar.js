@@ -1,5 +1,11 @@
 import { logout } from "./logout.js";
-import { debounce } from "./debounce.js"
+import { change_theme } from "./theme_controller.js";
+
+const menu_functionalities = {
+    profile: function(){alert("wip")},
+    theme: change_theme,
+    logout: logout,
+}
 
 export function start_navbar_controller() {
 
@@ -21,6 +27,8 @@ export function start_navbar_controller() {
         }
     })
 
-    document.getElementById("logout").addEventListener("click", logout)
-
+    Object.entries(menu_functionalities).forEach(([id, func]) => {
+        document.getElementById(id).addEventListener("click", func)
+    })
+    
 }

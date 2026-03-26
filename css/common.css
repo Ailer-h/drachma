@@ -38,6 +38,7 @@
 
 }
 
+
 * {
 
     padding: 0;
@@ -250,4 +251,14 @@ body::-webkit-scrollbar{
 
 .scroll-container .thumb:hover {
     background-color: var(--bronze-dark);
+}
+
+
+.no-transition {
+
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+
 }
