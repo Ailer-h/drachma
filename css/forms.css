@@ -1,41 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-
 :root {
 
-    --bronze-main: #c77339; /* 500 */
-    --bronze-shade: #af5830;
-    --bronze-dark: #92412b;
-    --bronze-light: #ce8a46;
-    --bronze-disabled: #e6c9a1; /* 200 */
-
-    --teal-main: #0abf96;
-    --teal-shade: #009b7b;
-    --teal-dark: #007560;
-    --teal-light: #2fd8ac;
-
-    --text: hsl(0, 0%, 95%);
-    --text-dark: hsl(0, 0%, 5%);
-    --text-dark-secondary: hsl(0, 0%, 30%);
-    --text_secondary: hsl(0, 0%, 90%);
-
     --wrong: #D62828;
-
-    --bg: #f1f1f1;
-
-}
-
-* {
-
-    padding: 0;
-    margin: 0;
-    
-    font-family: "Iosevka Charon", Arial, Helvetica, sans-serif;
-
-}
-
-body {
-
-    background-color: var(--bg);
 
 }
 
@@ -80,7 +45,7 @@ main section.banner .title {
     backdrop-filter: blur(2px);
 
     font-size: 1.5em;
-    color: var(--text);
+    color: var(--text-white);
 
 }
 
@@ -137,7 +102,7 @@ main section form hr {
     border: none;
     height: 2px;
 
-    background-color: var(--text_secondary);
+    background-color: var(--text-white-secondary);
 
     width: calc(100% - 6em);
 
@@ -172,7 +137,7 @@ main section form hr {
     height: 1.5em;
     width: 1.5em;
 
-    fill: var(--text-dark-secondary);
+    fill: var(--text-black-secondary);
 
     cursor: pointer;
 }
@@ -188,6 +153,8 @@ main section form input {
     border-radius: .2em;
 
     border: 1px solid black;
+
+    caret-color: var(--bronze-main);
 
 }
 
@@ -217,7 +184,7 @@ main section form button{
 
     border: none;
     background-color: var(--bronze-main);
-    color: var(--text);
+    color: var(--text-white);
 
     margin-top: 1em;
     margin-bottom: 1em;
