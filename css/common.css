@@ -2,16 +2,17 @@
 
 :root {
 
-    --bronze-main: #c77339;
-    --bronze-shade: #af5830;
-    --bronze-dark: #92412b;
-    --bronze-light: #ce8a46;
-    --bronze-disabled: #e6c9a1;
+    --bronze-main: #c77339; /* 500 */
+    --bronze-shade: #af5830; /* 600 */
+    --bronze-dark: #92412b; /* 700 */
+    --bronze-light: #ce8a46; /* 400 */
+    --bronze-disabled: #e6c9a1; /* 200 */
 
-    --teal-main: #0abf96;
-    --teal-shade: #009b7b;
-    --teal-dark: #007560;
-    --teal-light: #2fd8ac;
+    --teal-main: #0abf96; /* 500 */
+    --teal-shade: #009b7b; /* 600 */
+    --teal-dark: #007560; /* 700 */
+    --teal-light: #2fd8ac; /* 400 */
+    --teal-disabled: #a4f6d9; /* 200 */
 
     --text-default: hsl(0, 0%, 5%);
     --text-secondary: hsl(0, 0%, 15%);
@@ -24,6 +25,30 @@
 
     --bg: #f1f1f1;
     --bg-secondary: hsl(0, 0%, 85%);
+
+    --danger: #eb4848; /* 500 */
+    --danger-light: #f57474; /* 400 */
+    --danger-shade: #d82a2a; /* 600 */
+    --danger-dark: #b52020; /* 700 */
+    --danger-disabled: #fdcbcb; /* 400 */
+
+    --warning: #fdca12; /* 400 */
+    --warning-light: #ffde42; /* 300 */
+    --warning-shade: #ecb106; /* 500 */
+    --warning-dark: #cc8802; /* 600 */
+    --warning-disabled: #ffef89; /* 200 */
+
+    --success: #60c71b; /* 500 */
+    --success-light: #7fe239; /* 400 */
+    --success-shade: #48a111; /* 600 */
+    --success-dark: #387912; /* 700 */
+    --success-disabled: #c6f79f; /* 200 */
+    
+    --info: #4c8ce4; /* 500 */
+    --info-light: #6faceb; /* 400 */
+    --info-shade: #3871d8; /* 600 */
+    --info-dark: #3871d8; /* 700 */
+    --info-disabled: #c5def8; /* 200 */
 
 }
 
