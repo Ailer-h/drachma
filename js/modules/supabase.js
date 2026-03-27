@@ -21,3 +21,22 @@ export async function check_session(redirect, isLoggedIn) {
     }
 
 }
+
+export async function addPaymentType(paymentTypeName, icon_id) {
+  const { data: sessionData } = await supabase.auth.getSession()
+
+  if (!sessionData.session) {
+    return { success: false, error: 'User not authenticated' }
+  }
+
+  const { data, error } = await supabase
+    .from('paymentType')
+    .insert([{ paymentTypeName, icon_id }])
+    .select()
+
+  if (error) {
+    return { success: false, error }
+  }
+
+  return { success: true, data }
+}

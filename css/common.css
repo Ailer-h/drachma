@@ -17,14 +17,16 @@
     --text-default: hsl(0, 0%, 5%);
     --text-secondary: hsl(0, 0%, 15%);
     --lines: hsl(0, 0%, 30%);
+    --lines-secondary: hsl(0, 0%, 60%);
 
     --text-white: hsl(0, 0%, 95%);
     --text-white-secondary: hsl(0, 0%, 85%);
     --text-black: hsl(0, 0%, 5%);
     --text-black-secondary: hsl(0, 0%, 15%);
 
-    --bg: #f1f1f1;
+    --bg: hsl(0, 0%, 95%);
     --bg-secondary: hsl(0, 0%, 85%);
+    --bg-tertiary: hsl(0, 0%, 75%);
 
     --danger: #eb4848; /* 500 */
     --danger-light: #f57474; /* 400 */
@@ -50,6 +52,8 @@
     --info-dark: #3871d8; /* 700 */
     --info-disabled: #c5def8; /* 200 */
 
+    --box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
 }
 
 .dark-mode {
@@ -57,9 +61,13 @@
     --text-default: hsl(0, 0%, 95%);
     --text-secondary: hsl(0, 0%, 85%);
     --lines: hsl(0, 0%, 70%);
+    --lines-secondary: hsl(0, 0%, 30%);
 
     --bg: hsl(0, 0%, 6%);
     --bg-secondary: hsl(0, 0%, 16%);
+    --bg-tertiary: hsl(0, 0%, 26%);
+
+    --box-shadow: none;
 
 }
 
@@ -92,7 +100,7 @@ nav{
     background-color: var(--bronze-main);
     color: var(--text-white);
 
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow: var(--box-shadow);
 
     position: fixed;
     top: 0;
@@ -194,7 +202,7 @@ nav h1 {
     display: none;
 
     background-color: var(--bg);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow: var(--box-shadow);
 
     top: 3em;
     right: .2em;
@@ -203,6 +211,8 @@ nav h1 {
     height: 10em;
 
     padding: .5em;
+
+    border: .1px solid var(--lines-secondary);
 
 }
 
@@ -309,12 +319,16 @@ body::-webkit-scrollbar{
     background-color: var(--bronze-dark);
 }
 
+hr {
 
-.no-transition {
+    border: none;
+    height: .5px;
 
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -o-transition: none !important;
-  transition: none !important;
+    background-color: var(--lines);
+
+    width: 100%;
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
 }

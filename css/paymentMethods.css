@@ -1,0 +1,159 @@
+hr {
+
+    width: 90%;
+
+}
+
+main {
+
+    width: calc(100% - 6em);
+
+    min-height: calc(100vh - 5em);
+    margin-top: 5em;
+
+    margin-left: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+}
+
+main h3 {
+
+    color: var(--text-default);
+    font-size: 1.5rem;
+
+}
+
+.payments {
+
+    width: 90%;
+    min-height: 30em;
+
+    border-radius: .5em;
+
+    background-color: var(--bg-secondary);
+
+    box-shadow: var(--box-shadow);
+    border: .1px solid var(--lines-secondary);
+
+}
+
+.payments table {
+    
+    width: calc(100% - 3rem);
+    margin: 0 auto;
+    margin-top: .5rem;
+    
+    border-spacing: 0px;
+
+    color: var(--text-default);
+    
+}
+
+.payments table tbody td {
+
+    padding: .2rem .3rem;
+
+}
+
+.payments table tbody tr:hover td{
+    border: none; /* Figure it out later */
+}
+
+.payments table th {
+
+    text-align: left;
+    border-bottom: .5px solid var(--lines-secondary);
+    margin-bottom: .5rem;
+
+}
+
+.payments table .actions {
+
+    width: 15%;
+    text-align: center;
+
+}
+
+.payments table .actions div {
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+
+}
+
+
+.payments table .actions svg {
+
+    fill: var(--text-default);
+
+    padding: .2rem;
+    cursor: pointer;
+
+    border-radius: .3rem;
+
+    transition: 200ms;
+
+}
+
+.payments table .actions svg:hover {
+
+    background-color: var(--bg-tertiary);
+
+    transition: 200ms;
+
+}
+
+.payment-bar {
+
+    width: calc(90% - 4rem);
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0 2rem;
+
+}
+
+.payment-bar button {
+
+    border: none;
+
+    padding: .2rem .3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: .5rem;
+    border-radius: .3em;
+
+    background-color: var(--bronze-main);
+    color: var(--text-white);
+
+    cursor: pointer;
+
+    transition: 200ms;
+    
+}
+
+.payment-bar button:hover {
+
+    background-color: var(--bronze-shade);
+    
+    transition: 200ms;
+
+}
+
+.payment-bar button svg {
+
+    fill: var(--text-white);
+
+}
