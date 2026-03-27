@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <title>Drachma | Dashboard</title>
+    <title>Drachma | Expenses</title>
 </head>
-<body class="no-transition">
-    
+<body>
     <nav>
-        <h1>Drachma</h1>
-
+        <a href="dashboard.html">
+            <h1>Drachma</h1>
+        </a>
+        
         <div class="menu">
 
             <button>
@@ -30,19 +30,11 @@
         </div>
     </nav>
 
-    <main>
-        <div class="grid-box" style="grid-area: overview;"></div>
-        <div class="grid-box" style="grid-area: overview-legend;"></div>
-        <div class="grid-box" style="grid-area: expenses;"></div>
-        <div class="grid-box" style="grid-area: investments;"></div>
-    </main>
-
     <div class="scroll-container">
         <div class="thumb"></div>
     </div>
-
 </body>
-<script type="module" src="../js/dashboard.js"></script>
+<script type="module" src="../js/income.js"></script>
 <script type="module" src="../js/modules/scrollbar.js"></script>
 <script type="module" src="../js/modules/navbar.js"></script>
 </html>
