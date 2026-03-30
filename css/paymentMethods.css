@@ -34,11 +34,6 @@ main h3 {
 
     border-radius: .5em;
 
-    background-color: var(--bg-secondary);
-
-    box-shadow: var(--box-shadow);
-    border: .1px solid var(--lines-secondary);
-
 }
 
 .payments table {
@@ -53,14 +48,27 @@ main h3 {
     
 }
 
+.payments table svg {
+
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: var(--text-default);
+
+}
+
 .payments table tbody td {
 
     padding: .2rem .3rem;
 
 }
 
-.payments table tbody tr:hover td{
-    border: none; /* Figure it out later */
+.payments table tbody td:first-child div{
+
+    display: flex;
+    align-items: center;
+
+    gap: .5rem;
+
 }
 
 .payments table th {
@@ -68,6 +76,20 @@ main h3 {
     text-align: left;
     border-bottom: .5px solid var(--lines-secondary);
     margin-bottom: .5rem;
+
+}
+
+.payments table tbody tr{
+
+    transition: 200ms;
+
+}
+
+.payments table tbody tr:hover{
+
+    background-color: var(--bg-secondary);
+
+    transition: 200ms;
 
 }
 

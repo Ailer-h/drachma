@@ -1,4 +1,5 @@
 import { check_session, addPaymentType } from "./modules/supabase";
+import { get_icon } from "./modules/iconManager";
 
 document.addEventListener("DOMContentLoaded", () => {
 
