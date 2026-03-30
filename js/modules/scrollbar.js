@@ -31,7 +31,15 @@ function hide_scroll() {
     }, 200);
 }
 
+function add_scroll_bar() {
+
+    document.body.innerHTML += "<div class='scroll-container'><div class='thumb'></div></div>";
+
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    add_scroll_bar();
+
     window.addEventListener("scroll", scrollbar);
     window.addEventListener("resize", scrollbar);
     window.addEventListener("scrollend", hide_scroll);
