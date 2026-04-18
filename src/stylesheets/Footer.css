@@ -1,0 +1,22 @@
+footer {
+
+    height: 5em;
+
+    background-color: var(--bronze-main);
+
+    color: var(--text-white);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: .5em;
+
+}
+
+footer a {
+    
+    color: var(--text-white);
+
+}

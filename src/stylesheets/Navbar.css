@@ -1,0 +1,155 @@
+nav{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5em;
+    width: calc(100% - 4em);
+    padding: 0 2em;
+
+    background-color: var(--bronze-main);
+    color: var(--text-white);
+
+    box-shadow: var(--box-shadow);
+
+    position: fixed;
+    top: 0;
+
+}
+
+nav h1 {
+    font-weight: bold;
+}
+
+nav div {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0 2em;
+    gap: 1em;
+
+    transition: 200ms;
+}
+
+nav div p{
+
+    border-radius: .5em;
+
+    padding: .5em;
+    cursor: pointer;
+
+    color: var(--text-white);
+
+    transition: 200ms;
+
+}
+
+nav div p:hover{
+
+    color: var(--bronze-main);
+    background-color: var(--text-white);
+
+}
+
+nav div button {
+
+    border: none;
+
+    padding: .5em;
+
+    background-color: var(--text-white);
+    color: var(--bronze-main);
+    font-weight: bold;
+    border-radius: .5em;
+    cursor: pointer;
+    
+    transition: 200ms;
+
+}
+
+nav div button:hover {
+
+    transform: scale(1.1);
+    background-color: var(--text-white-secondary);
+
+    transition: 200ms;
+
+}
+
+
+nav .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 2em;
+    gap: 1em;
+
+    transition: 200ms;
+
+    position: relative;
+
+}
+
+nav .menu .navigation {
+
+
+    padding: .2em .5em;
+
+    font-size: 1.2em;
+
+    user-select: none;
+    cursor: pointer;
+
+    transition: 200ms;
+
+}
+
+nav .menu .navigation:hover {
+
+    background-color: var(--text-white);
+    color: var(--bronze-main);
+    border-radius: .3em;
+
+    transition: 200ms;
+
+}
+
+nav .menu button {
+
+    display: flex;
+    align-items: center;
+
+    gap: .5em;
+    padding: .2em .5em;
+
+    font-size: 1.2em;
+
+    border: none;
+    border-radius: .3em;
+
+    background-color: var(--bronze-main);
+
+    color: var(--text-white);
+
+    cursor: pointer;
+    transition: 200ms;
+
+}
+
+nav .menu button:hover {
+
+    background-color: var(--text-white);
+
+    color: var(--bronze-main);
+
+    transition: 200ms;
+
+}
+
+nav .menu button:hover svg {
+
+    fill: var(--bronze-main);
+    transition: 200ms;
+
+}

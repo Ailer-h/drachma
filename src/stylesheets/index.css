@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+
+    --bronze-main: #c77339; /* 500 */
+    --bronze-shade: #af5830; /* 600 */
+    --bronze-dark: #92412b; /* 700 */
+    --bronze-light: #ce8a46; /* 400 */
+    --bronze-disabled: #e6c9a1; /* 200 */
+
+    --teal-main: #0abf96; /* 500 */
+    --teal-shade: #009b7b; /* 600 */
+    --teal-dark: #007560; /* 700 */
+    --teal-light: #2fd8ac; /* 400 */
+    --teal-disabled: #a4f6d9; /* 200 */
+
+    --text-default: hsl(0, 0%, 5%);
+    --text-secondary: hsl(0, 0%, 15%);
+    --lines: hsl(0, 0%, 30%);
+    --lines-secondary: hsl(0, 0%, 60%);
+
+    --text-white: hsl(0, 0%, 95%);
+    --text-white-secondary: hsl(0, 0%, 85%);
+    --text-black: hsl(0, 0%, 5%);
+    --text-black-secondary: hsl(0, 0%, 15%);
+
+    --bg: hsl(0, 0%, 95%);
+    --bg-secondary: hsl(0, 0%, 85%);
+    --bg-tertiary: hsl(0, 0%, 75%);
+
+    --danger: #eb4848; /* 500 */
+    --danger-light: #f57474; /* 400 */
+    --danger-shade: #d82a2a; /* 600 */
+    --danger-dark: #b52020; /* 700 */
+    --danger-disabled: #fdcbcb; /* 400 */
+
+    --warning: #fdca12; /* 400 */
+    --warning-light: #ffde42; /* 300 */
+    --warning-shade: #ecb106; /* 500 */
+    --warning-dark: #cc8802; /* 600 */
+    --warning-disabled: #ffef89; /* 200 */
+
+    --success: #60c71b; /* 500 */
+    --success-light: #7fe239; /* 400 */
+    --success-shade: #48a111; /* 600 */
+    --success-dark: #387912; /* 700 */
+    --success-disabled: #c6f79f; /* 200 */
+    
+    --info: #4c8ce4; /* 500 */
+    --info-light: #6faceb; /* 400 */
+    --info-shade: #3871d8; /* 600 */
+    --info-dark: #3871d8; /* 700 */
+    --info-disabled: #c5def8; /* 200 */
+
+    --box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+}
+
+.dark-mode {
+
+    --text-default: hsl(0, 0%, 95%);
+    --text-secondary: hsl(0, 0%, 85%);
+    --lines: hsl(0, 0%, 70%);
+    --lines-secondary: hsl(0, 0%, 30%);
+
+    --bg: hsl(0, 0%, 6%);
+    --bg-secondary: hsl(0, 0%, 16%);
+    --bg-tertiary: hsl(0, 0%, 26%);
+
+    --box-shadow: none;
+
+}
+
+
+* {
+
+    padding: 0;
+    margin: 0;
+
+    font-family: "Iosevka Charon", Arial, Helvetica, sans-serif;
+
+}
+
+body {
+
+    background-color: var(--bg);
+
+}
+
+hr {
+
+    border: none;
+    height: 2px;
+
+    background-color: var(--text-white-secondary);
+
+    width: calc(100% - 6em);
+    margin-left: 3em;
+
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+}
+
+main {
+    
+    width: calc(100% - 4em);
+    margin-left: 2em;
+
+}
+
+main section {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    gap: 1em;
+
+}
+
+main h1 {
+    font-size: 2em;
+    line-height: 1.5em;
+}
+
+main h2 {
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+main p.main-text {
+
+    font-size: 1.25em;
+    width: calc(100% - 10em);
+
+    text-align: center;
+
+}
+
+.icons {
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: start;
+
+
+}
+
+.icons .icon-frame {
+
+    width: 15em;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    gap: 2em;
+
+}
+
+.icons .icon-frame p {
+    font-size: 1.5em;
+}
+
+.icons .icon {
+
+    width: 10em;
+    height: 10em;
+
+    background-color: var(--teal-dark);
+
+    border-radius: 1em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.icons .icon svg {
+
+    fill: var(--text-white);
+
+    height: 5em;
+    width: 5em;
+
+}
+
+.buttons{
+
+    display: flex;
+
+    gap: 2em;
+
+}
+
+.buttons button {
+
+    border: none;
+
+    padding: .2em .5em;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: 200ms;
+
+}
+
+.main-btn {
+
+
+    background-color: var(--bronze-shade);
+    color: var(--text-white);
+
+    gap: .5em;
+
+    font-size: 1.5em;
+
+    font-weight: bold;
+
+    border-radius: .5em;
+
+}
+
+.main-btn:hover {
+
+    background-color: var(--bronze-dark);
+
+    transition: 200ms;
+
+}
+
+.main-btn svg {
+
+    fill: var(--text-white);
+
+    height: 2em;
+    width: 2em;
+
+    transition: 200ms;
+
+}
+
+.secondary-btn {
+    
+    background-color: var(--bg);
+
+    font-size: 1.4em;
+    
+    gap: .5em;
+    
+    color: var(--text-dark);
+
+    border-radius: .5em;
+    
+}
+
+.secondary-btn:hover {
+
+    background-color: var(--text-white-secondary);
+
+    transition: 200ms;
+
+}
+
+.secondary-btn svg {
+
+    fill: var(--text-black);
+
+    height: 1em;
+    width: 1em;
+
+    transition: 200ms;
+
+}
