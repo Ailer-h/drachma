@@ -1,7 +1,10 @@
-import Banner from "../components/Banner"
 import { useNavigate } from "react-router-dom"
 
-import "../stylesheets/index.css"
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
+import Banner from "../components/Banner"
+
+import "../stylesheets/Home.css"
 
 
 const Home = () => {
@@ -9,11 +12,13 @@ const Home = () => {
     
     return <>
     
+        <Navbar type="start"/>
+
         <Banner/>
 
         <hr/>
         
-        <main>
+        <main className="home">
             <section>
                 <h1>Drachma is the best way to keep track of your finances!</h1>
                 <h2>Track your earnings, expenses and savings to have a detailed overview of your financial life. </h2>
@@ -73,6 +78,7 @@ const Home = () => {
 
         </main>
 
+        <Footer/>
     
     </>
     

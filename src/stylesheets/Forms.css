@@ -1,0 +1,283 @@
+main.forms {
+
+    height: 100vh;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 35% 65%;
+
+    overflow: hidden;
+
+}
+
+main.forms section {
+    height: 100%;
+}
+
+main.forms section.banner {
+
+    background-image: url("../assets/philopappos_hill.avif");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+}
+
+main.forms section.banner .title {
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    backdrop-filter: blur(2px);
+
+    font-size: 1.5em;
+    color: var(--text-white);
+
+}
+
+main.forms section.banner .title h1 {
+    font-size: 1.5em;
+}
+
+main.forms section.banner .title h2 {
+    font-size: .8em;
+}
+
+main.forms section form {
+
+    height: calc(100% - 2.2em);
+    width: calc(100% - .2em);
+
+    margin-top: 2em;
+
+    padding: .2em;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: start;
+    align-items: center;
+}
+
+main.forms section form .icon {
+
+    background-color: var(--bronze-light);
+
+    width: 5em;
+    height: 5em;
+
+    border-radius: 100%;
+
+}
+
+main.forms section form .header {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: start;
+    align-items: center;
+
+    gap: 1.5em;
+}
+
+main.forms section form hr {
+
+    border: none;
+    height: 2px;
+
+    background-color: var(--text-white-secondary);
+
+    width: calc(100% - 6em);
+
+    margin-top: .6em;
+    margin-bottom: .6em;
+
+}
+
+.field {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    margin-top: 1em;
+
+    position: relative;
+
+}
+
+.field svg {
+
+    position: absolute;
+
+    right: 5em;
+    top: 50%;
+    transform: translateY(-50%);
+
+    height: 1.5em;
+    width: 1.5em;
+
+    fill: var(--text-black-secondary);
+
+    cursor: pointer;
+}
+
+main.forms section form input {
+
+    width: calc(100% - 10em);
+    height: 2.5em;
+    line-height: 2em;
+
+    padding-left: .5em;
+
+    border-radius: .2em;
+
+    border: 1px solid black;
+
+    caret-color: var(--bronze-main);
+
+}
+
+main.forms section form input:focus {
+
+    outline: 1px solid var(--bronze-main);
+    border: 1px solid var(--bronze-main);
+
+}
+
+main.forms section form .field:focus-within label {
+    color: var(--bronze-shade);
+}
+
+main.forms section form .field:focus-within svg {
+    fill: var(--bronze-shade);
+}
+
+main.forms section form label {
+
+    width: calc(100% - 10em);
+    margin-bottom: .25em;
+
+}
+
+main.forms section form button{
+
+    border: none;
+    background-color: var(--bronze-main);
+    color: var(--text-white);
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    font-size: 1.5em;
+
+    padding: .2em .5em;
+
+    width: 10em;
+
+    border-radius: .5em;
+
+    cursor: pointer;
+
+    transition: 200ms;
+
+}
+
+main.forms section form button:hover {
+
+    background-color: var(--bronze-shade);
+
+    transition: 200ms;
+
+}
+
+main.forms section form button:disabled {
+
+    background-color: var(--bronze-disabled);
+    cursor: default;
+
+    transition: 200ms;
+
+}
+
+p {
+
+    font-size: .8em;
+
+}
+
+.link {
+
+    color: var(--teal-shade);
+    cursor: pointer;
+
+}
+
+.link:hover {
+    color: var(--teal-dark);
+}
+
+#forgot_password {
+
+    width: calc(100% - 10em);
+    text-align: right;
+
+    margin-top: .3em;
+
+}
+
+.input-warning {
+
+    width: calc(100% - 10em);
+    margin-top: .5em;
+
+    visibility: hidden;
+
+}
+
+.wrong {
+
+    color: var(--danger-shade);
+
+}
+
+.wrong input {
+    border: 1px solid var(--danger-shade);
+}
+
+.wrong:focus-within label {
+    color: var(--danger-shade);
+}
+
+.wrong input:focus {
+    outline: 1px solid var(--danger-shade);
+    border: 1px solid var(--danger-shade);
+}
+
+.right {
+
+    color: var(--teal-dark);
+
+}
+
+.right input {
+    border: 1px solid var(--teal-dark);
+}
+
+.right:focus-within label {
+    color: var(--teal-dark);
+}
