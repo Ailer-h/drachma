@@ -249,6 +249,12 @@ p {
 
 }
 
+.wrong .input-warning {
+
+    visibility: visible;
+
+}
+
 .wrong {
 
     color: var(--danger-shade);
