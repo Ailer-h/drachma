@@ -2,6 +2,10 @@ import { useNavigate } from "react-router-dom"
 
 import "../stylesheets/Forms.css"
 
+const handleLogin = () => {
+    
+}
+
 const Login = () => {
 
     const Navigate = useNavigate();

@@ -1,6 +1,9 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 
 import './stylesheets/App.css'
+
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -8,8 +11,14 @@ import Signup from './pages/Signup'
 
 const App = () => {
 
-  return <>
-    <BrowserRouter>
+    const hideNavbarPaths = ["/login", "/signup"];
+    const location = useLocation();
+
+    return <>
+        {
+            !hideNavbarPaths.includes(location.pathname) &&
+            <Navbar type={location.pathname == "/home" ? "start" : "main"}/>
+        }
         <Routes>
 
             <Route index path="/home" element={<Home/>}/>
@@ -17,7 +26,12 @@ const App = () => {
             <Route path="/signup" element={<Signup/>}/>
 
         </Routes>
-    </BrowserRouter>
+        
+        {
+            !hideNavbarPaths.includes(location.pathname) &&
+            <Footer/>
+        }
+    
     </>
 }
 

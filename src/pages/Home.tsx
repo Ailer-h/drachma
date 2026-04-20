@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom"
 
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
 import Banner from "../components/Banner"
 
 import "../stylesheets/Home.css"
@@ -12,8 +10,6 @@ const Home = () => {
     
     return <>
     
-        <Navbar type="start"/>
-
         <Banner/>
 
         <hr/>
@@ -77,8 +73,6 @@ const Home = () => {
             <hr/>
 
         </main>
-
-        <Footer/>
     
     </>
     
