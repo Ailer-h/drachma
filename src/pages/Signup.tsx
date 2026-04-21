@@ -93,7 +93,9 @@ const Signup = () => {
             <form onSubmit={handleSignup}>
 
                 <div className="header">
-                    <div className="icon"></div>
+                    <div className="icon">
+                        <img src="src/assets/logo.png"/>
+                    </div>
                     <h1>Sign Up</h1>
                     <hr/>
                 </div>

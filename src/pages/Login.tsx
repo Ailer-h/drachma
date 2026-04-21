@@ -71,7 +71,9 @@ const Login = () => {
             <form onSubmit={handleLogin}>
 
                 <div className="header">
-                    <div className="icon"></div>
+                    <div className="icon">
+                        <img src="src/assets/logo.png"/>
+                    </div>
                     <h1>Log In</h1>
                     <hr/>
                 </div>

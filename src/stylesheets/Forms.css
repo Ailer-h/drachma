@@ -78,6 +78,12 @@ main.forms section form .icon {
 
 }
 
+main.forms section form .icon img {
+
+    width: 100%;
+
+}
+
 main.forms section form .header {
 
     width: 100%;

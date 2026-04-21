@@ -14,6 +14,7 @@ import Dashboard from './pages/Dashboard'
 const App = () => {
 
     const hideNavbarPaths = ["/login", "/signup"];
+    const hideFooterPaths = ["/login", "/signup"];
     const location = useLocation();
 
     return <>
@@ -32,7 +33,7 @@ const App = () => {
         </Routes>
         
         {
-            !hideNavbarPaths.includes(location.pathname) &&
+            !hideFooterPaths.includes(location.pathname) &&
             <Footer/>
         }
     
