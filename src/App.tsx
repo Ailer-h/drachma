@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { useNavigate, Route, Routes } from 'react-router-dom'
 
 import './stylesheets/App.css'
 
@@ -9,8 +9,24 @@ import Dashboard from './pages/Dashboard'
 
 import Layout from './Layout'
 import PageNotFound from './pages/PageNotFound'
+import { useEffect } from 'react'
+import { supabase } from './lib/supabaseClient'
 
 const App = () => {
+
+    const Navigate = useNavigate();
+
+    useEffect(() => {
+        const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+            if (event === "SIGNED_OUT") {
+                Navigate("/login");
+            }
+        });
+
+        return () => {
+            listener.subscription.unsubscribe();
+        };
+    }, []);
 
     return <>
         <Routes>

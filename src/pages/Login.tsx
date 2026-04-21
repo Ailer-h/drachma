@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { supabase } from "../supabaseClient";
+import { supabase } from "../lib/supabaseClient";
 
 import InputField from "../components/InputField"
 
 import "../stylesheets/Forms.css"
+import RequireGuest from "../routes/RequireGuest";
 
 const fields = [
     {
@@ -64,7 +65,7 @@ const Login = () => {
 
     }
 
-    return <>
+    return <><RequireGuest>
         <main className="forms">
 
         <section>
@@ -114,7 +115,7 @@ const Login = () => {
         </section>
 
         </main>
-    </>
+    </RequireGuest></>
 
 }
 

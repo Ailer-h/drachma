@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom"
 import InputField from "../components/InputField";
 
 import "../stylesheets/Forms.css"
-import { supabase } from "../supabaseClient";
+import { supabase } from "../lib/supabaseClient";
+import RequireGuest from "../routes/RequireGuest";
 
 const fields = [
     {
@@ -86,7 +87,7 @@ const Signup = () => {
 
     }
 
-    return <>
+    return <><RequireGuest>
         <main className="forms">
 
         <section>
@@ -132,7 +133,7 @@ const Signup = () => {
         </section>
 
     </main>
-    </>
+    </RequireGuest></>
 
 }
 

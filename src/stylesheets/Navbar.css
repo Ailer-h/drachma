@@ -19,6 +19,8 @@ nav{
 
 nav h1 {
     font-weight: bold;
+    user-select: none;
+    cursor: pointer;
 }
 
 nav div {
@@ -151,5 +153,106 @@ nav .menu button:hover svg {
 
     fill: var(--bronze-main);
     transition: 200ms;
+
+}
+
+/* User menu */
+
+.menu-items {
+
+    position: absolute;
+
+    background-color: var(--bg);
+    box-shadow: var(--box-shadow);
+
+    top: 3em;
+    right: .2em;
+
+    width: 15em;
+    height: 10em;
+
+    padding: .5em;
+
+    border: .1px solid var(--lines-secondary);
+
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s ease;
+
+
+}
+
+.menu-items.open {
+
+    transform: scaleY(1);
+
+}
+
+.menu-items li {
+
+    color: var(--text-default);
+    font-size: 1em;
+
+    cursor: pointer;
+    user-select: none;
+
+    list-style-type: none;
+
+    padding: .1em .4em;
+
+    border-radius: .2em;
+
+    transition: 200ms;
+
+}
+
+.menu-items span {
+
+    font-size: .8em;
+    font-style: italic;
+    color: var(--text-secondary);
+
+    transition: 200ms;
+
+}
+
+.menu-items li:hover {
+
+    background-color: var(--bronze-shade);
+    color: var(--text-white);
+
+    transition: 200ms;
+
+}
+
+.menu-items li:hover span {
+    color: var(--text-white-secondary);
+}
+
+.menu-items hr {
+
+    border: none;
+    height: 1px;
+
+    background-color: var(--lines);
+
+    width: calc(100% - .4em);
+    margin-left: .2em;
+
+    margin-top: .6em;
+    margin-bottom: .6em;
+
+}
+
+.menu-items #logout {
+
+    background-color: var(--bronze-main);
+    color: var(--text-white);
+
+}
+
+.menu-items #logout:hover {
+
+    background-color: var(--bronze-shade);
 
 }
