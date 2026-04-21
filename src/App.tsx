@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 
 import './stylesheets/App.css'
 
@@ -8,6 +8,8 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import PageNotFound from './pages/PageNotFound'
+import Dashboard from './pages/Dashboard'
 
 const App = () => {
 
@@ -21,9 +23,11 @@ const App = () => {
         }
         <Routes>
 
-            <Route index path="/home" element={<Home/>}/>
+            <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<Signup/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
+            <Route path="*" element={<PageNotFound/>}/>
 
         </Routes>
         

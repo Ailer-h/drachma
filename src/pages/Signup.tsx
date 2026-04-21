@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import InputField from "../components/InputField";
 
 import "../stylesheets/Forms.css"
+import { supabase } from "../supabaseClient";
 
 const fields = [
     {
@@ -56,11 +57,40 @@ const Signup = () => {
 
     const formValid = fields.every(f => fieldValidity[f.fieldId] === true)
 
+    const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+
+        e.preventDefault();
+
+        if (!formValid) return;
+
+        const { username, email, password } = formValues;
+
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: {
+                    display_name: username
+                }
+            }
+        });
+
+        if (error) {
+            console.error(error.message);
+            return;
+        }
+
+        console.log("Logged in:", data);
+
+        Navigate("/dashboard");
+
+    }
+
     return <>
         <main className="forms">
 
         <section>
-            <form action="">
+            <form onSubmit={handleSignup}>
 
                 <div className="header">
                     <div className="icon"></div>

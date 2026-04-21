@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { supabase } from "../supabaseClient";
 
 import InputField from "../components/InputField"
 
@@ -8,7 +9,7 @@ import "../stylesheets/Forms.css"
 const fields = [
     {
         fieldName: "Email",
-        fieldId: "username",
+        fieldId: "email",
         fieldType: "email",
         inputType: "text"
     },
@@ -40,52 +41,75 @@ const Login = () => {
 
     const formValid = fields.every(f => fieldValidity[f.fieldId] === true)
 
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+       e.preventDefault();
+
+        if (!formValid) return;
+
+        const { email, password } = formValues;
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email,
+            password
+        });
+
+        if (error) {
+            console.error(error.message);
+            return;
+        }
+
+        console.log("Logged in:", data);
+
+        Navigate("/dashboard");
+
+    }
+
     return <>
         <main className="forms">
 
-            <section>
-                <form>
+        <section>
+            <form onSubmit={handleLogin}>
 
-                    <div className="header">
-                        <div className="icon"></div>
-                        <h1>Log In</h1>
-                        <hr/>
-                    </div>
-
-                    {fields.map(field => (
-                        <InputField
-                        key={field.fieldId}
-                        fieldName={field.fieldName}
-                        fieldId={field.fieldId}
-                        fieldType={field.fieldType}
-                        inputType={field.inputType}
-                        minLength={field.minLength}
-                        value={formValues[field.fieldId] || ""}
-                        onChangeValue={handleValueChange}       
-                        onValidate={handleValidate}
-                        />
-                    ))}
-
-                    <p id="forgot_password">
-                        <span onClick={() => {alert("WORK IN PROGRESS")}} className="link">Forgot Password</span>
-                    </p>
-
-                    <button type="submit" id="submit" disabled={!formValid}>Log In</button>
-
+                <div className="header">
+                    <div className="icon"></div>
+                    <h1>Log In</h1>
                     <hr/>
-
-                    <p>Don't have an account? <span onClick={() => {Navigate("/signup")}} className="link">Create account</span>.</p>
-
-                </form>
-            </section>
-
-            <section className="banner">
-                <div className="title">
-                    <h1>
-                        Welcome back to Drachma!
-                    </h1>
                 </div>
-            </section>
+
+                {fields.map(field => (
+                    <InputField
+                    key={field.fieldId}
+                    fieldName={field.fieldName}
+                    fieldId={field.fieldId}
+                    fieldType={field.fieldType}
+                    inputType={field.inputType}
+                    minLength={field.minLength}
+                    value={formValues[field.fieldId] || ""}
+                    onChangeValue={handleValueChange}       
+                    onValidate={handleValidate}
+                    />
+                ))}
+
+                <p id="forgot_password">
+                    <span onClick={() => {alert("WORK IN PROGRESS")}} className="link">Forgot Password</span>
+                </p>
+
+                <button type="submit" id="submit" disabled={!formValid}>Log In</button>
+
+                <hr/>
+
+                <p>Don't have an account? <span onClick={() => {Navigate("/signup")}} className="link">Create account</span>.</p>
+
+            </form>
+        </section>
+
+        <section className="banner">
+            <div className="title">
+                <h1>
+                    Welcome back to Drachma!
+                </h1>
+            </div>
+        </section>
 
         </main>
     </>
