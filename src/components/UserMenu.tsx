@@ -1,6 +1,7 @@
 import { useEffect, useRef, type FocusEventHandler } from "react"
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import { useTheme } from "../context/ThemeProvider";
 
 interface UserMenuProps {
 
@@ -11,6 +12,7 @@ interface UserMenuProps {
 
 const UserMenu = ({visible, onBlur}: UserMenuProps) => {
 
+    const { theme, toggleTheme } = useTheme();
     const firstItemRef = useRef<HTMLLIElement>(null);
     const Navigate = useNavigate();
 
@@ -36,7 +38,7 @@ const UserMenu = ({visible, onBlur}: UserMenuProps) => {
     return <>
         <menu className={`menu-items ${visible ? "open" : ""}`} tabIndex={-1} ref={firstItemRef} onBlur={onBlur}>
             <li id="profile">Henrique Ailer <span>Profile</span></li>
-            <li id="theme">Theme: light <span>dark</span></li>
+            <li id="theme" onClick={toggleTheme}>Theme: {theme}</li>
 
             <hr/>
             <button id="logout" onClick={handleLogout}>Log-out</button>
