@@ -106,7 +106,6 @@ hr {
 main.pageNotFound {
     width: calc(100% - 6em);
     min-height: calc(100vh - 10em);
-    margin-top: 5em;
 
     display: grid;
     place-items: center;
@@ -117,23 +116,66 @@ main.pageNotFound {
 }
 
 main.pageNotFound div {
-
+    
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+}
+
+main.pageNotFound img {
+
+    filter: drop-shadow(5px 0px 0 var(--teal-dark)) 
+            drop-shadow(-5px 0px 0 var(--teal-dark)) 
+            drop-shadow(0px 5px 0 var(--teal-dark)) 
+            drop-shadow(0px -5px 0 var(--teal-dark));
+
+}
+
+main.pageNotFound img.backdrop {
+
+    filter: none;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    margin-left: -30em;
+    margin-top: -5em;
+
+    z-index: -1;
 
 }
 
 main.pageNotFound h1 {
 
     font-size: 4em;
-    color: var(--text-black);
+    color: var(--text-default);
+
+    margin-bottom: .5em;
 
 }
 
 main.pageNotFound h2 {
+    
+    font-size: 1.5em;
+    color: var(--text-secondary);
 
-    font-size: 2em;
-    color: var(--text-black-secondary);
+    font-style: italic;
+    
+}
 
+main.pageNotFound h3 {
+
+    font-size: 1em;
+    color: var(--bronze-dark);
+
+    cursor: pointer;
+
+}
+
+main.pageNotFound h3:hover {
+
+    color: var(--bronze-main);
+    
 }
