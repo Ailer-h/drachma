@@ -11,6 +11,7 @@ import Layout from './Layout'
 import PageNotFound from './pages/PageNotFound'
 import { useEffect } from 'react'
 import { supabase } from './lib/supabaseClient'
+import PaymentMethods from './pages/PaymentMethods'
 
 const App = () => {
 
@@ -36,6 +37,7 @@ const App = () => {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/dashboard" element={<Dashboard/>}/>
+                <Route path="/paymentMethods" element={<PaymentMethods/>}/>
             </Route>
 
             <Route path="*" element={<PageNotFound/>}/>

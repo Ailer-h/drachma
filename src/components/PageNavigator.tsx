@@ -15,7 +15,7 @@ const PageNavigator = () => {
 
     return <>{
         routes.map((route) => {
-            return <p className="navigation" onClick={() => {Navigate(route.address)}}>{route.label}</p>
+            return <p className="navigation" key={route.address} onClick={() => {Navigate(route.address)}}>{route.label}</p>
         })
     }</>
     
