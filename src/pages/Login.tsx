@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { supabase } from "../lib/supabaseClient";
 
-import InputField from "../components/InputField"
+import FormInputField from "../components/FormInputField"
 
 import "../stylesheets/Forms.css"
 import RequireGuest from "../routes/RequireGuest";
@@ -80,7 +80,7 @@ const Login = () => {
                 </div>
 
                 {fields.map(field => (
-                    <InputField
+                    <FormInputField
                     key={field.fieldId}
                     fieldName={field.fieldName}
                     fieldId={field.fieldId}

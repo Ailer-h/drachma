@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-import InputField from "../components/InputField";
+import FormInputField from "../components/FormInputField";
 
 import "../stylesheets/Forms.css"
 import { supabase } from "../lib/supabaseClient";
@@ -102,7 +102,7 @@ const Signup = () => {
                 </div>
 
                {fields.map(field => (
-                    <InputField
+                    <FormInputField
                     key={field.fieldId}
                     fieldName={field.fieldName}
                     fieldId={field.fieldId}
