@@ -26,7 +26,11 @@ const PaymentMethods = () => {
             </section>
         </main>
 
-        <Modal visible={modalOpen} title="New Payment Method" onBlur={handleOnBlur} onClose={() => {setModalOpen(false)}}>
+        <Modal visible={modalOpen} title="New Payment Method"
+                onBlur={handleOnBlur}
+                onClose={() => {setModalOpen(false)}}>
+
+                    <div className="form-body"></div>
             
         </Modal>
 

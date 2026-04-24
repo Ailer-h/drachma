@@ -33,7 +33,7 @@ div.modal-overlay .modal {
     
     transform: scale(0);
     transform-origin: center top;
-    transition: transform 100ms ease;
+    transition: transform 200ms ease;
     
 }
 

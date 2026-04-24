@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 
 import validateField from "../functions/FormValidation"
+import InputField from "./InputField";
+import type { InputType } from "../Types";
+
+
 
 interface fieldProps {
     fieldName: string,
     fieldType: string,
-    inputType: string,
+    inputType: InputType,
     fieldId: string,
     minLength?: number,
     placeHolder?: string
@@ -22,7 +26,7 @@ const FormInputField = ({placeHolder, fieldName, fieldType, fieldId, inputType, 
 
     const [isValid, setIsValid] = useState<boolean | null>(null);
     const [errorMessage, setErrorMessage] = useState<string>(".");
-    const [inputElementType, setinputElementType] = useState<string>(inputType)
+    const [inputElementType, setinputElementType] = useState<InputType>(inputType)
 
     useEffect(() => {
         if (matchValue !== undefined) {
@@ -68,14 +72,14 @@ const FormInputField = ({placeHolder, fieldName, fieldType, fieldId, inputType, 
 
     return <>
         <div className={"field" + (isValid == null ? "" : isValid ? " right" : " wrong")}>
-            <label htmlFor={fieldId}>{fieldName}</label>
-            <input type={inputElementType} name={fieldName} id={fieldId} placeholder={placeHolder}
-             onBlur={(e) => handleValidation(e.target.value)}
-             onChange={(e) => { 
-                const val = e.target.value;
-                onChangeValue(fieldId, val);
-                handleValidation(val, true);
-            }}/>
+            <InputField labelTxt={fieldName} placeholder={placeHolder} 
+                        id={fieldId} name={fieldName} type={inputElementType} 
+                        onBlur={(e) => handleValidation(e.target.value)}
+                        onChange={(e) => { 
+                            const val = e.target.value;
+                            onChangeValue(fieldId, val);
+                            handleValidation(val, true);
+                    }}/>
             <p className="input-warning">{errorMessage}</p>
 
             {
