@@ -6,7 +6,7 @@ import { useState } from "react";
 import PageNavigator from "./PageNavigator";
 
 interface NavbarProps {
-    type: string
+    type: "start" | "main"
 }
 
 const Navbar = ({type}: NavbarProps) => {
@@ -32,7 +32,6 @@ const Navbar = ({type}: NavbarProps) => {
                 {
                     type == "start" &&
                     <div>
-                        <p>About Drachma</p>
                         <button onClick={() => {Navigate("/login")}}>Log In</button>
                     </div>
                 }

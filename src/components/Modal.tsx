@@ -1,4 +1,4 @@
-import { useEffect, useRef, type FocusEventHandler } from "react"
+import { useEffect, useRef } from "react"
 
 import "../stylesheets/Modal.css"
 import Icon from "./Icon"
@@ -7,18 +7,19 @@ interface ModalProps {
 
     title: string
 
+    ref?: React.RefObject<HTMLDivElement | null>
+
     width?: number
     height?: number
 
     visible: boolean,
-    onBlur: FocusEventHandler
     onClose: React.MouseEventHandler
 
     children?: React.ReactNode,
 
 }
 
-const Modal = ({ title, height, width, visible, onClose, onBlur, children }: ModalProps) => {
+const Modal = ({ title, height, width, visible, onClose, ref, children }: ModalProps) => {
 
     const firstItemRef = useRef<HTMLDivElement>(null);
 
@@ -49,8 +50,8 @@ const Modal = ({ title, height, width, visible, onClose, onBlur, children }: Mod
 
     return <>
         <div className={`modal-overlay ${visible ? "open" : ""}`}>
-            <div className={`modal ${visible ? "open" : ""}`} style={{"height": height + "em", "width": width + "em"}} tabIndex={-1} ref={firstItemRef} onBlur={onBlur}>
-                <div className="modal-bar">
+            <div className={`modal ${visible ? "open" : ""}`} style={{"height": height + "em", "width": width + "em"}} tabIndex={-1} ref={ref}>
+                <div className="modal-bar-top">
                     <h1>{title}</h1>
                     <Icon onClick={onClose} iconName="close"/>
                 </div>
@@ -58,6 +59,11 @@ const Modal = ({ title, height, width, visible, onClose, onBlur, children }: Mod
                 <div className="modal-body">
                     {children}
                 </div>
+
+                <div className="modal-bar-bottom">
+                    <button className="cancel" onClick={onClose}>Cancel</button>
+                    <button className="confirm">Confirm</button>
+                </div>                
             </div>
         </div>
     

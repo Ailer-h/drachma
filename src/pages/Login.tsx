@@ -6,6 +6,7 @@ import FormInputField from "../components/FormInputField"
 
 import "../stylesheets/Forms.css"
 import RequireGuest from "../routes/RequireGuest";
+import type { InputType } from "../Types";
 
 const fields = [
     {
@@ -85,7 +86,7 @@ const Login = () => {
                     fieldName={field.fieldName}
                     fieldId={field.fieldId}
                     fieldType={field.fieldType}
-                    inputType={field.inputType}
+                    inputType={field.inputType as InputType}
                     minLength={field.minLength}
                     value={formValues[field.fieldId] || ""}
                     onChangeValue={handleValueChange}       

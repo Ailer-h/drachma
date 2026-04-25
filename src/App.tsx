@@ -1,7 +1,5 @@
 import { useNavigate, Route, Routes } from 'react-router-dom'
 
-import './stylesheets/App.css'
-
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
