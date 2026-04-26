@@ -5,6 +5,7 @@ import "../stylesheets/PaymentMethods.css"
 import RequireAuth from "../routes/RequireAuth"
 import InputField from "../components/InputField"
 import Icon from "../components/Icon"
+import IconSelector from "../components/IconSelector"
 
 const PaymentMethods = () => {
 
@@ -50,7 +51,9 @@ const PaymentMethods = () => {
                     <span><InputField type="text" name="paymentName" id="paymentName" labelTxt="Payment type name:"/></span>
                     <span><InputField type="text" name="account" id="account" labelTxt="Takes from account:"/></span>
                 </div>
-                <div className="grid-tile"></div>
+                <div className="grid-tile">
+                    <IconSelector label="Select the icon:" cols={5}/>
+                </div>
             </div>
             
         </Modal>
