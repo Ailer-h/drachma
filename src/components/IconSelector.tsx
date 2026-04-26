@@ -1,5 +1,4 @@
-import { useState } from "react"
-import Icon, { IconNames } from "./Icon"
+import Icon, { FinalcialIcons } from "./Icon"
 
 import "../stylesheets/IconSelector.css"
 
@@ -8,11 +7,12 @@ interface IconSelectorProps {
     
     cols?: number
     rows?: number
+    
+    value: string
+    onChange: (iconName: string) => void
 }
 
-const IconSelector = ({ label, cols, rows }: IconSelectorProps) => {
-
-    const [ selectedIcon, setSelectedIcon ] = useState("default");
+const IconSelector = ({ label, cols, rows, value, onChange }: IconSelectorProps) => {
 
     const gridTemplate = {
         "gridTemplateColumns": cols ? `repeat(${cols}, 1fr)` : "repeat(5, 1fr)", 
@@ -27,17 +27,22 @@ const IconSelector = ({ label, cols, rows }: IconSelectorProps) => {
             </div>
 
             <div className="selected-icon">
-                <Icon iconName={selectedIcon}/>
+                <Icon iconName={value}/>
             </div>
 
-            <div className="icon-grid" style={gridTemplate}>
-                {
-                    IconNames.map((iconName) => [
+            <div className="icon-grid custom-scrollbar" style={gridTemplate}>
+                    {
+                        FinalcialIcons.map((iconName) => (
 
-                        <Icon iconName={iconName} />
+                            <Icon 
+                                className={value === iconName ? "selected" : ""}
+                                iconName={iconName}
+                                key={iconName}
+                                onClick={() => onChange(iconName)}
+                            />
 
-                    ])
-                }
+                        ))
+                    }
             </div>
 
         </div>

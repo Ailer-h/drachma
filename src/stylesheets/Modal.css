@@ -123,12 +123,24 @@ div.modal-overlay .modal .modal-bar-bottom button.confirm {
     background-color: var(--teal-shade);
 }
 
+div.modal-overlay .modal .modal-bar-bottom button.confirm:disabled, 
+div.modal-overlay .modal .modal-bar-bottom button.confirm:disabled:hover{
+    background-color: var(--teal-disabled);
+    cursor: default;
+}
+
 div.modal-overlay .modal .modal-bar-bottom button.confirm:hover {
     background-color: var(--teal-dark);
 }
 
 div.modal-overlay .modal .modal-bar-bottom button.cancel {
     background-color: var(--bronze-shade);
+}
+
+div.modal-overlay .modal .modal-bar-bottom button.cancel:disabled,
+div.modal-overlay .modal .modal-bar-bottom button.cancel:disabled:hover {
+    background-color: var(--bronze-disabled);
+    cursor: default;
 }
 
 div.modal-overlay .modal .modal-bar-bottom button.cancel:hover {

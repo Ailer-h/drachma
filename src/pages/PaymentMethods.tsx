@@ -10,6 +10,7 @@ import IconSelector from "../components/IconSelector"
 const PaymentMethods = () => {
 
     const [ modalOpen, setModalOpen ] = useState(false);
+    const [ selectedIcon, setSelectedIcon ] = useState("credit_card");
 
     const modalRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +53,7 @@ const PaymentMethods = () => {
                     <span><InputField type="text" name="account" id="account" labelTxt="Takes from account:"/></span>
                 </div>
                 <div className="grid-tile">
-                    <IconSelector label="Select the icon:" cols={5}/>
+                    <IconSelector label="Select the icon:" cols={5} value={selectedIcon} onChange={setSelectedIcon}/>
                 </div>
             </div>
             

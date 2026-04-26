@@ -3,6 +3,7 @@ import React from "react";
 interface IconProps {
 
     iconName: string
+    className?: string
     onClick?: React.MouseEventHandler<SVGSVGElement>
 
 }
@@ -24,20 +25,22 @@ const icons: Record<string, React.ReactElement<React.SVGProps<SVGSVGElement>>>= 
     search: <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M788.38-127.85 535.92-380.31q-30 24.54-73.5 38.04t-83.88 13.5q-105.92 0-179.58-73.65-73.65-73.66-73.65-179.58 0-105.92 73.65-179.58 73.66-73.65 179.58-73.65 105.92 0 179.58 73.65 73.65 73.66 73.65 179.58 0 42.69-13.27 83.69t-37.27 70.69l253.46 253.47-46.31 46.3ZM378.54-394.77q79.61 0 133.42-53.81 53.81-53.8 53.81-133.42 0-79.62-53.81-133.42-53.81-53.81-133.42-53.81-79.62 0-133.42 53.81-53.81 53.8-53.81 133.42 0 79.62 53.81 133.42 53.8 53.81 133.42 53.81Z"/></svg>
 }
 
-const Icon = ({ iconName, onClick }: IconProps) => {
+const Icon = ({ iconName, className, onClick }: IconProps) => {
 
     const icon = icons[iconName];
 
     if (React.isValidElement(icon)) {
         return React.cloneElement(icon, {
             onClick,
+            className,
         });
     }
 
-    return <svg onClick={onClick} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M69-862 861-70l-38 38-108-108H226q-36.73 0-61.36-24.64Q140-189.27 140-226v-489L31-824l38-38Zm295 394L194-298.1v72.1q0 12 10 22t22 10h435L539-316l-10 12-165-164ZM194-661v287l143-144-143-143Zm31-159h509q36.72 0 61.36 24.64T820-734v509l-54-54v-291L629-416l-38-38 175-196v-84q0-12-10-22t-22-10H279l-54-54Zm366 366Zm-154 36ZM337-518Zm27 50Zm157-56Z"/></svg>
+    return <svg onClick={onClick} className={ className } xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M69-862 861-70l-38 38-108-108H226q-36.73 0-61.36-24.64Q140-189.27 140-226v-489L31-824l38-38Zm295 394L194-298.1v72.1q0 12 10 22t22 10h435L539-316l-10 12-165-164ZM194-661v287l143-144-143-143Zm31-159h509q36.72 0 61.36 24.64T820-734v509l-54-54v-291L629-416l-38-38 175-196v-84q0-12-10-22t-22-10H279l-54-54Zm366 366Zm-154 36ZM337-518Zm27 50Zm157-56Z"/></svg>
 
 }
 
 export default Icon
 
 export const IconNames = Object.keys(icons);
+export const FinalcialIcons = ["credit_card", "payment_card", "money", "cash", "shopping_cart", "shopping_bag"];

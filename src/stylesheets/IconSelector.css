@@ -56,17 +56,29 @@ div.icon-grid {
 
     gap: .5em 2em;
 
-    overflow-y: auto;
-    
+    overflow-y: scroll;
+
+    position: relative;
+
 }
 
 div.icon-grid svg {
-
+    
     width: 2em;
     height: 2em;
 
-    cursor: pointer;
+    padding: .5em;
     
+    cursor: pointer;
+
+    border-radius: .5em;
+    
+}
+
+div.icon-grid svg.selected {
+
+    background-color: var(--bg-secondary);
+
 }
 
 div.icon-grid svg:hover {
