@@ -53,7 +53,7 @@ const PaymentMethods = () => {
                     <span><InputField type="text" name="account" id="account" labelTxt="Takes from account:"/></span>
                 </div>
                 <div className="grid-tile">
-                    <IconSelector label="Select the icon:" cols={5} value={selectedIcon} onChange={setSelectedIcon}/>
+                    <IconSelector type="fullsize" label="Select the icon:" cols={5} value={selectedIcon} onChange={setSelectedIcon}/>
                 </div>
             </div>
             

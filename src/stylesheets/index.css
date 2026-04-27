@@ -184,12 +184,13 @@ main.pageNotFound h3:hover {
 
 .custom-scrollbar {
     
-    scrollbar-width: .5em;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bronze-shade) var(--bg-tertiary);
     
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: .5em;
+    width: .5em;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {

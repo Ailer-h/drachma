@@ -4,6 +4,8 @@ import "../stylesheets/IconSelector.css"
 
 interface IconSelectorProps {
     label: string
+
+    type: "fullsize" | "popup"
     
     cols?: number
     rows?: number
@@ -12,7 +14,7 @@ interface IconSelectorProps {
     onChange: (iconName: string) => void
 }
 
-const IconSelector = ({ label, cols, rows, value, onChange }: IconSelectorProps) => {
+const IconSelector = ({ label, type, cols, rows, value, onChange }: IconSelectorProps) => {
 
     const gridTemplate = {
         "gridTemplateColumns": cols ? `repeat(${cols}, 1fr)` : "repeat(5, 1fr)", 
@@ -20,7 +22,7 @@ const IconSelector = ({ label, cols, rows, value, onChange }: IconSelectorProps)
     }
 
     return <>
-        <div className="icon-selector">
+        <div className={"icon-selector  " + type}>
 
             <div className="title">
                 <h3>{label}</h3>

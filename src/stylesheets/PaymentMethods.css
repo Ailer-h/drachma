@@ -227,6 +227,6 @@ main.paymentMethods h3 {
 
 .form-body .grid-tile span input:focus {
 
-    border-bottom: 1px solid var(--lines);
+    border-bottom: 2px solid var(--lines);
 
 }

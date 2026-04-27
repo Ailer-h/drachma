@@ -31,15 +31,15 @@ div.modal-overlay .modal {
     
     padding: .7em 1em;
     
-    transform: scale(0);
-    transform-origin: center top;
+    transform: scaleY(0);
+    transform-origin: top;
     transition: transform 200ms ease;
     
 }
 
 div.modal-overlay .modal.open {
 
-    transform: scale(1);
+    transform: scaleY(1);
 
 }
 
