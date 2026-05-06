@@ -1,0 +1,139 @@
+.date-picker {
+    position: relative;
+}
+
+.date-picker label {
+    color: var(--text-default);
+}
+
+.date-picker .date-input {
+    width: 10em;
+    height: 2em;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: .2px solid var(--lines-secondary);
+
+    outline: transparent;
+
+    color: var(--text-default);
+
+    padding-left: .5em;
+
+    cursor: text;
+}
+
+.date-picker .date-input:focus {
+    border-bottom: 2px solid var(--lines);
+}
+
+.date-picker .date-input::placeholder {
+    color: var(--lines-secondary);
+}
+
+.date-calendar {
+    position: absolute;
+    top: calc(100% + .5em);
+    z-index: 10;
+
+    background-color: var(--bg);
+    box-shadow: var(--box-shadow);
+    border: .1px solid var(--lines-secondary);
+
+    padding: .75em;
+
+    user-select: none;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: .5em;
+}
+
+.calendar-header .month-year {
+    font-size: .9em;
+    color: var(--text-default);
+    min-width: 9em;
+    text-align: center;
+}
+
+.calendar-header .nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4em;
+    line-height: 1;
+
+    color: var(--text-default);
+
+    padding: 0 .25em;
+
+    transition: 100ms;
+}
+
+.calendar-header .nav-btn:hover {
+    color: var(--bronze-main);
+    transition: 100ms;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 2.2em);
+    gap: .1em;
+}
+
+.calendar-grid .day-name {
+    font-size: .75em;
+    text-align: center;
+    color: var(--text-secondary);
+    padding: .3em 0;
+}
+
+.calendar-grid .day-cell {
+    font-size: .85em;
+    text-align: center;
+
+    padding: .35em 0;
+    border-radius: .2em;
+
+    cursor: pointer;
+    color: var(--text-default);
+
+    transition: 100ms;
+}
+
+.calendar-grid .day-cell.empty {
+    cursor: default;
+}
+
+.calendar-grid .day-cell:not(.empty):hover {
+    background-color: var(--bg-secondary);
+    transition: 100ms;
+}
+
+.calendar-grid .day-cell.today {
+    color: var(--bronze-main);
+    font-weight: 700;
+}
+
+.calendar-grid .day-cell.selected {
+    background-color: var(--bronze-main);
+    color: var(--text-white);
+}
+
+.calendar-grid .day-cell.selected:hover {
+    background-color: var(--bronze-shade);
+}
+
+.calendar-grid .day-cell.focused {
+    outline: 1.5px solid var(--bronze-main);
+    background-color: var(--bg-secondary);
+}
+
+.calendar-grid .day-cell.selected.focused {
+    background-color: var(--bronze-shade);
+    outline: 1.5px solid var(--bronze-dark);
+}

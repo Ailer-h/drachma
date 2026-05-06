@@ -13,7 +13,7 @@ interface ModalProps {
     height?: number
 
     visible: boolean,
-    onClose: React.MouseEventHandler
+    onClose: Function
 
     children?: React.ReactNode,
 
@@ -53,7 +53,7 @@ const Modal = ({ title, height, width, visible, onClose, ref, children }: ModalP
             <div className={`modal ${visible ? "open" : ""}`} style={{"height": height + "em", "width": width + "em"}} tabIndex={-1} ref={ref}>
                 <div className="modal-bar-top">
                     <h1>{title}</h1>
-                    <Icon onClick={onClose} iconName="close"/>
+                    <Icon onClick={() => onClose(true)} iconName="close"/>
                 </div>
 
                 <div className="modal-body">
@@ -61,8 +61,8 @@ const Modal = ({ title, height, width, visible, onClose, ref, children }: ModalP
                 </div>
 
                 <div className="modal-bar-bottom">
-                    <button className="cancel" onClick={onClose}>Cancel</button>
-                    <button className="confirm">Confirm</button>
+                    <button type="button" className="cancel" onClick={() => onClose(true)}>Cancel</button>
+                    <button type="button" className="confirm">Confirm</button>
                 </div>                
             </div>
         </div>

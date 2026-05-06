@@ -191,6 +191,17 @@ main.paymentMethods h3 {
 
 }
 
+.form-body .grid-tile hr {
+
+    border: none;
+    height: 1px;
+
+    background-color: var(--lines);
+
+    margin: 1em 0;
+
+}
+
 .form-body .grid-tile span{
 
     display: flex;
@@ -210,7 +221,7 @@ main.paymentMethods h3 {
 
 .form-body .grid-tile span input {
 
-    width: 25em;
+    width: 100%;
 
     background-color: transparent;
     border: none;

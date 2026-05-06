@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import validateField from "../functions/FormValidation"
+import validateField from "../lib/FormValidation"
 import InputField from "./InputField";
 import type { InputType } from "../Types";
 
@@ -79,7 +79,9 @@ const FormInputField = ({placeHolder, fieldName, fieldType, fieldId, inputType, 
                             const val = e.target.value;
                             onChangeValue(fieldId, val);
                             handleValidation(val, true);
-                    }}/>
+                        }}
+                        groupType={null}
+                    />
             <p className="input-warning">{errorMessage}</p>
 
             {

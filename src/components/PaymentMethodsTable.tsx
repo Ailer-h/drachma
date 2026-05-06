@@ -29,8 +29,6 @@ const PaymentMethodsTable = () => {
                 return;
             }
 
-            console.log("DATA:", data);
-            
             setMethods(data || [])
             setLoading(false)
         };

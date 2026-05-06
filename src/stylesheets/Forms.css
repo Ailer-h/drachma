@@ -113,7 +113,7 @@ main.forms section form hr {
 
 .field {
 
-    width: 100%;
+    width: 30em;
 
     display: flex;
     flex-direction: column;
@@ -150,18 +150,22 @@ main.forms section form input {
 
     padding-left: .5em;
 
-    border-radius: .2em;
-
-    border: 1px solid black;
-
     caret-color: var(--bronze-main);
 
+    background-color: transparent;
+    border: none;
+    
+    border-bottom: .2px solid var(--lines-secondary);
+    
+    outline: transparent;
+    
+    color: var(--text-default);
+    
 }
 
 main.forms section form input:focus {
 
-    outline: 1px solid var(--bronze-main);
-    border: 1px solid var(--bronze-main);
+    border-bottom: .2px solid var(--bronze-main);
 
 }
 
@@ -267,17 +271,16 @@ p {
 
 }
 
-.wrong input {
-    border: 1px solid var(--danger-shade);
+main.forms section form .wrong input {
+    border-bottom: .2px solid var(--danger-shade);
 }
 
-.wrong:focus-within label {
+main.forms section form .wrong:focus-within label {
     color: var(--danger-shade);
 }
 
-.wrong input:focus {
-    outline: 1px solid var(--danger-shade);
-    border: 1px solid var(--danger-shade);
+main.forms section form .wrong input:focus {
+    border-bottom: .2px solid var(--danger-shade);
 }
 
 .right {
@@ -286,10 +289,10 @@ p {
 
 }
 
-.right input {
-    border: 1px solid var(--teal-dark);
+main.forms section form .right input {
+    border-bottom: .2px solid var(--teal-dark);
 }
 
-.right:focus-within label {
+main.forms section form .right:focus-within label {
     color: var(--teal-dark);
 }
