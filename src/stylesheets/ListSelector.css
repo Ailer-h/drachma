@@ -71,10 +71,18 @@
 }
 
 .list-selector .list-options .option:hover,
-.list-selector .list-options .option.selected,
 .list-selector .list-options .option.highlighted {
 
     background-color: var(--bg-secondary);
+
+    transition: 100ms;
+
+}
+
+.list-selector .list-options .option.selected {
+
+    background-color: var(--bronze-main);
+    color: var(--text-white);
 
     transition: 100ms;
 

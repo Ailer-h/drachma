@@ -11,8 +11,6 @@ const PageNavigator = () => {
         { address: "/expenses", label: "Expenses" }
     ].filter(route => route.address !== Location.pathname)
 
-    console.log(routes)
-
     return <>{
         routes.map((route) => {
             return <p className="navigation" key={route.address} onClick={() => {Navigate(route.address)}}>{route.label}</p>

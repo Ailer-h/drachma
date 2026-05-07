@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import { supabase } from "../lib/supabaseClient"
 import Modal from "../components/Modal"
 import PaymentMethodsTable from "../components/PaymentMethodsTable"
 import "../stylesheets/PaymentMethods.css"
@@ -27,10 +28,12 @@ const PaymentMethods = () => {
     ]
 
     const [ modalOpen, setModalOpen ] = useState(false);
+    const [ refreshKey, setRefreshKey ] = useState(0);
     const [ selectedIcon, setSelectedIcon ] = useState("credit_card");
     const [ paymentName, setPaymentName ] = useState("");
     const [ paymentType, setPaymentType ] = useState("");
     const [ account, setAccount ] = useState("");
+    const [ cardLimit, setCardLimit ] = useState("");
     const [ date, setDate ] = useState<Date | null>(null)
 
     const modalRef = useRef<HTMLDivElement>(null);
@@ -47,7 +50,37 @@ const PaymentMethods = () => {
         setAccount("");
         setDate(null);
 
+    }
 
+    const isCreditCard = paymentType === "Credit Card"
+
+    const isFormValid =
+        paymentName.trim() !== "" &&
+        defaultPaymentTypes.includes(paymentType) &&
+        account.trim() !== "" &&
+        (!isCreditCard || (date !== null && parseInt(cardLimit.replace(/\D/g, ""), 10) > 0))
+
+    const submitForm = async () => {
+        const { data: { user } } = await supabase.auth.getUser()
+        if (!user) return
+
+        const { error } = await supabase.from("payment_methods").insert({
+            user_id:    user.id,
+            name:       paymentName,
+            type:       paymentType,
+            account:    account,
+            icon:       selectedIcon,
+            due_day:    isCreditCard ? date?.getDate() ?? null : null,
+            card_limit: isCreditCard ? parseInt(cardLimit.replace(/\D/g, ""), 10) / 100 : null,
+        })
+
+        if (error) {
+            console.error(error)
+            return
+        }
+
+        closeModal(true)
+        setRefreshKey(k => k + 1)
     }
 
     useEffect(() => {
@@ -73,7 +106,7 @@ const PaymentMethods = () => {
             </div>
             <hr/>
             <section className="payments">
-                <PaymentMethodsTable/>
+                <PaymentMethodsTable refreshKey={refreshKey}/>
             </section>
         </main>
 
@@ -81,7 +114,10 @@ const PaymentMethods = () => {
                 width={60}
                 height={20}
                 ref={modalRef}
-                onClose={closeModal}>
+                onClose={() => closeModal(true)}
+                onCancel={() => closeModal(true)}
+                onConfirm={() => submitForm()}
+                confirmDisabled={!isFormValid}>
 
             <div className="form-body">
                 <div className="grid-tile" style={{"borderRight": ".1px solid var(--lines-secondary)"}}>
@@ -108,7 +144,10 @@ const PaymentMethods = () => {
                         !defaultPaymentTypes.includes(paymentType) ?
                         "" :
                         (paymentType == "Credit Card" ? 
-                            <DatePicker id="dueDay" name="dueDay" labelTxt="Due day:" value={date} onChange={setDate} mode="day"/> :
+                            <><InputGroup groupContainer="div" type="row" gap={1.5}>
+                                <DatePicker id="dueDay" name="dueDay" labelTxt="Due day:" value={date} onChange={setDate} mode="day"/>
+                                <InputField type="currency" id="limit" name="limit" labelTxt="Card Limit:" value={cardLimit} onChange={(e) => setCardLimit(e.target.value)} currency="BRL"/>
+                            </InputGroup></> :
                            ""
                         )
                     }

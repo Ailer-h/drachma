@@ -4,11 +4,15 @@ import PaymentMethod from "./PaymentMethod";
 
 type PaymentMethodType = {
     id: string;
-    paymenttypename: string;
+    name: string;
     icon: string | null;
+    type: string;
+    account: string;
+    due_day: number | null;
+    card_limit: number | null;
 }
 
-const PaymentMethodsTable = () => {
+const PaymentMethodsTable = ({ refreshKey }: { refreshKey?: number }) => {
     const [methods, setMethods] = useState<PaymentMethodType[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -22,7 +26,7 @@ const PaymentMethodsTable = () => {
                 return;
             }
 
-            const { data, error } = await supabase.from("paymentmethod").select("id, paymenttypename, icon").eq("user", user.id);
+            const { data, error } = await supabase.from("payment_methods").select("id, name, icon, type, account, due_day, card_limit").eq("user_id", user.id);
 
             if (error) {
                 console.log(error)
@@ -34,26 +38,26 @@ const PaymentMethodsTable = () => {
         };
 
         fetchPaymentMethods();
-    }, [])
+    }, [refreshKey])
 
     return <>
         <table>
             <thead>
-                <tr><th>Method</th><th className="actions">Actions</th></tr>
+                <tr><th>Method</th><th>Type</th><th>Account</th><th>Due Day</th><th>Limit</th><th className="actions">Actions</th></tr>
             </thead>
                 
             <tbody id="payments-list">
                 {loading ? (
                       <tr>
-                        <td colSpan={2}>Loading...</td>
+                        <td colSpan={6}>Loading...</td>
                       </tr>
                     ) : methods.length === 0 ? (
                       <tr>
-                        <td colSpan={2}>No payment methods</td>
+                        <td colSpan={6}>No payment methods</td>
                       </tr>
                     ) : (
                       methods.map((method) => (
-                        <PaymentMethod key={method.id} icon={method.icon ? method.icon : ""}>{method.paymenttypename}</PaymentMethod>
+                        <PaymentMethod key={method.id} icon={method.icon ?? ""} type={method.type} account={method.account} dueDay={method.due_day} cardLimit={method.card_limit}>{method.name}</PaymentMethod>
                       ))
                     )}
             </tbody>

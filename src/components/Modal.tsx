@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, type MouseEventHandler } from "react"
 
 import "../stylesheets/Modal.css"
 import Icon from "./Icon"
@@ -13,13 +13,16 @@ interface ModalProps {
     height?: number
 
     visible: boolean,
-    onClose: Function
+    onClose: Function,
+    onCancel: Function,
+    onConfirm: Function
+    confirmDisabled?: boolean
 
     children?: React.ReactNode,
 
 }
 
-const Modal = ({ title, height, width, visible, onClose, ref, children }: ModalProps) => {
+const Modal = ({ title, height, width, visible, onClose, onCancel, onConfirm, confirmDisabled, ref, children }: ModalProps) => {
 
     const firstItemRef = useRef<HTMLDivElement>(null);
 
@@ -53,7 +56,7 @@ const Modal = ({ title, height, width, visible, onClose, ref, children }: ModalP
             <div className={`modal ${visible ? "open" : ""}`} style={{"height": height + "em", "width": width + "em"}} tabIndex={-1} ref={ref}>
                 <div className="modal-bar-top">
                     <h1>{title}</h1>
-                    <Icon onClick={() => onClose(true)} iconName="close"/>
+                    <Icon onClick={onClose as MouseEventHandler} iconName="close"/>
                 </div>
 
                 <div className="modal-body">
@@ -61,8 +64,8 @@ const Modal = ({ title, height, width, visible, onClose, ref, children }: ModalP
                 </div>
 
                 <div className="modal-bar-bottom">
-                    <button type="button" className="cancel" onClick={() => onClose(true)}>Cancel</button>
-                    <button type="button" className="confirm">Confirm</button>
+                    <button type="button" className="cancel" onClick={onCancel as MouseEventHandler}>Cancel</button>
+                    <button type="button" className="confirm" onClick={onConfirm as MouseEventHandler} disabled={confirmDisabled}>Confirm</button>
                 </div>                
             </div>
         </div>

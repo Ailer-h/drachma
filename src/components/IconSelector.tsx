@@ -14,11 +14,11 @@ interface IconSelectorProps {
     onChange: (iconName: string) => void
 }
 
-const IconSelector = ({ label, type, cols, rows, value, onChange }: IconSelectorProps) => {
+const IconSelector = ({ label, type, cols = 5, rows = 1, value, onChange }: IconSelectorProps) => {
 
     const gridTemplate = {
-        "gridTemplateColumns": cols ? `repeat(${cols}, 1fr)` : "repeat(5, 1fr)", 
-        "gridTemplateRows": rows ? `repeat(${rows}, 1fr)` : "1fr", 
+        "gridTemplateColumns": `repeat(${cols}, 1fr)`,
+        "gridTemplateRows": `repeat(${rows}, 1fr)`
     }
 
     return <>

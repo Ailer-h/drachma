@@ -12,6 +12,8 @@ const InputGroup = ({ children, type = "row", groupContainer = "span", gap = 0 }
     const style = {
         "display": "flex",
         "flexDirection": type,
+        "alignItems": type == "row" ? "center" : "",
+        "justifyContent": type == "column" ? "center" : "",
         "gap": gap ? gap + "em" : 0
     }
 
