@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import PaymentMethod from "./PaymentMethod";
 
-type PaymentMethodType = {
+export type PaymentMethodType = {
     id: string;
     name: string;
     icon: string | null;
@@ -12,7 +12,13 @@ type PaymentMethodType = {
     card_limit: number | null;
 }
 
-const PaymentMethodsTable = ({ refreshKey }: { refreshKey?: number }) => {
+interface PaymentMethodsTableProps {
+    refreshKey?: number
+    onEdit?: (method: PaymentMethodType) => void
+    onDelete?: (method: PaymentMethodType) => void
+}
+
+const PaymentMethodsTable = ({ refreshKey, onEdit, onDelete }: PaymentMethodsTableProps) => {
     const [methods, setMethods] = useState<PaymentMethodType[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -57,7 +63,9 @@ const PaymentMethodsTable = ({ refreshKey }: { refreshKey?: number }) => {
                       </tr>
                     ) : (
                       methods.map((method) => (
-                        <PaymentMethod key={method.id} icon={method.icon ?? ""} type={method.type} account={method.account} dueDay={method.due_day} cardLimit={method.card_limit}>{method.name}</PaymentMethod>
+                        <PaymentMethod key={method.id} id={method.id} icon={method.icon ?? ""} type={method.type} account={method.account} dueDay={method.due_day} cardLimit={method.card_limit}
+                            onEdit={() => onEdit?.(method)}
+                            onDelete={() => onDelete?.(method)}>{method.name}</PaymentMethod>
                       ))
                     )}
             </tbody>

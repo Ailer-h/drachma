@@ -18,7 +18,11 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
     const custom_inputs = ["number", "currency"]
     const schema = currencySchemas[currency]
 
-    const [currencyDisplay, setCurrencyDisplay] = useState(() => formatCurrency("0", schema))
+    const [currencyDisplay, setCurrencyDisplay] = useState(() =>
+        type === "currency" && props.value != null
+            ? formatCurrency(String(props.value), schema)
+            : formatCurrency("0", schema)
+    )
 
     const handleNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
         e.target.value = e.target.value.replace(/[^0-9,\.]/g, "")

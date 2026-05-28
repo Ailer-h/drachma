@@ -3,15 +3,18 @@ import { useUserPreferences } from "../context/UserPreferencesContext"
 import { formatCurrencyValue } from "../lib/currency"
 
 interface PaymentMethodProps {
+    id: string
     icon: string
     type: string
     account: string
     dueDay: number | null
     cardLimit: number | null
+    onEdit?: (id: string) => void
+    onDelete?: (id: string) => void
     children?: React.ReactNode
 }
 
-const PaymentMethod = ({ icon, type, account, dueDay, cardLimit, children }: PaymentMethodProps) => {
+const PaymentMethod = ({ id, icon, type, account, dueDay, cardLimit, onEdit, onDelete, children }: PaymentMethodProps) => {
 
     const { currency } = useUserPreferences()
 
@@ -27,8 +30,8 @@ const PaymentMethod = ({ icon, type, account, dueDay, cardLimit, children }: Pay
             <td>{cardLimit != null ? formatCurrencyValue(cardLimit, currency) : "—"}</td>
             <td className="actions">
                 <div>
-                    <Icon iconName="edit"/>
-                    <Icon iconName="delete"/>
+                    <Icon iconName="edit" onClick={() => onEdit?.(id)}/>
+                    <Icon iconName="delete" onClick={() => onDelete?.(id)}/>
                 </div>
             </td>
         </tr>

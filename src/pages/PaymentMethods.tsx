@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { supabase } from "../lib/supabaseClient"
 import Modal from "../components/Modal"
-import PaymentMethodsTable from "../components/PaymentMethodsTable"
+import PaymentMethodsTable, { type PaymentMethodType } from "../components/PaymentMethodsTable"
 import "../stylesheets/PaymentMethods.css"
 import RequireAuth from "../routes/RequireAuth"
 import InputField from "../components/InputField"
@@ -36,7 +36,19 @@ const PaymentMethods = () => {
     const [ cardLimit, setCardLimit ] = useState("");
     const [ date, setDate ] = useState<Date | null>(null)
 
+    const [ editingMethod, setEditingMethod ] = useState<PaymentMethodType | null>(null);
+    const [ editName, setEditName ] = useState("");
+    const [ editType, setEditType ] = useState("");
+    const [ editAccount, setEditAccount ] = useState("");
+    const [ editIcon, setEditIcon ] = useState("credit_card");
+    const [ editCardLimit, setEditCardLimit ] = useState("");
+    const [ editDate, setEditDate ] = useState<Date | null>(null);
+
+    const [ deletingMethod, setDeletingMethod ] = useState<PaymentMethodType | null>(null);
+
     const modalRef = useRef<HTMLDivElement>(null);
+    const editModalRef = useRef<HTMLDivElement>(null);
+    const deleteModalRef = useRef<HTMLDivElement>(null);
 
     const closeModal = (clearForm: boolean = false) => {
 
@@ -83,10 +95,75 @@ const PaymentMethods = () => {
         setRefreshKey(k => k + 1)
     }
 
+    const openEditModal = (method: PaymentMethodType) => {
+        setEditingMethod(method)
+        setEditName(method.name)
+        setEditType(method.type)
+        setEditAccount(method.account)
+        setEditIcon(method.icon ?? "credit_card")
+        setEditCardLimit(method.card_limit != null ? String(Math.round(method.card_limit * 100)) : "")
+        setEditDate(method.due_day != null ? new Date(2000, 0, method.due_day) : null)
+    }
+
+    const closeEditModal = () => setEditingMethod(null)
+
+    const isEditCreditCard = editType === "Credit Card"
+
+    const isEditFormValid =
+        editName.trim() !== "" &&
+        defaultPaymentTypes.includes(editType) &&
+        editAccount.trim() !== "" &&
+        (!isEditCreditCard || (editDate !== null && parseInt(editCardLimit.replace(/\D/g, ""), 10) > 0))
+
+    const submitEdit = async () => {
+        if (!editingMethod) return
+        const { data: { user } } = await supabase.auth.getUser()
+        if (!user) return
+
+        const { error } = await supabase.from("payment_methods").update({
+            name:       editName,
+            type:       editType,
+            account:    editAccount,
+            icon:       editIcon,
+            due_day:    isEditCreditCard ? editDate?.getDate() ?? null : null,
+            card_limit: isEditCreditCard ? parseInt(editCardLimit.replace(/\D/g, ""), 10) / 100 : null,
+        }).eq("id", editingMethod.id)
+
+        if (error) {
+            console.error(error)
+            return
+        }
+
+        closeEditModal()
+        setRefreshKey(k => k + 1)
+    }
+
+    const submitDelete = async () => {
+        if (!deletingMethod) return
+        const { data: { user } } = await supabase.auth.getUser()
+        if (!user) return
+
+        const { error } = await supabase.from("payment_methods").delete().eq("id", deletingMethod.id)
+
+        if (error) {
+            console.error(error)
+            return
+        }
+
+        setDeletingMethod(null)
+        setRefreshKey(k => k + 1)
+    }
+
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
                 closeModal(false)
+            }
+            if (editModalRef.current && !editModalRef.current.contains(e.target as Node)) {
+                closeEditModal()
+            }
+            if (deleteModalRef.current && !deleteModalRef.current.contains(e.target as Node)) {
+                setDeletingMethod(null)
             }
         };
 
@@ -106,7 +183,7 @@ const PaymentMethods = () => {
             </div>
             <hr/>
             <section className="payments">
-                <PaymentMethodsTable refreshKey={refreshKey}/>
+                <PaymentMethodsTable refreshKey={refreshKey} onEdit={openEditModal} onDelete={setDeletingMethod}/>
             </section>
         </main>
 
@@ -158,6 +235,70 @@ const PaymentMethods = () => {
                 </div>
             </div>
             
+        </Modal>
+
+        <Modal key={editingMethod?.id ?? "none"} visible={editingMethod !== null} title="Edit Payment Method"
+                width={60}
+                height={20}
+                ref={editModalRef}
+                onClose={closeEditModal}
+                onCancel={closeEditModal}
+                onConfirm={submitEdit}
+                confirmDisabled={!isEditFormValid}>
+
+            <div className="form-body">
+                <div className="grid-tile" style={{"borderRight": ".1px solid var(--lines-secondary)"}}>
+                    <InputGroup type="row" gap={1.5}>
+                        <InputField type="text" name="editName" id="editName" labelTxt="Payment type name:"
+                                    value={editName} onChange={(e) => setEditName(e.target.value)}/>
+                        <ListSelector id="editAccount" name="editAccount" labelTxt="Takes from account:"
+                                    options={accounts}
+                                    value={editAccount}
+                                    onChange={(e) => setEditAccount(e.target.value)}
+                                    onSelect={setEditAccount}/>
+                    </InputGroup>
+
+                    <ListSelector id="editPaymentType" name="editPaymentType"
+                                labelTxt="Payment Type"
+                                options={defaultPaymentTypes}
+                                value={editType}
+                                onChange={(e) => setEditType(e.target.value)}
+                                onSelect={setEditType}/>
+
+                    <hr/>
+
+                    {
+                        !defaultPaymentTypes.includes(editType) ?
+                        "" :
+                        (editType === "Credit Card" ?
+                            <InputGroup groupContainer="div" type="row" gap={1.5}>
+                                <DatePicker id="editDueDay" name="editDueDay" labelTxt="Due day:" value={editDate} onChange={setEditDate} mode="day"/>
+                                <InputField type="currency" id="editLimit" name="editLimit" labelTxt="Card Limit:" value={editCardLimit} onChange={(e) => setEditCardLimit(e.target.value)} currency="BRL"/>
+                            </InputGroup> :
+                            ""
+                        )
+                    }
+                </div>
+                <div className="grid-tile">
+                    <IconSelector type="fullsize" label="Select the icon:" cols={5} value={editIcon} onChange={setEditIcon}/>
+                </div>
+            </div>
+
+        </Modal>
+
+        <Modal visible={deletingMethod !== null} title="Delete Payment Method"
+                width={30}
+                height={10}
+                ref={deleteModalRef}
+                onClose={() => setDeletingMethod(null)}
+                onCancel={() => setDeletingMethod(null)}
+                onConfirm={submitDelete}
+                confirmColor="danger">
+
+            <p style={{color: "var(--text-default)", padding: "1rem 0"}}>
+                Are you sure you want to delete <strong>{deletingMethod?.name}</strong>? This action cannot be undone.
+            </p>
+
         </Modal>
 
     </RequireAuth></>

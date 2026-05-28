@@ -20,9 +20,12 @@ interface ModalProps {
 
     children?: React.ReactNode,
 
+    cancelColor?: "confirm" | "cancel" | "danger",
+    confirmColor?: "confirm" | "cancel" | "danger"
+
 }
 
-const Modal = ({ title, height, width, visible, onClose, onCancel, onConfirm, confirmDisabled, ref, children }: ModalProps) => {
+const Modal = ({ title, height=30, width=80, visible, onClose, onCancel, onConfirm, confirmDisabled, ref, children, confirmColor="confirm", cancelColor="cancel" }: ModalProps) => {
 
     const firstItemRef = useRef<HTMLDivElement>(null);
 
@@ -31,14 +34,12 @@ const Modal = ({ title, height, width, visible, onClose, onCancel, onConfirm, co
             firstItemRef.current?.focus();
         }
     }, [visible]);
-    
 
-    if (!height) {
-        height = 30
-    }
+    const style = {
 
-    if (!width) {
-        width = 80
+        height: height + "em",
+        width: width + "em"
+
     }
 
     if (visible) {
@@ -53,7 +54,7 @@ const Modal = ({ title, height, width, visible, onClose, onCancel, onConfirm, co
 
     return <>
         <div className={`modal-overlay ${visible ? "open" : ""}`}>
-            <div className={`modal ${visible ? "open" : ""}`} style={{"height": height + "em", "width": width + "em"}} tabIndex={-1} ref={ref}>
+            <div className={`modal ${visible ? "open" : ""}`} style={style} tabIndex={-1} ref={ref}>
                 <div className="modal-bar-top">
                     <h1>{title}</h1>
                     <Icon onClick={onClose as MouseEventHandler} iconName="close"/>
@@ -64,8 +65,8 @@ const Modal = ({ title, height, width, visible, onClose, onCancel, onConfirm, co
                 </div>
 
                 <div className="modal-bar-bottom">
-                    <button type="button" className="cancel" onClick={onCancel as MouseEventHandler}>Cancel</button>
-                    <button type="button" className="confirm" onClick={onConfirm as MouseEventHandler} disabled={confirmDisabled}>Confirm</button>
+                    <button type="button" className={cancelColor} onClick={onCancel as MouseEventHandler}>Cancel</button>
+                    <button type="button" className={confirmColor} onClick={onConfirm as MouseEventHandler} disabled={confirmDisabled}>Confirm</button>
                 </div>                
             </div>
         </div>
