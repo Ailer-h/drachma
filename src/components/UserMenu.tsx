@@ -1,7 +1,7 @@
 import { useEffect, useRef, type FocusEventHandler } from "react"
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
-import { useTheme } from "../context/ThemeProvider";
+import { useTheme } from "../context/UserPreferencesContext";
 
 interface UserMenuProps {
 
