@@ -1,10 +1,14 @@
 footer {
 
     height: 5em;
+    width: calc(100% - 4em);
+    padding: 0 2em;
 
-    background-color: var(--bronze-500);
+    background-color: var(--bg-secondary);
+    color: var(--text-default);
 
-    color: var(--text-white);
+    border-top: 1px solid var(--bg-tertiary);
+    box-shadow: var(--box-shadow);
 
     display: flex;
     flex-direction: column;
@@ -16,7 +20,13 @@ footer {
 }
 
 footer a {
-    
-    color: var(--text-white);
+
+    color: var(--bronze-600);
+
+}
+
+footer a:hover {
+
+    color: var(--bronze-500);
 
 }

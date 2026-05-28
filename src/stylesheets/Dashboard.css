@@ -4,17 +4,29 @@ main.dashboard {
     margin-top: 5em;
 
     display: grid;
-    gap: 1rem;
+    gap: var(--space-4);
 
-    grid-auto-columns:  1fr;
-    grid-template-areas: 
+    grid-auto-columns: 1fr;
+    grid-template-areas:
         "overview overview overview overview-legend"
         "expenses expenses investments investments";
 
-    padding: 3em;
+    padding: var(--space-12);
 }
 
 main.dashboard .grid-box {
     background-color: var(--bg-secondary);
-    min-height: 150px;
+    min-height: 9em;
+
+    border-radius: .75em;
+    border: 1px solid var(--bg-tertiary);
+
+    padding: var(--space-6);
+
+    box-shadow: var(--box-shadow);
+}
+
+/* Primary tile gets a left accent to signal hierarchy */
+main.dashboard .grid-box.primary {
+    border-left: 3px solid var(--bronze-500);
 }

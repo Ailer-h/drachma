@@ -1,4 +1,4 @@
-nav{
+nav {
 
     display: flex;
     justify-content: space-between;
@@ -7,9 +7,10 @@ nav{
     width: calc(100% - 4em);
     padding: 0 2em;
 
-    background-color: var(--bronze-500);
-    color: var(--text-white);
+    background-color: var(--bg-secondary);
+    color: var(--text-default);
 
+    border-bottom: 1px solid var(--bg-tertiary);
     box-shadow: var(--box-shadow);
 
     position: fixed;
@@ -19,6 +20,7 @@ nav{
 
 nav h1 {
     font-weight: bold;
+    color: var(--bronze-600);
     user-select: none;
     cursor: pointer;
 }
@@ -33,23 +35,23 @@ nav div {
     transition: 200ms;
 }
 
-nav div p{
+nav div p {
 
     border-radius: .5em;
 
     padding: .5em;
     cursor: pointer;
 
-    color: var(--text-white);
+    color: var(--text-default);
 
     transition: 200ms;
 
 }
 
-nav div p:hover{
+nav div p:hover {
 
-    color: var(--bronze-500);
-    background-color: var(--text-white);
+    color: var(--bronze-600);
+    background-color: var(--bg-secondary);
 
 }
 
@@ -57,24 +59,21 @@ nav div button {
 
     border: none;
 
-    padding: .5em;
+    padding: .5em 1em;
 
-    background-color: var(--text-white);
-    color: var(--bronze-500);
+    background-color: var(--bronze-500);
+    color: var(--text-white);
     font-weight: bold;
     border-radius: .5em;
     cursor: pointer;
-    
+
     transition: 200ms;
 
 }
 
 nav div button:hover {
 
-    transform: scale(1.1);
-    background-color: var(--text-white-secondary);
-
-    transition: 200ms;
+    background-color: var(--bronze-600);
 
 }
 
@@ -87,18 +86,17 @@ nav .menu {
     padding: 0 2em;
     gap: 1em;
 
-    transition: 200ms;
-
     position: relative;
 
 }
 
 nav .menu .navigation {
 
-
     padding: .2em .5em;
 
-    font-size: 1.2em;
+    font-size: var(--text-base);
+
+    color: var(--text-secondary);
 
     user-select: none;
     cursor: pointer;
@@ -109,11 +107,9 @@ nav .menu .navigation {
 
 nav .menu .navigation:hover {
 
-    background-color: var(--text-white);
-    color: var(--bronze-500);
+    background-color: var(--bg-secondary);
+    color: var(--bronze-600);
     border-radius: .3em;
-
-    transition: 200ms;
 
 }
 
@@ -123,36 +119,37 @@ nav .menu button {
     align-items: center;
 
     gap: .5em;
-    padding: .2em .5em;
+    padding: .3em .7em;
 
-    font-size: 1.2em;
+    font-size: var(--text-base);
 
-    border: none;
+    border: 1px solid var(--bg-tertiary);
     border-radius: .3em;
 
-    background-color: var(--bronze-500);
+    background-color: var(--bg-secondary);
 
-    color: var(--text-white);
+    color: var(--text-default);
 
     cursor: pointer;
     transition: 200ms;
 
 }
 
+nav .menu button svg {
+    fill: var(--text-secondary);
+    transition: 200ms;
+}
+
 nav .menu button:hover {
 
-    background-color: var(--text-white);
-
-    color: var(--bronze-500);
-
-    transition: 200ms;
+    background-color: var(--bg-tertiary);
+    border-color: var(--lines-secondary);
 
 }
 
 nav .menu button:hover svg {
 
-    fill: var(--bronze-500);
-    transition: 200ms;
+    fill: var(--text-default);
 
 }
 
@@ -173,12 +170,12 @@ nav .menu button:hover svg {
 
     padding: .5em;
 
-    border: .1px solid var(--lines-secondary);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: .5em;
 
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 0.2s ease;
-
 
 }
 
@@ -191,16 +188,16 @@ nav .menu button:hover svg {
 .menu-items li {
 
     color: var(--text-default);
-    font-size: 1em;
+    font-size: var(--text-base);
 
     cursor: pointer;
     user-select: none;
 
     list-style-type: none;
 
-    padding: .1em .4em;
+    padding: .3em .6em;
 
-    border-radius: .2em;
+    border-radius: .3em;
 
     transition: 200ms;
 
@@ -208,7 +205,7 @@ nav .menu button:hover svg {
 
 .menu-items span {
 
-    font-size: .8em;
+    font-size: var(--text-sm);
     font-style: italic;
     color: var(--text-secondary);
 
@@ -218,15 +215,13 @@ nav .menu button:hover svg {
 
 .menu-items li:hover {
 
-    background-color: var(--bronze-600);
-    color: var(--text-white);
-
-    transition: 200ms;
+    background-color: var(--bg-secondary);
+    color: var(--bronze-600);
 
 }
 
 .menu-items li:hover span {
-    color: var(--text-white-secondary);
+    color: var(--text-secondary);
 }
 
 .menu-items hr {
@@ -234,7 +229,7 @@ nav .menu button:hover svg {
     border: none;
     height: 1px;
 
-    background-color: var(--lines);
+    background-color: var(--bg-tertiary);
 
     width: calc(100% - .4em);
     margin-left: .2em;
@@ -246,13 +241,13 @@ nav .menu button:hover svg {
 
 .menu-items #logout {
 
-    background-color: var(--bronze-500);
-    color: var(--text-white);
+    color: var(--danger-600);
 
 }
 
 .menu-items #logout:hover {
 
-    background-color: var(--bronze-600);
+    background-color: var(--danger-100);
+    color: var(--danger-700);
 
 }

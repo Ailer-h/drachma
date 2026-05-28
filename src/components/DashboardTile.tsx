@@ -1,18 +1,19 @@
 interface DashboardTileProps {
 
     children?: React.ReactNode,
-    gridArea?: string
+    gridArea?: string,
+    className?: string
 
 }
 
-const DashboardTile = ({ children, gridArea }: DashboardTileProps) => {
+const DashboardTile = ({ children, gridArea, className }: DashboardTileProps) => {
 
     return <>
-        <div className="grid-box" style={{"gridArea": gridArea}}>
+        <div className={`grid-box${className ? ` ${className}` : ""}`} style={{"gridArea": gridArea}}>
             {children}
         </div>
     </>
-    
+
 
 }
 

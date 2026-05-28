@@ -1,5 +1,5 @@
 main.home {
-    
+
     width: calc(100% - 4em);
     margin-left: 2em;
 
@@ -12,26 +12,30 @@ main.home section {
     justify-content: space-evenly;
     align-items: center;
 
-    gap: 1em;
+    gap: var(--space-4);
 
 }
 
 main.home h1 {
-    font-size: 2em;
-    line-height: 1.5em;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    line-height: 1.4;
 }
 
 main.home h2 {
-    font-size: 1.5em;
-    font-weight: normal;
+    font-size: var(--text-lg);
+    font-weight: 400;
+    color: var(--text-secondary);
 }
 
 main.home p.main-text {
 
-    font-size: 1.25em;
-    width: calc(100% - 10em);
+    font-size: var(--text-base);
+    width: calc(100% - 16em);
 
     text-align: center;
+    color: var(--text-secondary);
+    line-height: 1.7;
 
 }
 
@@ -42,56 +46,63 @@ main.home p.main-text {
 
     align-items: start;
 
-
 }
 
 .icons .icon-frame {
 
     width: 15em;
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
 
     text-align: center;
 
-    gap: 2em;
+    gap: var(--space-6);
 
 }
 
 .icons .icon-frame p {
-    font-size: 1.5em;
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--text-secondary);
 }
 
 .icons .icon {
 
-    width: 10em;
-    height: 10em;
+    width: 8em;
+    height: 8em;
 
-    background-color: var(--teal-700);
-
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
     border-radius: 1em;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
+    transition: 200ms;
+
+}
+
+.icons .icon:hover {
+    border-color: var(--bronze-400);
 }
 
 .icons .icon svg {
 
-    fill: var(--text-white);
+    fill: var(--bronze-600);
 
-    height: 5em;
-    width: 5em;
+    height: 4em;
+    width: 4em;
 
 }
 
-.buttons{
+.buttons {
 
     display: flex;
 
-    gap: 2em;
+    gap: var(--space-4);
 
 }
 
@@ -99,7 +110,7 @@ main.home p.main-text {
 
     border: none;
 
-    padding: .2em .5em;
+    padding: .4em 1.2em;
 
     display: flex;
     align-items: center;
@@ -112,15 +123,13 @@ main.home p.main-text {
 
 .main-btn {
 
-
-    background-color: var(--bronze-600);
+    background-color: var(--bronze-500);
     color: var(--text-white);
 
     gap: .5em;
 
-    font-size: 1.5em;
-
-    font-weight: bold;
+    font-size: var(--text-lg);
+    font-weight: 700;
 
     border-radius: .5em;
 
@@ -128,9 +137,7 @@ main.home p.main-text {
 
 .main-btn:hover {
 
-    background-color: var(--bronze-700);
-
-    transition: 200ms;
+    background-color: var(--bronze-600);
 
 }
 
@@ -138,42 +145,38 @@ main.home p.main-text {
 
     fill: var(--text-white);
 
-    height: 2em;
-    width: 2em;
-
-    transition: 200ms;
+    height: 1.4em;
+    width: 1.4em;
 
 }
 
 .secondary-btn {
-    
-    background-color: var(--bg);
 
-    font-size: 1.4em;
-    
+    background-color: transparent;
+    border: 1px solid var(--bg-tertiary) !important;
+
+    font-size: var(--text-lg);
+
     gap: .5em;
-    
-    color: var(--text-dark);
+
+    color: var(--text-default);
 
     border-radius: .5em;
-    
+
 }
 
 .secondary-btn:hover {
 
-    background-color: var(--text-white-secondary);
-
-    transition: 200ms;
+    background-color: var(--bg-secondary);
+    border-color: var(--lines-secondary) !important;
 
 }
 
 .secondary-btn svg {
 
-    fill: var(--text-black);
+    fill: var(--text-secondary);
 
-    height: 1em;
-    width: 1em;
-
-    transition: 200ms;
+    height: 1.2em;
+    width: 1.2em;
 
 }

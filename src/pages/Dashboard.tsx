@@ -7,7 +7,7 @@ const Dashboard = () => {
     return <><RequireAuth>
     
         <main className="dashboard">
-            <DashboardTile gridArea="overview"></DashboardTile>
+            <DashboardTile gridArea="overview" className="primary"></DashboardTile>
             <DashboardTile gridArea="overview-legend"></DashboardTile>
             <DashboardTile gridArea="expenses"></DashboardTile>
             <DashboardTile gridArea="investments"></DashboardTile>
