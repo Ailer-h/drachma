@@ -2,17 +2,65 @@
 
 :root {
 
-    --bronze-main: #c77339; /* 500 */
-    --bronze-shade: #af5830; /* 600 */
-    --bronze-dark: #92412b; /* 700 */
-    --bronze-light: #ce8a46; /* 400 */
-    --bronze-disabled: #e6c9a1; /* 200 */
+    --bronze-100: #f3e5d2;
+    --bronze-200: #e6c9a1;
+    --bronze-300: #daa96f;
+    --bronze-400: #d1904e;
+    --bronze-500: #c77339;
+    --bronze-600: #b0582f;
+    --bronze-700: #92412b;
+    --bronze-800: #783528;
+    --bronze-900: #632d24;
 
-    --teal-main: #0abf96; /* 500 */
-    --teal-shade: #009b7b; /* 600 */
-    --teal-dark: #007560; /* 700 */
-    --teal-light: #2fd8ac; /* 400 */
-    --teal-disabled: #a4f6d9; /* 200 */
+    --teal-100: #d0fbe9;
+    --teal-200: #a4f6d9;
+    --teal-300: #6aebc5;
+    --teal-400: #2ed9ad;
+    --teal-500: #0abf96;
+    --teal-600: #009b7b;
+    --teal-700: #007c66;
+    --teal-800: #036251;
+    --teal-900: #035145;
+
+    --danger-100: #fde3e3;
+    --danger-200: #fdcbcb;
+    --danger-300: #faa7a7;
+    --danger-400: #f57474;
+    --danger-500: #eb4848;
+    --danger-600: #d82a2a;
+    --danger-700: #b52020;
+    --danger-800: #961e1e;
+    --danger-900: #7d1f1f;
+
+    --warning-100: #fff9c2;
+    --warning-200: #ffef88;
+    --warning-300: #ffde45;
+    --warning-400: #fdca12;
+    --warning-500: #edb105;
+    --warning-600: #cd8801;
+    --warning-700: #a36005;
+    --warning-800: #874b0c;
+    --warning-900: #723d11;
+
+    --success-100: #e2fbcc;
+    --success-200: #c7f6a0;
+    --success-300: #a2ee68;
+    --success-400: #80e13a;
+    --success-500: #60c71b;
+    --success-600: #479f11;
+    --success-700: #387912;
+    --success-800: #2f6014;
+    --success-900: #2a5116;
+
+    --info-100: #deecfb;
+    --info-200: #c5def8;
+    --info-300: #9dc9f3;
+    --info-400: #6faceb;
+    --info-500: #4c8ce4;
+    --info-600: #3871d8;
+    --info-700: #2f5dc6;
+    --info-800: #2c4ca1;
+    --info-900: #284280;
 
     --text-default: hsl(0, 0%, 5%);
     --text-secondary: hsl(0, 0%, 15%);
@@ -27,30 +75,6 @@
     --bg: hsl(0, 0%, 95%);
     --bg-secondary: hsl(0, 0%, 85%);
     --bg-tertiary: hsl(0, 0%, 75%);
-
-    --danger: #eb4848; /* 500 */
-    --danger-light: #f57474; /* 400 */
-    --danger-shade: #d82a2a; /* 600 */
-    --danger-dark: #b52020; /* 700 */
-    --danger-disabled: #fdcbcb; /* 400 */
-
-    --warning: #fdca12; /* 400 */
-    --warning-light: #ffde42; /* 300 */
-    --warning-shade: #ecb106; /* 500 */
-    --warning-dark: #cc8802; /* 600 */
-    --warning-disabled: #ffef89; /* 200 */
-
-    --success: #60c71b; /* 500 */
-    --success-light: #7fe239; /* 400 */
-    --success-shade: #48a111; /* 600 */
-    --success-dark: #387912; /* 700 */
-    --success-disabled: #c6f79f; /* 200 */
-    
-    --info: #4c8ce4; /* 500 */
-    --info-light: #6faceb; /* 400 */
-    --info-shade: #3871d8; /* 600 */
-    --info-dark: #3871d8; /* 700 */
-    --info-disabled: #c5def8; /* 200 */
 
     --box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
@@ -125,10 +149,10 @@ main.pageNotFound div {
 
 main.pageNotFound img {
 
-    filter: drop-shadow(5px 0px 0 var(--teal-dark)) 
-            drop-shadow(-5px 0px 0 var(--teal-dark)) 
-            drop-shadow(0px 5px 0 var(--teal-dark)) 
-            drop-shadow(0px -5px 0 var(--teal-dark));
+    filter: drop-shadow(5px 0px 0 var(--teal-700)) 
+            drop-shadow(-5px 0px 0 var(--teal-700)) 
+            drop-shadow(0px 5px 0 var(--teal-700)) 
+            drop-shadow(0px -5px 0 var(--teal-700));
 
 }
 
@@ -168,7 +192,7 @@ main.pageNotFound h2 {
 main.pageNotFound h3 {
 
     font-size: 1em;
-    color: var(--bronze-dark);
+    color: var(--bronze-700);
 
     cursor: pointer;
 
@@ -176,7 +200,7 @@ main.pageNotFound h3 {
 
 main.pageNotFound h3:hover {
 
-    color: var(--bronze-main);
+    color: var(--bronze-500);
     
 }
 
@@ -185,7 +209,7 @@ main.pageNotFound h3:hover {
 .custom-scrollbar {
     
     scrollbar-width: thin;
-    scrollbar-color: var(--bronze-shade) var(--bg-tertiary);
+    scrollbar-color: var(--bronze-600) var(--bg-tertiary);
     
 }
 
@@ -200,12 +224,12 @@ main.pageNotFound h3:hover {
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
     
-    background: var(--bronze-shade);
+    background: var(--bronze-600);
     
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
 
-    background: var(--bronze-dark);
+    background: var(--bronze-700);
 
 }

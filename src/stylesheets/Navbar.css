@@ -7,7 +7,7 @@ nav{
     width: calc(100% - 4em);
     padding: 0 2em;
 
-    background-color: var(--bronze-main);
+    background-color: var(--bronze-500);
     color: var(--text-white);
 
     box-shadow: var(--box-shadow);
@@ -48,7 +48,7 @@ nav div p{
 
 nav div p:hover{
 
-    color: var(--bronze-main);
+    color: var(--bronze-500);
     background-color: var(--text-white);
 
 }
@@ -60,7 +60,7 @@ nav div button {
     padding: .5em;
 
     background-color: var(--text-white);
-    color: var(--bronze-main);
+    color: var(--bronze-500);
     font-weight: bold;
     border-radius: .5em;
     cursor: pointer;
@@ -110,7 +110,7 @@ nav .menu .navigation {
 nav .menu .navigation:hover {
 
     background-color: var(--text-white);
-    color: var(--bronze-main);
+    color: var(--bronze-500);
     border-radius: .3em;
 
     transition: 200ms;
@@ -130,7 +130,7 @@ nav .menu button {
     border: none;
     border-radius: .3em;
 
-    background-color: var(--bronze-main);
+    background-color: var(--bronze-500);
 
     color: var(--text-white);
 
@@ -143,7 +143,7 @@ nav .menu button:hover {
 
     background-color: var(--text-white);
 
-    color: var(--bronze-main);
+    color: var(--bronze-500);
 
     transition: 200ms;
 
@@ -151,7 +151,7 @@ nav .menu button:hover {
 
 nav .menu button:hover svg {
 
-    fill: var(--bronze-main);
+    fill: var(--bronze-500);
     transition: 200ms;
 
 }
@@ -218,7 +218,7 @@ nav .menu button:hover svg {
 
 .menu-items li:hover {
 
-    background-color: var(--bronze-shade);
+    background-color: var(--bronze-600);
     color: var(--text-white);
 
     transition: 200ms;
@@ -246,13 +246,13 @@ nav .menu button:hover svg {
 
 .menu-items #logout {
 
-    background-color: var(--bronze-main);
+    background-color: var(--bronze-500);
     color: var(--text-white);
 
 }
 
 .menu-items #logout:hover {
 
-    background-color: var(--bronze-shade);
+    background-color: var(--bronze-600);
 
 }

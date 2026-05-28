@@ -75,7 +75,7 @@
 }
 
 .calendar-header .nav-btn:hover {
-    color: var(--bronze-main);
+    color: var(--bronze-500);
     transition: 100ms;
 }
 

@@ -69,7 +69,7 @@ main.forms section form {
 
 main.forms section form .icon {
 
-    background-color: var(--bronze-light);
+    background-color: var(--bronze-400);
 
     width: 5em;
     height: 5em;
@@ -150,7 +150,7 @@ main.forms section form input {
 
     padding-left: .5em;
 
-    caret-color: var(--bronze-main);
+    caret-color: var(--bronze-500);
 
     background-color: transparent;
     border: none;
@@ -165,16 +165,16 @@ main.forms section form input {
 
 main.forms section form input:focus {
 
-    border-bottom: .2px solid var(--bronze-main);
+    border-bottom: .2px solid var(--bronze-500);
 
 }
 
 main.forms section form .field:focus-within label {
-    color: var(--bronze-shade);
+    color: var(--bronze-600);
 }
 
 main.forms section form .field:focus-within svg {
-    fill: var(--bronze-shade);
+    fill: var(--bronze-600);
 }
 
 main.forms section form label {
@@ -187,7 +187,7 @@ main.forms section form label {
 main.forms section form button{
 
     border: none;
-    background-color: var(--bronze-main);
+    background-color: var(--bronze-500);
     color: var(--text-white);
 
     margin-top: 1em;
@@ -209,7 +209,7 @@ main.forms section form button{
 
 main.forms section form button:hover {
 
-    background-color: var(--bronze-shade);
+    background-color: var(--bronze-600);
 
     transition: 200ms;
 
@@ -217,7 +217,7 @@ main.forms section form button:hover {
 
 main.forms section form button:disabled {
 
-    background-color: var(--bronze-disabled);
+    background-color: var(--bronze-200);
     cursor: default;
 
     transition: 200ms;
@@ -232,13 +232,13 @@ p {
 
 .link {
 
-    color: var(--teal-shade);
+    color: var(--teal-600);
     cursor: pointer;
 
 }
 
 .link:hover {
-    color: var(--teal-dark);
+    color: var(--teal-700);
 }
 
 #forgot_password {
@@ -267,32 +267,32 @@ p {
 
 .wrong {
 
-    color: var(--danger-shade);
+    color: var(--danger-600);
 
 }
 
 main.forms section form .wrong input {
-    border-bottom: .2px solid var(--danger-shade);
+    border-bottom: .2px solid var(--danger-600);
 }
 
 main.forms section form .wrong:focus-within label {
-    color: var(--danger-shade);
+    color: var(--danger-600);
 }
 
 main.forms section form .wrong input:focus {
-    border-bottom: .2px solid var(--danger-shade);
+    border-bottom: .2px solid var(--danger-600);
 }
 
 .right {
 
-    color: var(--teal-dark);
+    color: var(--teal-700);
 
 }
 
 main.forms section form .right input {
-    border-bottom: .2px solid var(--teal-dark);
+    border-bottom: .2px solid var(--teal-700);
 }
 
 main.forms section form .right:focus-within label {
-    color: var(--teal-dark);
+    color: var(--teal-700);
 }

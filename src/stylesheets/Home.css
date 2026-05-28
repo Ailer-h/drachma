@@ -68,7 +68,7 @@ main.home p.main-text {
     width: 10em;
     height: 10em;
 
-    background-color: var(--teal-dark);
+    background-color: var(--teal-700);
 
     border-radius: 1em;
 
@@ -113,7 +113,7 @@ main.home p.main-text {
 .main-btn {
 
 
-    background-color: var(--bronze-shade);
+    background-color: var(--bronze-600);
     color: var(--text-white);
 
     gap: .5em;
@@ -128,7 +128,7 @@ main.home p.main-text {
 
 .main-btn:hover {
 
-    background-color: var(--bronze-dark);
+    background-color: var(--bronze-700);
 
     transition: 200ms;
 

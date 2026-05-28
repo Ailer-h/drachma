@@ -81,7 +81,7 @@
 
 .list-selector .list-options .option.selected {
 
-    background-color: var(--bronze-main);
+    background-color: var(--bronze-500);
     color: var(--text-white);
 
     transition: 100ms;
