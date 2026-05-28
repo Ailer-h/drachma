@@ -21,25 +21,23 @@ const PaymentMethods = () => {
         "Money Transfer",
     ]
 
-    const accounts = [
-        "PagBank",
-        "Clear",
-        "Flash"
-    ]
+    const [ accounts, setAccounts ] = useState<{ id: string; account_name: string }[]>([]);
 
     const [ modalOpen, setModalOpen ] = useState(false);
     const [ refreshKey, setRefreshKey ] = useState(0);
     const [ selectedIcon, setSelectedIcon ] = useState("credit_card");
     const [ paymentName, setPaymentName ] = useState("");
     const [ paymentType, setPaymentType ] = useState("");
-    const [ account, setAccount ] = useState("");
+    const [ account, setAccount ] = useState("");        // UUID
+    const [ accountInput, setAccountInput ] = useState(""); // display text
     const [ cardLimit, setCardLimit ] = useState("");
     const [ date, setDate ] = useState<Date | null>(null)
 
     const [ editingMethod, setEditingMethod ] = useState<PaymentMethodType | null>(null);
     const [ editName, setEditName ] = useState("");
     const [ editType, setEditType ] = useState("");
-    const [ editAccount, setEditAccount ] = useState("");
+    const [ editAccount, setEditAccount ] = useState("");       // UUID
+    const [ editAccountInput, setEditAccountInput ] = useState(""); // display text
     const [ editIcon, setEditIcon ] = useState("credit_card");
     const [ editCardLimit, setEditCardLimit ] = useState("");
     const [ editDate, setEditDate ] = useState<Date | null>(null);
@@ -60,6 +58,7 @@ const PaymentMethods = () => {
         setPaymentName("");
         setPaymentType("");
         setAccount("");
+        setAccountInput("");
         setDate(null);
 
     }
@@ -69,7 +68,7 @@ const PaymentMethods = () => {
     const isFormValid =
         paymentName.trim() !== "" &&
         defaultPaymentTypes.includes(paymentType) &&
-        account.trim() !== "" &&
+        account !== "" &&
         (!isCreditCard || (date !== null && parseInt(cardLimit.replace(/\D/g, ""), 10) > 0))
 
     const submitForm = async () => {
@@ -100,6 +99,7 @@ const PaymentMethods = () => {
         setEditName(method.name)
         setEditType(method.type)
         setEditAccount(method.account)
+        setEditAccountInput(method.account_name)
         setEditIcon(method.icon ?? "credit_card")
         setEditCardLimit(method.card_limit != null ? String(Math.round(method.card_limit * 100)) : "")
         setEditDate(method.due_day != null ? new Date(2000, 0, method.due_day) : null)
@@ -112,7 +112,7 @@ const PaymentMethods = () => {
     const isEditFormValid =
         editName.trim() !== "" &&
         defaultPaymentTypes.includes(editType) &&
-        editAccount.trim() !== "" &&
+        editAccount !== "" &&
         (!isEditCreditCard || (editDate !== null && parseInt(editCardLimit.replace(/\D/g, ""), 10) > 0))
 
     const submitEdit = async () => {
@@ -153,6 +153,27 @@ const PaymentMethods = () => {
         setDeletingMethod(null)
         setRefreshKey(k => k + 1)
     }
+
+    useEffect(() => {
+        const fetchAccounts = async () => {
+            const { data: { user } } = await supabase.auth.getUser()
+            if (!user) return
+
+            const { data, error } = await supabase
+                .from("accounts")
+                .select("id, account_name")
+                .eq("user_id", user.id)
+
+            if (error) {
+                console.error(error)
+                return
+            }
+
+            setAccounts(data)
+        }
+
+        fetchAccounts()
+    }, [])
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
@@ -202,10 +223,10 @@ const PaymentMethods = () => {
                         <InputField type="text" name="paymentName" id="paymentName" labelTxt="Payment type name:"
                                     value={paymentName} onChange={(e) => setPaymentName(e.target.value)}/>
                         <ListSelector id="account" name="account" labelTxt="Takes from account:"
-                                    options={accounts}
-                                    value={account}
-                                    onChange={(e) => setAccount(e.target.value)}
-                                    onSelect={setAccount}/>
+                                    options={accounts.map(a => a.account_name)}
+                                    value={accountInput}
+                                    onChange={(e) => { setAccountInput(e.target.value); setAccount("") }}
+                                    onSelect={(name) => { setAccountInput(name); setAccount(accounts.find(a => a.account_name === name)?.id ?? "") }}/>
                     </InputGroup>
 
                     <ListSelector id="paymentType" name="paymentType"
@@ -252,10 +273,10 @@ const PaymentMethods = () => {
                         <InputField type="text" name="editName" id="editName" labelTxt="Payment type name:"
                                     value={editName} onChange={(e) => setEditName(e.target.value)}/>
                         <ListSelector id="editAccount" name="editAccount" labelTxt="Takes from account:"
-                                    options={accounts}
-                                    value={editAccount}
-                                    onChange={(e) => setEditAccount(e.target.value)}
-                                    onSelect={setEditAccount}/>
+                                    options={accounts.map(a => a.account_name)}
+                                    value={editAccountInput}
+                                    onChange={(e) => { setEditAccountInput(e.target.value); setEditAccount("") }}
+                                    onSelect={(name) => { setEditAccountInput(name); setEditAccount(accounts.find(a => a.account_name === name)?.id ?? "") }}/>
                     </InputGroup>
 
                     <ListSelector id="editPaymentType" name="editPaymentType"

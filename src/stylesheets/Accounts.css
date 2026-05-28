@@ -1,0 +1,226 @@
+main.accounts {
+
+    width: calc(100% - 6em);
+
+    min-height: calc(100vh - 5em);
+    margin-top: 5em;
+
+    margin-left: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+}
+
+main.accounts h3 {
+
+    color: var(--text-default);
+    font-size: 1.5rem;
+
+}
+
+.accounts-section {
+
+    width: 90%;
+    min-height: 30em;
+
+    border-radius: .5em;
+
+}
+
+.accounts-section table {
+
+    width: calc(100% - 3rem);
+    margin: 0 auto;
+    margin-top: .5rem;
+
+    border-spacing: 0px;
+
+    color: var(--text-default);
+
+}
+
+.accounts-section table svg {
+
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: var(--text-default);
+
+}
+
+.accounts-section table tbody td {
+
+    padding: .2rem .3rem;
+
+}
+
+.accounts-section table th {
+
+    text-align: left;
+    border-bottom: .5px solid var(--lines-secondary);
+    margin-bottom: .5rem;
+
+}
+
+.accounts-section table tbody tr {
+
+    transition: 200ms;
+
+}
+
+.accounts-section table tbody tr:hover {
+
+    background-color: var(--bg-secondary);
+
+    transition: 200ms;
+
+}
+
+.accounts-section table .actions {
+
+    width: 15%;
+    text-align: center;
+
+}
+
+.accounts-section table .actions div {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+
+}
+
+.accounts-section table .actions svg {
+
+    fill: var(--text-default);
+
+    padding: .2rem;
+    cursor: pointer;
+
+    border-radius: .3rem;
+
+    transition: 200ms;
+
+}
+
+.accounts-section table .actions svg:hover {
+
+    background-color: var(--bg-tertiary);
+
+    transition: 200ms;
+
+}
+
+.account-bar {
+
+    width: calc(90% - 4rem);
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0 2rem;
+
+}
+
+.account-bar button {
+
+    border: none;
+
+    padding: .2rem .3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: .5rem;
+    border-radius: .3em;
+
+    background-color: var(--bronze-500);
+    color: var(--text-white);
+
+    cursor: pointer;
+
+    transition: 200ms;
+
+}
+
+.account-bar button:hover {
+
+    background-color: var(--bronze-600);
+
+    transition: 200ms;
+
+}
+
+.account-bar button svg {
+
+    fill: var(--text-white);
+
+}
+
+.account-form {
+
+    width: 100%;
+    padding: 1rem 0;
+
+}
+
+.account-form > span {
+
+    width: 100%;
+
+}
+
+.account-form > span > span {
+
+    flex: 1;
+
+}
+
+.account-form span label {
+
+    color: var(--text-default);
+
+}
+
+.account-form span input {
+
+    width: 100%;
+    height: 2em;
+
+    background-color: transparent;
+    border: none;
+
+    border-bottom: .2px solid var(--lines-secondary);
+
+    outline: transparent;
+
+    color: var(--text-default);
+
+    padding-left: .5em;
+
+}
+
+.account-form span input:focus {
+
+    border-bottom: 2px solid var(--lines);
+
+}
+
+.account-form .list-selector {
+
+    flex: 1;
+    align-self: flex-start;
+
+}
+
+.account-form .list-selector .list-search {
+
+    width: 100%;
+
+}

@@ -4,12 +4,13 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
+import PaymentMethods from './pages/PaymentMethods'
+import Accounts from './pages/Accounts'
+import PageNotFound from './pages/PageNotFound'
 
 import Layout from './Layout'
-import PageNotFound from './pages/PageNotFound'
 import { useEffect } from 'react'
 import { supabase } from './lib/supabaseClient'
-import PaymentMethods from './pages/PaymentMethods'
 
 const App = () => {
 
@@ -36,6 +37,7 @@ const App = () => {
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/paymentMethods" element={<PaymentMethods/>}/>
+                <Route path="/accounts" element={<Accounts/>}/>
             </Route>
 
             <Route path="*" element={<PageNotFound/>}/>

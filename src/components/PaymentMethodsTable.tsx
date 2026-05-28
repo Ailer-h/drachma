@@ -7,7 +7,8 @@ export type PaymentMethodType = {
     name: string;
     icon: string | null;
     type: string;
-    account: string;
+    account: string;       // UUID (FK to accounts.id)
+    account_name: string;  // resolved display name
     due_day: number | null;
     card_limit: number | null;
 }
@@ -32,14 +33,28 @@ const PaymentMethodsTable = ({ refreshKey, onEdit, onDelete }: PaymentMethodsTab
                 return;
             }
 
-            const { data, error } = await supabase.from("payment_methods").select("id, name, icon, type, account, due_day, card_limit").eq("user_id", user.id);
+            const { data, error } = await supabase
+                .from("payment_methods")
+                .select("id, name, icon, type, account, accounts(account_name), due_day, card_limit")
+                .eq("user_id", user.id);
 
             if (error) {
                 console.log(error)
                 return;
             }
 
-            setMethods(data || [])
+            const methods: PaymentMethodType[] = (data || []).map(m => ({
+                id: m.id,
+                name: m.name,
+                icon: m.icon,
+                type: m.type,
+                account: m.account,
+                account_name: (m.accounts as { account_name: string } | null)?.account_name ?? "",
+                due_day: m.due_day,
+                card_limit: m.card_limit,
+            }))
+
+            setMethods(methods)
             setLoading(false)
         };
 
@@ -63,7 +78,7 @@ const PaymentMethodsTable = ({ refreshKey, onEdit, onDelete }: PaymentMethodsTab
                       </tr>
                     ) : (
                       methods.map((method) => (
-                        <PaymentMethod key={method.id} id={method.id} icon={method.icon ?? ""} type={method.type} account={method.account} dueDay={method.due_day} cardLimit={method.card_limit}
+                        <PaymentMethod key={method.id} id={method.id} icon={method.icon ?? ""} type={method.type} account={method.account_name} dueDay={method.due_day} cardLimit={method.card_limit}
                             onEdit={() => onEdit?.(method)}
                             onDelete={() => onDelete?.(method)}>{method.name}</PaymentMethod>
                       ))

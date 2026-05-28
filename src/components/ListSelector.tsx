@@ -45,6 +45,10 @@ const ListSelector = ({ options, labelTxt, id, name, value, onChange, onSelect }
         : options
 
     useEffect(() => {
+        if (!value) setSelected("")
+    }, [value])
+
+    useEffect(() => {
         if (highlightedIndex >= 0 && optionsRef.current) {
             const items = optionsRef.current.querySelectorAll(".option")
             items[highlightedIndex]?.scrollIntoView({ block: "nearest" })

@@ -6,6 +6,7 @@ const PageNavigator = () => {
     const Location = useLocation();
 
     const routes = [
+        { address: "/accounts", label: "Accounts" },
         { address: "/paymentMethods", label: "Payment methods" },
         { address: "/income", label: "Income sources" },
         { address: "/expenses", label: "Expenses" }
