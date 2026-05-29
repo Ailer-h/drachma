@@ -1,3 +1,11 @@
+hr {
+
+    width: calc(100% - 6em);
+
+    margin-left: 0;
+
+}
+
 main.accounts {
 
     width: calc(100% - 6em);
@@ -5,12 +13,12 @@ main.accounts {
     min-height: calc(100vh - 5em);
     margin-top: 5em;
 
-    margin-left: auto;
+    margin-left: 3em;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 
 }
 
@@ -22,81 +30,126 @@ main.accounts h3 {
 }
 
 .accounts-section {
-
+    
     width: 90%;
     min-height: 30em;
-
+    
     border-radius: .5em;
-
+    
 }
 
-.accounts-section table {
-
+.accounts-section .accounts-grid {
+    
     width: calc(100% - 3rem);
     margin: 0 auto;
-    margin-top: .5rem;
 
-    border-spacing: 0px;
+    display: grid;
 
+    gap: 24px;
+
+    grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+
+    
+}
+
+.accounts-section .accounts-grid .account {
+    
+    min-height: 125px;
+    
+    border-radius: 16px;
+    
+    background-color: var(--bg-secondary);
+    box-shadow: var(--box-shadow);
+    
+    display: flex;
+    flex-direction: column;
+    
+    padding: 16px;
+    
+    cursor: pointer;
+    
+    position: relative;
+    
     color: var(--text-default);
 
+    transition: 200ms;
+    
 }
 
-.accounts-section table svg {
+.accounts-section .accounts-grid .account:hover {
 
-    width: 1.2rem;
-    height: 1.2rem;
-    fill: var(--text-default);
-
-}
-
-.accounts-section table tbody td {
-
-    padding: .2rem .3rem;
-
-}
-
-.accounts-section table th {
-
-    text-align: left;
-    border-bottom: .5px solid var(--lines-secondary);
-    margin-bottom: .5rem;
-
-}
-
-.accounts-section table tbody tr {
+    transform: scale(1.05);
 
     transition: 200ms;
 
 }
 
-.accounts-section table tbody tr:hover {
+.accounts-section .accounts-grid .account .options {
+    
+    position: absolute;
+    
+    right: 8px;
+    top: 16px;
+    
+    fill: var(--text-secondary);
+    
+    height: 20px;
+    width: 20px;
 
-    background-color: var(--bg-secondary);
+    border-radius: 4px;
+    padding: 2px;
+
+    transition: 200ms;
+    
+}
+.accounts-section .accounts-grid .account .options:hover {
+
+    background-color: var(--bg-tertiary);
+    z-index: 10;
 
     transition: 200ms;
 
 }
 
-.accounts-section table .actions {
-
-    width: 15%;
-    text-align: center;
-
-}
-
-.accounts-section table .actions div {
-
+.accounts-section .accounts-grid .account .main-info {
+    
+    flex-grow: 1;
+    
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    
+}
+.accounts-section .accounts-grid .account .main-info p span {
 
-    gap: 1rem;
+    font-size: .75em;
+    color: var(--text-secondary);
+    margin-left: 4px;
 
 }
 
-.accounts-section table .actions svg {
+.accounts-section .accounts-grid .account .main-info h1 {
+    font-size: 1.25em;
+    font-weight: 500;
+}
 
+.accounts-section .accounts-grid .account .history{
+    
+    height: 16px;
+    display: flex;
+    gap: 4px;
+    
+    align-items: center;
+    
+    font-size: .75em;
+    
+}
+
+.accounts-section .accounts-grid .account .history span.negative { color: var(--danger-700); }
+.accounts-section .accounts-grid .account .history span.positive { color: var(--success-600); }
+
+.accounts-section .accounts-grid .account .history svg {
+    
     fill: var(--text-default);
 
     padding: .2rem;
@@ -105,10 +158,10 @@ main.accounts h3 {
     border-radius: .3rem;
 
     transition: 200ms;
-
+    
 }
 
-.accounts-section table .actions svg:hover {
+.accounts-section .accounts-grid .account .history svg:hover {
 
     background-color: var(--bg-tertiary);
 
@@ -116,14 +169,28 @@ main.accounts h3 {
 
 }
 
+.accounts-section .accounts-grid .account h1 {
+
+    font-size: 1.5em;
+
+}
+
+.accounts-section .accounts-grid .account hr {
+
+    height: 1px;
+    width: 100%;
+    background-color: var(--text-secondary);
+
+}
+
 .account-bar {
 
-    width: calc(90% - 4rem);
+    width: calc(100% - 4em);
 
     display: flex;
     justify-content: space-between;
 
-    padding: 0 2rem;
+    padding: 0 2em;
 
 }
 

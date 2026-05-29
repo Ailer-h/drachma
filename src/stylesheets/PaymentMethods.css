@@ -1,6 +1,8 @@
 hr {
 
-    width: 90%;
+    width: calc(100% - 6em);
+
+    margin-left: 0;
 
 }
 
@@ -11,12 +13,12 @@ main.paymentMethods {
     min-height: calc(100vh - 5em);
     margin-top: 5em;
 
-    margin-left: auto;
+    margin-left: 3em;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 
 }
 
@@ -39,7 +41,7 @@ main.paymentMethods h3 {
 .payments table {
     
     width: calc(100% - 3rem);
-    margin: 0 auto;
+    margin: 0 1.5em;
     margin-top: .5rem;
     
     border-spacing: 0px;
@@ -144,12 +146,12 @@ main.paymentMethods h3 {
 
 .payment-bar {
 
-    width: calc(90% - 4rem);
+    width: calc(100% - 4em);
 
     display: flex;
     justify-content: space-between;
 
-    padding: 0 2rem;
+    padding: 0 2em;
 
 }
 

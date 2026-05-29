@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root {
 
@@ -42,15 +42,15 @@
     --warning-800: #874b0c;
     --warning-900: #723d11;
 
-    --success-100: #e2fbcc;
-    --success-200: #c7f6a0;
-    --success-300: #a2ee68;
-    --success-400: #80e13a;
-    --success-500: #60c71b;
-    --success-600: #479f11;
-    --success-700: #387912;
-    --success-800: #2f6014;
-    --success-900: #2a5116;
+    --success-100: #dff0d7;
+    --success-200: #c2e3b3;
+    --success-300: #9bd185;
+    --success-400: #79bc5f;
+    --success-500: #5aa141;
+    --success-600: #468432;
+    --success-700: #366229;
+    --success-800: #2e4f25;
+    --success-900: #294423;
 
     --info-100: #deecfb;
     --info-200: #c5def8;
@@ -64,6 +64,7 @@
 
     --text-default: hsl(0, 0%, 5%);
     --text-secondary: hsl(0, 0%, 15%);
+    --text-tertiary: hsl(0, 0%, 25%);
     --lines: hsl(0, 0%, 30%);
     --lines-secondary: hsl(0, 0%, 60%);
 
@@ -123,7 +124,7 @@
 }
 
 .mono {
-    font-family: "Iosevka Charon", monospace;
+    font-family: "Roboto Mono", monospace;
 }
 
 body {

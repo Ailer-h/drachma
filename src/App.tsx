@@ -11,6 +11,7 @@ import PageNotFound from './pages/PageNotFound'
 import Layout from './Layout'
 import { useEffect } from 'react'
 import { supabase } from './lib/supabaseClient'
+import AccountDetails from './pages/AccountDetails'
 
 const App = () => {
 
@@ -28,6 +29,25 @@ const App = () => {
         };
     }, []);
 
+    const fetchAccounts = async () => {
+        const { data: { user } } = await supabase.auth.getUser();
+
+        if (!user) return;
+
+        const { data, error } = await supabase
+            .from("accounts")
+            .select("id, account_name")
+            .eq("user_id", user.id);
+
+        if (error) {
+            console.log(error);
+            return;
+        }
+
+        return data || []
+
+    };
+
     return <>
         <Routes>
 
@@ -38,6 +58,7 @@ const App = () => {
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/paymentMethods" element={<PaymentMethods/>}/>
                 <Route path="/accounts" element={<Accounts/>}/>
+                <Route path="/accounts/:accountName" element={<AccountDetails/>}/>
             </Route>
 
             <Route path="*" element={<PageNotFound/>}/>

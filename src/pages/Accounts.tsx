@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { supabase } from "../lib/supabaseClient"
 import Modal from "../components/Modal"
-import AccountsTable, { type AccountType } from "../components/AccountsTable"
+import AccountsGrid, { type AccountType } from "../components/AccountsGrid"
 import "../stylesheets/Accounts.css"
 import RequireAuth from "../routes/RequireAuth"
 import InputField from "../components/InputField"
@@ -143,7 +143,7 @@ const Accounts = () => {
             </div>
             <hr/>
             <section className="accounts-section">
-                <AccountsTable refreshKey={refreshKey} onEdit={openEditModal} onDelete={setDeletingAccount}/>
+                <AccountsGrid refreshKey={refreshKey} onEdit={openEditModal} onDelete={setDeletingAccount}/>
             </section>
         </main>
 

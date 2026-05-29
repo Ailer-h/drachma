@@ -8,13 +8,13 @@ export type AccountType = {
     account_type: string;
 }
 
-interface AccountsTableProps {
+interface AccountsGridProps {
     refreshKey?: number
     onEdit?: (account: AccountType) => void
     onDelete?: (account: AccountType) => void
 }
 
-const AccountsTable = ({ refreshKey, onEdit, onDelete }: AccountsTableProps) => {
+const AccountsGrid = ({ refreshKey, onEdit, onDelete }: AccountsGridProps) => {
     const [accounts, setAccounts] = useState<AccountType[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -42,15 +42,7 @@ const AccountsTable = ({ refreshKey, onEdit, onDelete }: AccountsTableProps) => 
     }, [refreshKey]);
 
     return <>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th className="actions">Actions</th>
-                </tr>
-            </thead>
-            <tbody id="accounts-list">
+        <div className="accounts-grid">
                 {loading ? (
                     <tr><td colSpan={3}>Loading...</td></tr>
                 ) : accounts.length === 0 ? (
@@ -66,9 +58,8 @@ const AccountsTable = ({ refreshKey, onEdit, onDelete }: AccountsTableProps) => 
                             onDelete={() => onDelete?.(account)}/>
                     ))
                 )}
-            </tbody>
-        </table>
+        </div>
     </>;
 };
 
-export default AccountsTable;
+export default AccountsGrid;
