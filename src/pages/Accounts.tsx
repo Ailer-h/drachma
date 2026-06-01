@@ -20,10 +20,19 @@ const Accounts = () => {
         "Benefits"
     ]
 
+    const interestTypes = [
+        "No interest",
+        "Daily interest",
+        "Monthly interest",
+        "Yearly interest"
+    ]
+
     const [ modalOpen, setModalOpen ] = useState(false);
     const [ refreshKey, setRefreshKey ] = useState(0);
     const [ accountName, setAccountName ] = useState("");
     const [ accountType, setAccountType ] = useState("");
+    const [ interestType, setInterestType ] = useState("No interest");
+    const [ interestRate, setInterestRate ] = useState(0);
 
     const [ editingAccount, setEditingAccount ] = useState<AccountType | null>(null);
     const [ editName, setEditName ] = useState("");
@@ -42,6 +51,8 @@ const Accounts = () => {
 
         setAccountName("")
         setAccountType("")
+        setInterestType("No interest")
+        setInterestRate(0)
     }
 
     const isFormValid =
@@ -149,7 +160,7 @@ const Accounts = () => {
 
         <Modal visible={modalOpen} title="New Account"
                 width={40}
-                height={12}
+                height={16}
                 ref={modalRef}
                 onClose={() => closeModal(true)}
                 onCancel={() => closeModal(true)}
@@ -157,15 +168,31 @@ const Accounts = () => {
                 confirmDisabled={!isFormValid}>
 
             <div className="account-form">
-                <InputGroup type="row" gap={1.5}>
-                    <InputField type="text" name="accountName" id="accountName" labelTxt="Account name:"
-                                value={accountName} onChange={(e) => setAccountName(e.target.value)}/>
-                    <ListSelector id="accountType" name="accountType"
-                                labelTxt="Account type:"
-                                options={accountTypes}
-                                value={accountType}
-                                onChange={(e) => setAccountType(e.target.value)}
-                                onSelect={setAccountType}/>
+                <InputGroup type="column" gap={1}>
+                    <InputGroup type="row" gap={1.5}>
+                        <InputField type="text" name="accountName" id="accountName" labelTxt="Account name:"
+                                    value={accountName} onChange={(e) => setAccountName(e.target.value)}/>
+                        <ListSelector id="accountType" name="accountType"
+                                    labelTxt="Account type:"
+                                    options={accountTypes}
+                                    value={accountType}
+                                    onChange={(e) => setAccountType(e.target.value)}
+                                    onSelect={setAccountType}/>
+                    </InputGroup>
+                    <InputGroup type="row" gap={1.5}>
+                        <ListSelector id="interestType" name="interestType"
+                                    labelTxt="Interest type:"
+                                    options={interestTypes}
+                                    value={interestType}
+                                    onChange={(e) => setInterestType(e.target.value)}
+                                    onSelect={setInterestType}/>
+                        {
+                            interestType && interestType != "No interest" &&
+                            <InputField type="percentage" name="interestRate" id="interestRate" labelTxt="Interest rate:"
+                                        value={interestRate} onChange={(e) => setInterestRate(Number(e.target.value))}/>
+
+                        }
+                    </InputGroup>
                 </InputGroup>
             </div>
 
