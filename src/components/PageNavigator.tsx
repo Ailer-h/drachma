@@ -1,23 +1,23 @@
-import { useLocation, useNavigate } from "react-router-dom"
+'use client'
+import { usePathname, useRouter } from "next/navigation"
 
 const PageNavigator = () => {
 
-    const Navigate = useNavigate();
-    const Location = useLocation();
+    const router = useRouter()
+    const pathname = usePathname()
 
     const routes = [
         { address: "/accounts", label: "Accounts" },
         { address: "/paymentMethods", label: "Payment methods" },
         { address: "/income", label: "Income sources" },
         { address: "/expenses", label: "Expenses" }
-    ].filter(route => route.address !== Location.pathname)
+    ].filter(route => route.address !== pathname)
 
     return <>{
         routes.map((route) => {
-            return <p className="navigation" key={route.address} onClick={() => {Navigate(route.address)}}>{route.label}</p>
+            return <p className="navigation" key={route.address} onClick={() => { router.push(route.address) }}>{route.label}</p>
         })
     }</>
-    
 
 }
 

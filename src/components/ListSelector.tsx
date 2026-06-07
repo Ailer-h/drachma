@@ -9,6 +9,8 @@ interface ListSelectorProps {
     id: string
     name: string
 
+    filterList?: boolean
+
     labelTxt?: string
 
     value?: string
@@ -18,7 +20,7 @@ interface ListSelectorProps {
 
 }
 
-const ListSelector = ({ options, labelTxt, id, name, value, onChange, onSelect }: ListSelectorProps) => {
+const ListSelector = ({ options, labelTxt, id, name, value, filterList=true, onChange, onSelect }: ListSelectorProps) => {
 
     const [ isOpen, setIsOpen ] = useState(false)
     const [ highlightedIndex, setHighlightedIndex ] = useState(-1)
@@ -40,7 +42,7 @@ const ListSelector = ({ options, labelTxt, id, name, value, onChange, onSelect }
         nativeInput.dispatchEvent(new Event("input", { bubbles: true }))
     }
 
-    const filtered = value
+    const filtered = value && filterList
         ? options.filter(o => o.toLowerCase().includes(value.toLowerCase()))
         : options
 

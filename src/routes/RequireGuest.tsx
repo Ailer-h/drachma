@@ -1,20 +1,25 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+'use client'
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { useAuth } from "../context/AuthContext"
 
 interface Props {
-    children: React.ReactNode;
+    children: React.ReactNode
 }
 
 const RequireGuest = ({ children }: Props) => {
-    const { session, loading } = useAuth();
+    const { session, loading } = useAuth()
+    const router = useRouter()
 
-    if (loading) return null; // ADD SPINNER LATER
+    useEffect(() => {
+        if (!loading && session) {
+            router.replace("/dashboard")
+        }
+    }, [loading, session, router])
 
-    if (session) {
-        return <Navigate to="/dashboard" replace />;
-    }
+    if (loading || session) return null // ADD SPINNER LATER
 
-    return children;
-};
+    return <>{children}</>
+}
 
-export default RequireGuest;
+export default RequireGuest

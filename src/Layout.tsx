@@ -1,27 +1,29 @@
-import { Outlet, useLocation } from "react-router-dom";
-
+'use client'
+import { usePathname } from "next/navigation"
+import { useLayoutContext } from './context/LayoutContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
-const Layout = () => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
+    const { hideLayout } = useLayoutContext()
+    const hideNavbarPaths = ["/login", "/signup"]
+    const hideFooterPaths = ["/login", "/signup"]
+    const pathname = usePathname()
 
-    const hideNavbarPaths = ["/login", "/signup"];
-    const hideFooterPaths = ["/login", "/signup"];
-    const location = useLocation();
+    if (hideLayout) return <>{children}</>
 
     return <>
         {
-            !hideNavbarPaths.includes(location.pathname) &&
-            <Navbar type={location.pathname == "/" ? "start" : "main"}/>
+            !hideNavbarPaths.includes(pathname) &&
+            <Navbar type={pathname === "/" ? "start" : "main"}/>
         }
 
-        <Outlet/>
-        
+        {children}
+
         {
-            !hideFooterPaths.includes(location.pathname) &&
+            !hideFooterPaths.includes(pathname) &&
             <Footer/>
         }
-    
     </>
 }
 

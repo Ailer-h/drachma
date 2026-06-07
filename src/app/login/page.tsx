@@ -1,21 +1,15 @@
+'use client'
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/navigation"
+import { supabase } from "../../lib/supabaseClient"
 
-import FormInputField from "../components/FormInputField";
+import FormInputField from "../../components/FormInputField"
 
-import "../stylesheets/Forms.css"
-import { supabase } from "../lib/supabaseClient";
-import RequireGuest from "../routes/RequireGuest";
-import type { InputType } from "../Types";
+import "../../stylesheets/Forms.css"
+import RequireGuest from "../../routes/RequireGuest"
+import type { InputType } from "../../Types"
 
 const fields = [
-    {
-        fieldName: "Username",
-        fieldId: "username",
-        fieldType: "text",
-        inputType: "text",
-        minLength: 5
-    },
     {
         fieldName: "Email",
         fieldId: "email",
@@ -28,21 +22,12 @@ const fields = [
         fieldType: "password",
         inputType: "password",
         minLength: 10
-    },
-    {
-        fieldName: "Confirm Password",
-        fieldId: "confirmPassword",
-        fieldType: "password",
-        inputType: "password",
-        minLength: 10,
-        matchTo: "password"
     }
 ];
 
-const Signup = () => {
+const Login = () => {
 
-    const Navigate = useNavigate();
-
+    const router = useRouter();
     const [fieldValidity, setFieldValidity] = useState<Record<string, boolean>>({});
     const [formValues, setFormValues] = useState<Record<string, string>>({});
 
@@ -59,22 +44,16 @@ const Signup = () => {
 
     const formValid = fields.every(f => fieldValidity[f.fieldId] === true)
 
-    const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
-
-        e.preventDefault();
+    const handleLogin = async (e: React.SyntheticEvent<HTMLFormElement>) => {
+       e.preventDefault();
 
         if (!formValid) return;
 
-        const { username, email, password } = formValues;
+        const { email, password } = formValues;
 
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signInWithPassword({
             email,
-            password,
-            options: {
-                data: {
-                    display_name: username
-                }
-            }
+            password
         });
 
         if (error) {
@@ -84,7 +63,7 @@ const Signup = () => {
 
         console.log("Logged in:", data);
 
-        Navigate("/dashboard");
+        router.push("/dashboard");
 
     }
 
@@ -92,17 +71,17 @@ const Signup = () => {
         <main className="forms">
 
         <section>
-            <form onSubmit={handleSignup}>
+            <form onSubmit={handleLogin}>
 
                 <div className="header">
                     <div className="icon">
-                        <img src="src/assets/logo.png"/>
+                        <img src="../assets/logo.png"/>
                     </div>
-                    <h1>Sign Up</h1>
+                    <h1>Log In</h1>
                     <hr/>
                 </div>
 
-               {fields.map(field => (
+                {fields.map(field => (
                     <FormInputField
                     key={field.fieldId}
                     fieldName={field.fieldName}
@@ -111,31 +90,35 @@ const Signup = () => {
                     inputType={field.inputType as InputType}
                     minLength={field.minLength}
                     value={formValues[field.fieldId] || ""}
-                    matchValue={field.matchTo ? formValues[field.matchTo] || "" : undefined}
-                    onChangeValue={handleValueChange}       
+                    onChangeValue={handleValueChange}
                     onValidate={handleValidate}
                     />
                 ))}
-                
-                <button type="submit" id="submit" disabled={!formValid}>Sign Up</button>
+
+                <p id="forgot_password">
+                    <span onClick={() => {alert("WORK IN PROGRESS")}} className="link">Forgot Password</span>
+                </p>
+
+                <button type="submit" id="submit" disabled={!formValid}>Log In</button>
 
                 <hr/>
-                
-                <p>Already have an account? <span onClick={() => {Navigate("/login")}} className="link">Log In</span>.</p>
+
+                <p>Don't have an account? <span onClick={() => {router.push("/signup")}} className="link">Create account</span>.</p>
 
             </form>
         </section>
-        
+
         <section className="banner">
             <div className="title">
-                <h1>Welcome to Drachma!</h1>
-                <h2>Create an account to give your first steps towards wealth.</h2>
+                <h1>
+                    Welcome back to Drachma!
+                </h1>
             </div>
         </section>
 
-    </main>
+        </main>
     </RequireGuest></>
 
 }
 
-export default Signup
+export default Login
