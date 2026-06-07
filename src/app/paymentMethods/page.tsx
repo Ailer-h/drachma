@@ -1,15 +1,16 @@
+'use client'
 import { useEffect, useRef, useState } from "react"
-import { supabase } from "../lib/supabaseClient"
-import Modal from "../components/Modal"
-import PaymentMethodsTable, { type PaymentMethodType } from "../components/PaymentMethodsTable"
-import "../stylesheets/PaymentMethods.css"
-import RequireAuth from "../routes/RequireAuth"
-import InputField from "../components/InputField"
-import Icon from "../components/Icon"
-import IconSelector from "../components/IconSelector"
-import InputGroup from "../components/InputGroup"
-import ListSelector from "../components/ListSelector"
-import DatePicker from "../components/DatePicker"
+import { supabase } from "../../lib/supabaseClient"
+import Modal from "../../components/Modal"
+import PaymentMethodsTable, { type PaymentMethodType } from "../../components/PaymentMethodsTable"
+import "../../stylesheets/PaymentMethods.css"
+import RequireAuth from "../../routes/RequireAuth"
+import InputField from "../../components/InputField"
+import Icon from "../../components/Icon"
+import IconSelector from "../../components/IconSelector"
+import InputGroup from "../../components/InputGroup"
+import ListSelector from "../../components/ListSelector"
+import DatePicker from "../../components/DatePicker"
 
 const PaymentMethods = () => {
 
@@ -28,16 +29,16 @@ const PaymentMethods = () => {
     const [ selectedIcon, setSelectedIcon ] = useState("credit_card");
     const [ paymentName, setPaymentName ] = useState("");
     const [ paymentType, setPaymentType ] = useState("");
-    const [ account, setAccount ] = useState("");        // UUID
-    const [ accountInput, setAccountInput ] = useState(""); // display text
+    const [ account, setAccount ] = useState("");
+    const [ accountInput, setAccountInput ] = useState("");
     const [ cardLimit, setCardLimit ] = useState("");
     const [ date, setDate ] = useState<Date | null>(null)
 
     const [ editingMethod, setEditingMethod ] = useState<PaymentMethodType | null>(null);
     const [ editName, setEditName ] = useState("");
     const [ editType, setEditType ] = useState("");
-    const [ editAccount, setEditAccount ] = useState("");       // UUID
-    const [ editAccountInput, setEditAccountInput ] = useState(""); // display text
+    const [ editAccount, setEditAccount ] = useState("");
+    const [ editAccountInput, setEditAccountInput ] = useState("");
     const [ editIcon, setEditIcon ] = useState("credit_card");
     const [ editCardLimit, setEditCardLimit ] = useState("");
     const [ editDate, setEditDate ] = useState<Date | null>(null);
@@ -200,7 +201,7 @@ const PaymentMethods = () => {
         <main className="paymentMethods">
             <div className="payment-bar">
                 <h3>Payment Methods</h3>
-                <button id="new-payment-method" onClick={() => { setModalOpen(true) }}>New payment type <Icon iconName="add"/></button>
+                <button id="new-payment-method" onClick={() => { setModalOpen(true) }}>New payment method<Icon iconName="add"/></button>
             </div>
             <hr/>
             <section className="payments">
@@ -235,13 +236,13 @@ const PaymentMethods = () => {
                                 value={paymentType}
                                 onChange={(e) => setPaymentType(e.target.value)}
                                 onSelect={setPaymentType}/>
-                    
+
                     <hr/>
-                    
+
                     {
                         !defaultPaymentTypes.includes(paymentType) ?
                         "" :
-                        (paymentType == "Credit Card" ? 
+                        (paymentType == "Credit Card" ?
                             <><InputGroup groupContainer="div" type="row" gap={1.5}>
                                 <DatePicker id="dueDay" name="dueDay" labelTxt="Due day:" value={date} onChange={setDate} mode="day"/>
                                 <InputField type="currency" id="limit" name="limit" labelTxt="Card Limit:" value={cardLimit} onChange={(e) => setCardLimit(e.target.value)} currency="BRL"/>
@@ -249,13 +250,13 @@ const PaymentMethods = () => {
                            ""
                         )
                     }
-                    
+
                 </div>
                 <div className="grid-tile">
                     <IconSelector type="fullsize" label="Select the icon:" cols={5} value={selectedIcon} onChange={setSelectedIcon}/>
                 </div>
             </div>
-            
+
         </Modal>
 
         <Modal key={editingMethod?.id ?? "none"} visible={editingMethod !== null} title="Edit Payment Method"

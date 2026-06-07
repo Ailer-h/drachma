@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom"
+'use client'
+import { useRouter } from "next/navigation"
 import { useUserPreferences } from "../context/UserPreferencesContext"
 import { formatCurrencyValue } from "../lib/currency"
 import Icon from "./Icon"
@@ -12,12 +13,12 @@ interface AccountProps {
 }
 
 const Account = ({ id, accountName, accountType, onEdit, onDelete }: AccountProps) => {
-    
+
     const UserPreferences = useUserPreferences()
-    const Navigate = useNavigate()
-    
+    const router = useRouter()
+
     return <>
-        <div className="account" onClick={() => Navigate("/accounts/" + accountName.toLowerCase())}>
+        <div className="account" onClick={() => router.push("/accounts/" + accountName.toLowerCase())}>
             <Icon iconName="menu_dot" className="options" onClick={(e) => {
                 e.stopPropagation()
                 alert("Options")
@@ -35,7 +36,7 @@ const Account = ({ id, accountName, accountType, onEdit, onDelete }: AccountProp
                 <p>Last entry:</p>
                 <span className="mono positive">+{formatCurrencyValue(10, UserPreferences.currency)}</span>
             </div>
-            
+
         </div>
     </>
 }

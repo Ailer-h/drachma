@@ -1,21 +1,25 @@
-import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+'use client'
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { useAuth } from "../context/AuthContext"
 
 interface Props {
-    children: React.ReactNode;
+    children: React.ReactNode
 }
 
 const RequireAuth = ({ children }: Props) => {
-    const { session, loading } = useAuth();
-    const location = useLocation();
+    const { session, loading } = useAuth()
+    const router = useRouter()
 
-    if (loading) return null; // ADD SPINNER LATER
+    useEffect(() => {
+        if (!loading && !session) {
+            router.replace("/")
+        }
+    }, [loading, session, router])
 
-    if (!session) {
-        return <Navigate to="/" state={{ from: location }} replace />;
-    }
+    if (loading || !session) return null // ADD SPINNER LATER
 
-    return children;
-};
+    return <>{children}</>
+}
 
-export default RequireAuth;
+export default RequireAuth

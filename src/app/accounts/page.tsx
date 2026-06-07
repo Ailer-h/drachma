@@ -1,13 +1,14 @@
+'use client'
 import { useEffect, useRef, useState } from "react"
-import { supabase } from "../lib/supabaseClient"
-import Modal from "../components/Modal"
-import AccountsGrid, { type AccountType } from "../components/AccountsGrid"
-import "../stylesheets/Accounts.css"
-import RequireAuth from "../routes/RequireAuth"
-import InputField from "../components/InputField"
-import Icon from "../components/Icon"
-import InputGroup from "../components/InputGroup"
-import ListSelector from "../components/ListSelector"
+import { supabase } from "../../lib/supabaseClient"
+import Modal from "../../components/Modal"
+import AccountsGrid, { type AccountType } from "../../components/AccountsGrid"
+import "../../stylesheets/Accounts.css"
+import RequireAuth from "../../routes/RequireAuth"
+import InputField from "../../components/InputField"
+import Icon from "../../components/Icon"
+import InputGroup from "../../components/InputGroup"
+import ListSelector from "../../components/ListSelector"
 
 const Accounts = () => {
 
@@ -185,7 +186,8 @@ const Accounts = () => {
                                     options={interestTypes}
                                     value={interestType}
                                     onChange={(e) => setInterestType(e.target.value)}
-                                    onSelect={setInterestType}/>
+                                    onSelect={setInterestType}
+                                    filterList={false}/>
                         {
                             interestType && interestType != "No interest" &&
                             <InputField type="percentage" name="interestRate" id="interestRate" labelTxt="Interest rate:"
@@ -216,7 +218,8 @@ const Accounts = () => {
                                 options={accountTypes}
                                 value={editType}
                                 onChange={(e) => setEditType(e.target.value)}
-                                onSelect={setEditType}/>
+                                onSelect={setEditType}
+                                filterList={false}/>
                 </InputGroup>
             </div>
 

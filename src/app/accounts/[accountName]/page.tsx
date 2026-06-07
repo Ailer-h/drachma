@@ -1,13 +1,15 @@
-import { useNavigate, useParams } from "react-router-dom"
-import { supabase } from "../lib/supabaseClient"
+'use client'
+import { useRouter, useParams } from "next/navigation"
+import { supabase } from "../../../lib/supabaseClient"
 import { useState } from "react"
 
 const AccountDetails = () => {
 
     const [ loading, setLoading ] = useState(true)
-    
-    const { accountName } = useParams()
-    const Navigate = useNavigate();
+
+    const params = useParams()
+    const accountName = params?.accountName as string
+    const router = useRouter()
 
     const isAccountValid = async () => {
 
@@ -38,12 +40,12 @@ const AccountDetails = () => {
         const accountValid = await isAccountValid()
 
         if (!accountValid) {
-            Navigate("/")
+            router.push("/")
             return
         }
 
         setLoading(false)
-        
+
     }
 
     validateAccountPage()
@@ -55,7 +57,6 @@ const AccountDetails = () => {
             <h1>{accountName}</h1>
         }
 
-    
     </>
 
 }

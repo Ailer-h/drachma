@@ -52,6 +52,12 @@ main.accounts h3 {
     
 }
 
+.accounts-section .accounts-grid {
+    
+    color: var(--text-default);
+
+}
+
 .accounts-section .accounts-grid .account {
     
     min-height: 125px;

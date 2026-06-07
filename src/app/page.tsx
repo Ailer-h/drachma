@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom"
+'use client'
+import { useRouter } from "next/navigation"
 
 import Banner from "../components/Banner"
 
@@ -6,14 +7,14 @@ import "../stylesheets/Home.css"
 
 
 const Home = () => {
-    const Navigate = useNavigate();
-    
+    const router = useRouter();
+
     return <>
-    
+
         <Banner/>
 
         <hr/>
-        
+
         <main className="home">
             <section>
                 <h1>Your finances, finally under control.</h1>
@@ -57,12 +58,12 @@ const Home = () => {
                 <p className="main-text">Simple, powerful tools to track and grow your wealth. Everything you need to manage your money — nothing you don't.</p>
 
                 <div className="buttons">
-                    <button className="main-btn" onClick={() => {Navigate("/signup")}}>
+                    <button className="main-btn" onClick={() => {router.push("/signup")}}>
                         Get started
                         <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e3e3e3"><path d="M646.15-450H200v-58h446.15L437.46-716.69 479-760l281 281-279 279-41.54-43.31L646.15-450Z"/></svg>
                     </button>
 
-                    <button className="secondary-btn" onClick={() => {Navigate("/login")}}>
+                    <button className="secondary-btn" onClick={() => {router.push("/login")}}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"><path d="M479.23-152v-58h246.15q9.24 0 16.93-7.69 7.69-7.69 7.69-16.93v-490.76q0-9.24-7.69-16.93-7.69-7.69-16.93-7.69H479.23v-58h246.15q35.05 0 58.83 23.79Q808-760.43 808-725.38v490.76q0 35.05-23.79 58.83Q760.43-152 725.38-152H479.23Zm-54.46-178.46-45.08-41.77L459.46-452H152v-58h307.46l-79.77-79.77 45.08-39.77L574.31-480 424.77-330.46Z"/></svg>
                         Log in
                     </button>
@@ -73,9 +74,9 @@ const Home = () => {
             <hr/>
 
         </main>
-    
+
     </>
-    
+
 }
 
 export default Home

@@ -1,39 +1,38 @@
+'use client'
 import { useEffect, useRef, type FocusEventHandler } from "react"
-import { useNavigate } from "react-router-dom";
-import { supabase } from "../lib/supabaseClient";
-import { useTheme } from "../context/UserPreferencesContext";
+import { useRouter } from "next/navigation"
+import { supabase } from "../lib/supabaseClient"
+import { useTheme } from "../context/UserPreferencesContext"
 
 interface UserMenuProps {
-
     visible: boolean,
     onBlur: FocusEventHandler
-
 }
 
 const UserMenu = ({visible, onBlur}: UserMenuProps) => {
 
-    const { theme, toggleTheme } = useTheme();
-    const firstItemRef = useRef<HTMLLIElement>(null);
-    const Navigate = useNavigate();
+    const { theme, toggleTheme } = useTheme()
+    const firstItemRef = useRef<HTMLLIElement>(null)
+    const router = useRouter()
 
     const handleLogout = async () => {
 
-        const { error } = await supabase.auth.signOut();
+        const { error } = await supabase.auth.signOut()
 
         if (error) {
-            console.error(error.message);
-            return;
+            console.error(error.message)
+            return
         }
 
-        Navigate("/");
+        router.push("/")
 
     }
 
     useEffect(() => {
         if (visible) {
-            firstItemRef.current?.focus();
+            firstItemRef.current?.focus()
         }
-    }, [visible]);
+    }, [visible])
 
     return <>
         <menu className={`menu-items ${visible ? "open" : ""}`} tabIndex={-1} ref={firstItemRef} onBlur={onBlur}>

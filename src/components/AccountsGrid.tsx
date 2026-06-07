@@ -44,9 +44,9 @@ const AccountsGrid = ({ refreshKey, onEdit, onDelete }: AccountsGridProps) => {
     return <>
         <div className="accounts-grid">
                 {loading ? (
-                    <tr><td colSpan={3}>Loading...</td></tr>
+                    <p>Loading...</p>
                 ) : accounts.length === 0 ? (
-                    <tr><td colSpan={3}>No accounts</td></tr>
+                    <p>No accounts</p>
                 ) : (
                     accounts.map((account) => (
                         <Account

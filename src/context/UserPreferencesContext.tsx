@@ -1,5 +1,6 @@
+'use client'
 import { createContext, useContext, useEffect, useState } from "react"
-import { useLocation } from "react-router-dom"
+import { usePathname } from "next/navigation"
 import { supabase } from "../lib/supabaseClient"
 import type { CurrencyCode } from "../Types"
 
@@ -24,6 +25,7 @@ const LIGHT_ONLY_ROUTES = ["/", "/login", "/signup"]
 const LS_KEY = "user_preferences"
 
 function loadFromStorage(): UserPreferences {
+    if (typeof window === "undefined") return DEFAULTS
     try {
         const raw = localStorage.getItem(LS_KEY)
         if (raw) return { ...DEFAULTS, ...JSON.parse(raw) }
@@ -40,8 +42,12 @@ function loadFromStorage(): UserPreferences {
 const UserPreferencesContext = createContext<UserPreferencesContextType | null>(null)
 
 export const UserPreferencesProvider = ({ children }: { children: React.ReactNode }) => {
-    const location = useLocation()
-    const [preferences, setPreferences] = useState<UserPreferences>(loadFromStorage)
+    const pathname = usePathname()
+    const [preferences, setPreferences] = useState<UserPreferences>(DEFAULTS)
+
+    useEffect(() => {
+        setPreferences(loadFromStorage())
+    }, [])
 
     // Sync with Supabase on mount and on auth state changes
     useEffect(() => {
@@ -79,7 +85,7 @@ export const UserPreferencesProvider = ({ children }: { children: React.ReactNod
     useEffect(() => {
         const root = document.documentElement
         const isLightOnly = LIGHT_ONLY_ROUTES.some(r =>
-            location.pathname === r || location.pathname.startsWith(r + "/")
+            pathname === r || pathname.startsWith(r + "/")
         )
         if (preferences.theme === "dark" && !isLightOnly) {
             root.classList.add("dark-mode")
@@ -87,7 +93,7 @@ export const UserPreferencesProvider = ({ children }: { children: React.ReactNod
             root.classList.remove("dark-mode")
         }
         localStorage.setItem(LS_KEY, JSON.stringify(preferences))
-    }, [preferences, location.pathname])
+    }, [preferences, pathname])
 
     const persist = async (updated: UserPreferences) => {
         setPreferences(updated)
