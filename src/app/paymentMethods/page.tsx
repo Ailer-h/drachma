@@ -11,6 +11,7 @@ import IconSelector from "../../components/IconSelector"
 import InputGroup from "../../components/InputGroup"
 import ListSelector from "../../components/ListSelector"
 import DatePicker from "../../components/DatePicker"
+import Button from "@/components/Button"
 
 const PaymentMethods = () => {
 
@@ -201,7 +202,7 @@ const PaymentMethods = () => {
         <main className="paymentMethods">
             <div className="payment-bar">
                 <h3>Payment Methods</h3>
-                <button id="new-payment-method" onClick={() => { setModalOpen(true) }}>New payment method<Icon iconName="add"/></button>
+                <Button text="New payment method" iconName="add" onClick={() => { setModalOpen(true) }}/>
             </div>
             <hr/>
             <section className="payments">

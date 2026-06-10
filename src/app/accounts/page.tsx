@@ -9,6 +9,7 @@ import InputField from "../../components/InputField"
 import Icon from "../../components/Icon"
 import InputGroup from "../../components/InputGroup"
 import ListSelector from "../../components/ListSelector"
+import Button from "@/components/Button"
 
 const Accounts = () => {
 
@@ -151,7 +152,7 @@ const Accounts = () => {
         <main className="accounts">
             <div className="account-bar">
                 <h3>Accounts</h3>
-                <button id="new-account" onClick={() => { setModalOpen(true) }}>New account <Icon iconName="add"/></button>
+                <Button text="New Account" iconName="add" onClick={() => { setModalOpen(true) }}/>
             </div>
             <hr/>
             <section className="accounts-section">

@@ -255,3 +255,92 @@ main.pageNotFound h3:hover {
     background: var(--bronze-700);
 
 }
+
+/* Buttons */
+
+button.systemBtn {
+    
+    border: none;
+        
+    color: var(--text-white);
+    
+    cursor: pointer;
+    
+    transition: 200ms;
+    
+}
+button.btn-small {
+    padding: .2rem .3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: .5rem;
+    border-radius: .3em;
+}
+
+button.btn-big {
+    padding: .1em .5em;
+    font-size: 1.2em;
+    border-radius: .2em;
+    font-weight: bold;
+
+}
+
+button.systemBtn:disabled {
+
+    cursor: default;
+
+}
+
+button.systemBtn svg {
+
+    fill: var(--text-white);
+
+}
+
+button.btn-default {
+    background-color: var(--bronze-500);
+}
+
+button.btn-default:hover {
+    background-color: var(--bronze-600);
+    transition: 200ms;
+}
+
+button.btn-default:disabled,
+button.btn-default:disabled:hover {
+    background-color: var(--bronze-300);
+}
+
+button.btn-secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-default);
+}
+
+button.btn-secondary:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-default);
+    transition: 200ms;
+}
+
+button.btn-secondary:disabled,
+button.btn-secondary:disabled:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+button.btn-danger {
+    background-color: var(--danger-600);
+}
+
+button.btn-danger:hover {
+    background-color: var(--danger-700);
+    transition: 200ms;
+}
+
+button.btn-danger:disabled,
+button.btn-danger:disabled:hover {
+    background-color: var(--danger-300);    
+}
