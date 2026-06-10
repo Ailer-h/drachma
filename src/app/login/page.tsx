@@ -1,7 +1,9 @@
 'use client'
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 import { supabase } from "../../lib/supabaseClient"
+import logo from "../../assets/logo.png"
 
 import FormInputField from "../../components/FormInputField"
 
@@ -75,7 +77,7 @@ const Login = () => {
 
                 <div className="header">
                     <div className="icon">
-                        <img src="../assets/logo.png"/>
+                        <Image src={logo} alt="Drachma logo" fill />
                     </div>
                     <h1>Log In</h1>
                     <hr/>

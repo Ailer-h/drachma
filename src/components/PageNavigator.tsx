@@ -9,8 +9,7 @@ const PageNavigator = () => {
     const routes = [
         { address: "/accounts", label: "Accounts" },
         { address: "/paymentMethods", label: "Payment methods" },
-        { address: "/income", label: "Income sources" },
-        { address: "/expenses", label: "Expenses" }
+        { address: "/transactions", label: "Transactions" },
     ].filter(route => route.address !== pathname)
 
     return <>{

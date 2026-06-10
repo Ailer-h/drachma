@@ -1,6 +1,8 @@
 'use client'
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
+import logo from "../assets/logo.png"
 
 import FormInputField from "../../components/FormInputField"
 
@@ -97,7 +99,7 @@ const Signup = () => {
 
                 <div className="header">
                     <div className="icon">
-                        <img src="../assets/logo.png"/>
+                        <Image src={logo} alt="Drachma logo" fill />
                     </div>
                     <h1>Sign Up</h1>
                     <hr/>

@@ -141,16 +141,35 @@ hr {
     background-color: var(--text-white-secondary);
 
     width: calc(100% - 6em);
-    margin-left: 3em;
 
     margin-top: 2em;
     margin-bottom: 2em;
 
 }
 
+main {
+
+    width: calc(100% - 6em);
+
+    min-height: calc(100vh - 5em);
+    margin-top: 5em;
+
+    margin-left: 3em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
 /* 404 element */
 main.pageNotFound {
-    width: calc(100% - 6em);
+    margin-left: 0;
+    margin-top: 0;
+    align-items: initial;
+    justify-content: initial;
+
     min-height: calc(100vh - 10em);
 
     display: grid;

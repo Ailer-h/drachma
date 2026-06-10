@@ -36,7 +36,7 @@ div.modal-overlay .modal {
     padding: .7em 1em;
 
     opacity: 0;
-    transform: translateY(-12px);
+    transform: translateY(-24px);
     transition: opacity 200ms ease, transform 200ms ease;
 
 }

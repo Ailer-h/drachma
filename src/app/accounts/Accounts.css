@@ -6,22 +6,6 @@ hr {
 
 }
 
-main.accounts {
-
-    width: calc(100% - 6em);
-
-    min-height: calc(100vh - 5em);
-    margin-top: 5em;
-
-    margin-left: 3em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
 main.accounts h3 {
 
     color: var(--text-default);

@@ -1,5 +1,10 @@
 main.forms {
 
+    margin-left: 0;
+    margin-top: 0;
+    align-items: initial;
+    justify-content: initial;
+
     height: 100vh;
     width: 100%;
 
@@ -76,11 +81,8 @@ main.forms section form .icon {
 
     border-radius: 100%;
 
-}
-
-main.forms section form .icon img {
-
-    width: 100%;
+    position: relative;
+    overflow: hidden;
 
 }
 
