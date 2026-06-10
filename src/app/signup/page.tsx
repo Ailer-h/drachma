@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 
 import FormInputField from "../../components/FormInputField"
 
-import "../../stylesheets/Forms.css"
+import "../Forms.css"
 import { supabase } from "../../lib/supabaseClient"
 import RequireGuest from "../../routes/RequireGuest"
 import type { InputType } from "../../Types"

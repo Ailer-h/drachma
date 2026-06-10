@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation"
 
 import Banner from "../components/Banner"
 
-import "../stylesheets/Home.css"
+import "./Home.css"
 
 
 const Home = () => {

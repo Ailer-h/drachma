@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Providers from './Providers'
-import '../stylesheets/index.css'
+import './index.css'
 
 export const metadata: Metadata = {
     title: 'Drachma',

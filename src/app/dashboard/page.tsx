@@ -1,7 +1,7 @@
 'use client'
 import DashboardTile from "../../components/DashboardTile"
 import RequireAuth from "../../routes/RequireAuth"
-import "../../stylesheets/Dashboard.css"
+import "./Dashboard.css"
 
 const Dashboard = () => {
 

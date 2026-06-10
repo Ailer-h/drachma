@@ -5,7 +5,7 @@ import { supabase } from "../../lib/supabaseClient"
 
 import FormInputField from "../../components/FormInputField"
 
-import "../../stylesheets/Forms.css"
+import "../Forms.css"
 import RequireGuest from "../../routes/RequireGuest"
 import type { InputType } from "../../Types"
 

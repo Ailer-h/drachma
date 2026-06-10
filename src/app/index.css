@@ -180,7 +180,10 @@ main.pageNotFound img {
 
 main.pageNotFound img.backdrop {
 
-    filter: none;
+    filter: drop-shadow(1px 0px 0 var(--bronze-800)) 
+            drop-shadow(-1px 0px 0 var(--bronze-800)) 
+            drop-shadow(0px 1px 0 var(--bronze-800)) 
+            drop-shadow(0px -1px 0 var(--bronze-800));
 
     position: absolute;
     top: 0;
