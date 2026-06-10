@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
-import PaymentMethod from "./PaymentMethod";
+'use client'
+import { useEffect, useState } from "react"
+import { supabase } from "../lib/supabaseClient"
+import PaymentMethodsList, { type PaymentMethodType } from "./PaymentMethodsList"
 
-export type PaymentMethodType = {
-    id: string;
-    name: string;
-    icon: string | null;
-    type: string;
-    account: string;       // UUID (FK to accounts.id)
-    account_name: string;  // resolved display name
-    due_day: number | null;
-    card_limit: number | null;
-}
+export type { PaymentMethodType }
 
 interface PaymentMethodsTableProps {
     refreshKey?: number
@@ -20,73 +12,55 @@ interface PaymentMethodsTableProps {
 }
 
 const PaymentMethodsTable = ({ refreshKey, onEdit, onDelete }: PaymentMethodsTableProps) => {
-    const [methods, setMethods] = useState<PaymentMethodType[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [methods, setMethods] = useState<PaymentMethodType[]>([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchPaymentMethods = async () => {
+            try {
+                const { data: { user } } = await supabase.auth.getUser()
 
-            const { data: { user } } = await supabase.auth.getUser();
+                if (!user) {
+                    console.log("No user logged in")
+                    return
+                }
 
-            if (!user) {
-                console.log("No user logged in");
-                return;
+                const { data, error } = await supabase
+                    .from("payment_methods")
+                    .select("id, name, icon, type, account, accounts(account_name), due_day, card_limit")
+                    .eq("user_id", user.id)
+
+                if (error) {
+                    console.log(error)
+                    return
+                }
+
+                setMethods((data || []).map(m => ({
+                    id: m.id,
+                    name: m.name,
+                    icon: m.icon,
+                    type: m.type,
+                    account: m.account,
+                    account_name: (m.accounts as unknown as { account_name: string } | null)?.account_name ?? "",
+                    due_day: m.due_day,
+                    card_limit: m.card_limit,
+                })))
+            } finally {
+                setLoading(false)
             }
+        }
 
-            const { data, error } = await supabase
-                .from("payment_methods")
-                .select("id, name, icon, type, account, accounts(account_name), due_day, card_limit")
-                .eq("user_id", user.id);
-
-            if (error) {
-                console.log(error)
-                return;
-            }
-
-            const methods: PaymentMethodType[] = (data || []).map(m => ({
-                id: m.id,
-                name: m.name,
-                icon: m.icon,
-                type: m.type,
-                account: m.account,
-                account_name: (m.accounts as { account_name: string } | null)?.account_name ?? "",
-                due_day: m.due_day,
-                card_limit: m.card_limit,
-            }))
-
-            setMethods(methods)
-            setLoading(false)
-        };
-
-        fetchPaymentMethods();
+        fetchPaymentMethods()
     }, [refreshKey])
 
-    return <>
-        <table>
-            <thead>
-                <tr><th>Method</th><th>Type</th><th>Account</th><th>Due Day</th><th>Limit</th><th className="actions">Actions</th></tr>
-            </thead>
-                
-            <tbody id="payments-list">
-                {loading ? (
-                      <tr>
-                        <td colSpan={6}>Loading...</td>
-                      </tr>
-                    ) : methods.length === 0 ? (
-                      <tr>
-                        <td colSpan={6}>No payment methods</td>
-                      </tr>
-                    ) : (
-                      methods.map((method) => (
-                        <PaymentMethod key={method.id} id={method.id} icon={method.icon ?? ""} type={method.type} account={method.account_name} dueDay={method.due_day} cardLimit={method.card_limit}
-                            onEdit={() => onEdit?.(method)}
-                            onDelete={() => onDelete?.(method)}>{method.name}</PaymentMethod>
-                      ))
-                    )}
-            </tbody>
-        </table>
-    </>
-    
+    return (
+        <PaymentMethodsList
+            methods={methods}
+            loading={loading}
+            onEdit={onEdit}
+            onDelete={onDelete}
+        />
+    )
 }
 
 export default PaymentMethodsTable

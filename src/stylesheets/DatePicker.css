@@ -38,9 +38,10 @@
 
     background-color: var(--bg);
     box-shadow: var(--box-shadow);
-    border: .1px solid var(--lines-secondary);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: .6em;
 
-    padding: .75em;
+    padding: .85em;
 
     user-select: none;
 }
@@ -115,25 +116,25 @@
 }
 
 .calendar-grid .day-cell.today {
-    color: var(--bronze-main);
+    color: var(--bronze-500);
     font-weight: 700;
 }
 
 .calendar-grid .day-cell.selected {
-    background-color: var(--bronze-main);
+    background-color: var(--bronze-500);
     color: var(--text-white);
 }
 
 .calendar-grid .day-cell.selected:hover {
-    background-color: var(--bronze-shade);
+    background-color: var(--bronze-600);
 }
 
 .calendar-grid .day-cell.focused {
-    outline: 1.5px solid var(--bronze-main);
+    outline: 1.5px solid var(--bronze-500);
     background-color: var(--bg-secondary);
 }
 
 .calendar-grid .day-cell.selected.focused {
-    background-color: var(--bronze-shade);
-    outline: 1.5px solid var(--bronze-dark);
+    background-color: var(--bronze-600);
+    outline: 1.5px solid var(--bronze-700);
 }

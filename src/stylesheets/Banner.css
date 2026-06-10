@@ -36,11 +36,20 @@
 .banner .banner-text h1 {
 
     font-size: 5em;
-    
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+
 }
 
 .banner .banner-text p {
 
-    font-size: 2em;
-    
+    font-size: 1.8em;
+    font-family: var(--font-display);
+    font-style: italic;
+    letter-spacing: 0.03em;
+    opacity: 0.9;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+
 }

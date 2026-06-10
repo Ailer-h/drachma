@@ -19,7 +19,10 @@ nav {
 }
 
 nav h1 {
-    font-weight: bold;
+    font-family: var(--font-display);
+    font-size: 1.5em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     color: var(--bronze-600);
     user-select: none;
     cursor: pointer;
@@ -95,21 +98,42 @@ nav .menu .navigation {
     padding: .2em .5em;
 
     font-size: var(--text-base);
+    font-weight: 500;
 
     color: var(--text-secondary);
 
     user-select: none;
     cursor: pointer;
 
-    transition: 200ms;
+    position: relative;
+    transition: color 200ms ease;
+
+}
+
+nav .menu .navigation::after {
+
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: .5em;
+    right: .5em;
+    height: 1.5px;
+    background-color: var(--bronze-500);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 200ms ease;
 
 }
 
 nav .menu .navigation:hover {
 
-    background-color: var(--bg-secondary);
     color: var(--bronze-600);
-    border-radius: .3em;
+
+}
+
+nav .menu .navigation:hover::after {
+
+    transform: scaleX(1);
 
 }
 

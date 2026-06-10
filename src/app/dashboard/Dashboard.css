@@ -18,15 +18,21 @@ main.dashboard .grid-box {
     background-color: var(--bg-secondary);
     min-height: 9em;
 
-    border-radius: .75em;
+    border-radius: 1em;
     border: 1px solid var(--bg-tertiary);
 
     padding: var(--space-6);
 
     box-shadow: var(--box-shadow);
+    transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
-/* Primary tile gets a left accent to signal hierarchy */
+main.dashboard .grid-box:hover {
+    transform: translateY(-2px);
+    box-shadow: rgba(50, 50, 93, 0.3) 0px 10px 20px -4px, rgba(0, 0, 0, 0.25) 0px 4px 8px -4px;
+}
+
+/* Primary tile gets a top accent to signal hierarchy */
 main.dashboard .grid-box.primary {
-    border-left: 3px solid var(--bronze-500);
+    border-top: 3px solid var(--bronze-500);
 }

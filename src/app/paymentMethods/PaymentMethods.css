@@ -9,7 +9,10 @@ hr {
 main.paymentMethods h3 {
 
     color: var(--text-default);
-    font-size: 1.5rem;
+    font-family: var(--font-display);
+    font-size: calc(var(--text-xl) * 1.1);
+    font-weight: 600;
+    letter-spacing: 0.01em;
 
 }
 
@@ -22,111 +25,6 @@ main.paymentMethods h3 {
 
 }
 
-.payments table {
-    
-    width: calc(100% - 3rem);
-    margin: 0 1.5em;
-    margin-top: .5rem;
-    
-    border-spacing: 0px;
-
-    color: var(--text-default);
-    
-}
-
-.payments table svg {
-
-    width: 1.2rem;
-    height: 1.2rem;
-    fill: var(--text-default);
-
-}
-
-.payments table tbody td {
-
-    padding: .2rem .3rem;
-
-}
-
-.payments table tbody td:first-child div{
-
-    display: flex;
-    align-items: center;
-
-    gap: .5rem;
-
-}
-
-.payments table th {
-
-    text-align: left;
-    border-bottom: .5px solid var(--lines-secondary);
-    margin-bottom: .5rem;
-
-}
-
-.payments table tbody tr{
-    
-    transition: 200ms;
-    
-}
-
-.payments table tbody tr td:first-child {
-
-    display: flex;
-    gap: .5em;
-
-    font-size: 1em;
-
-}
-
-.payments table tbody tr:hover{
-
-    background-color: var(--bg-secondary);
-
-    transition: 200ms;
-
-}
-
-.payments table .actions {
-
-    width: 15%;
-    text-align: center;
-
-}
-
-.payments table .actions div {
-
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: 1rem;
-
-}
-
-
-.payments table .actions svg {
-
-    fill: var(--text-default);
-
-    padding: .2rem;
-    cursor: pointer;
-
-    border-radius: .3rem;
-
-    transition: 200ms;
-
-}
-
-.payments table .actions svg:hover {
-
-    background-color: var(--bg-tertiary);
-
-    transition: 200ms;
-
-}
 
 .payment-bar {
 

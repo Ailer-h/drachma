@@ -49,11 +49,18 @@ main.forms section.banner .title {
 }
 
 main.forms section.banner .title h1 {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.05em;
 }
 
 main.forms section.banner .title h2 {
-    font-size: .8em;
+    font-size: .85em;
+    font-family: var(--font-display);
+    font-style: italic;
+    letter-spacing: 0.04em;
+    opacity: 0.88;
 }
 
 main.forms section form {
@@ -97,6 +104,16 @@ main.forms section form .header {
     align-items: center;
 
     gap: 1.5em;
+}
+
+main.forms section form .header h1 {
+
+    font-family: var(--font-display);
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-default);
+
 }
 
 main.forms section form hr {
@@ -156,18 +173,20 @@ main.forms section form input {
 
     background-color: transparent;
     border: none;
-    
-    border-bottom: .2px solid var(--lines-secondary);
-    
+
+    border-bottom: 1px solid var(--lines-secondary);
+
     outline: transparent;
-    
+
     color: var(--text-default);
-    
+
+    transition: border-color 200ms ease;
+
 }
 
 main.forms section form input:focus {
 
-    border-bottom: .2px solid var(--bronze-500);
+    border-bottom: 2px solid var(--bronze-500);
 
 }
 
@@ -195,7 +214,7 @@ main.forms section form button{
     margin-top: 1em;
     margin-bottom: 1em;
 
-    font-size: 1.5em;
+    font-size: var(--text-xl);
 
     padding: .2em .5em;
 

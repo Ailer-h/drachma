@@ -20,7 +20,7 @@ interface ListSelectorProps {
 
 }
 
-const ListSelector = ({ options, labelTxt, id, name, value, filterList=true, onChange, onSelect }: ListSelectorProps) => {
+const ListSelector = ({ options, labelTxt, id, name, value, filterList=false, onChange, onSelect }: ListSelectorProps) => {
 
     const [ isOpen, setIsOpen ] = useState(false)
     const [ highlightedIndex, setHighlightedIndex ] = useState(-1)
