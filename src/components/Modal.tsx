@@ -2,6 +2,7 @@ import { useEffect, useRef, type MouseEventHandler } from "react"
 
 import "../stylesheets/Modal.css"
 import Icon from "./Icon"
+import Button from "./Button"
 
 interface ModalProps {
 
@@ -20,12 +21,12 @@ interface ModalProps {
 
     children?: React.ReactNode,
 
-    cancelColor?: "confirm" | "cancel" | "danger",
-    confirmColor?: "confirm" | "cancel" | "danger"
+    cancelColor?: "default" | "secondary" | "danger",
+    confirmColor?: "default" | "secondary" | "danger"
 
 }
 
-const Modal = ({ title, height=30, width=80, visible, onClose, onCancel, onConfirm, confirmDisabled, ref, children, confirmColor="confirm", cancelColor="cancel" }: ModalProps) => {
+const Modal = ({ title, height=30, width=80, visible, onClose, onCancel, onConfirm, confirmDisabled, ref, children, confirmColor="default", cancelColor="secondary" }: ModalProps) => {
 
     const firstItemRef = useRef<HTMLDivElement>(null);
 
@@ -65,8 +66,8 @@ const Modal = ({ title, height=30, width=80, visible, onClose, onCancel, onConfi
                 </div>
 
                 <div className="modal-bar-bottom">
-                    <button type="button" className={cancelColor} onClick={onCancel as MouseEventHandler}>Cancel</button>
-                    <button type="button" className={confirmColor} onClick={onConfirm as MouseEventHandler} disabled={confirmDisabled}>Confirm</button>
+                    <Button text="Cancel" colorScheme={cancelColor} onClick={onCancel as MouseEventHandler} btnSize="big"/>
+                    <Button text="Confirm" colorScheme={confirmColor} onClick={onCancel as MouseEventHandler} btnSize="big" disabled={confirmDisabled}/>
                 </div>                
             </div>
         </div>

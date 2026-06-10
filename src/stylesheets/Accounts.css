@@ -200,42 +200,6 @@ main.accounts h3 {
 
 }
 
-.account-bar button {
-
-    border: none;
-
-    padding: .2rem .3rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: .5rem;
-    border-radius: .3em;
-
-    background-color: var(--bronze-500);
-    color: var(--text-white);
-
-    cursor: pointer;
-
-    transition: 200ms;
-
-}
-
-.account-bar button:hover {
-
-    background-color: var(--bronze-600);
-
-    transition: 200ms;
-
-}
-
-.account-bar button svg {
-
-    fill: var(--text-white);
-
-}
-
 .account-form {
 
     width: 100%;
