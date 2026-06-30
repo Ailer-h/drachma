@@ -1,7 +1,7 @@
 'use client'
 import RequireAuth from "@/routes/RequireAuth"
 import TransactionsTable from "@/components/TransactionsTable"
-import "./Transactions.css"
+import "./style.css"
 
 const Transactions = () => {
 
